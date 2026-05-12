@@ -669,6 +669,18 @@ footer h4 { color: var(--white); margin-bottom: 1.5rem; font-size: 1.2rem; }
     }
 }
 
+/* --- Reveal Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.reveal.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* --- Responsive --- */
 
 @media (max-width: 992px) {
@@ -678,21 +690,36 @@ footer h4 { color: var(--white); margin-bottom: 1.5rem; font-size: 1.2rem; }
 
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem; /* Smaller for mobile */
+        margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
     }
     
     nav.scrolled {
-        width: 90%;
+        width: 95%; /* Wider on small screens */
         height: 60px;
     }
 
     .hero-btns {
         flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-btns .btn {
+        width: 100%;
     }
     
-    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     
-    .section-title h2 { font-size: 2rem; }
+    .section-title h2 { font-size: 1.8rem; }
+
+    section {
+        padding: 60px 0; /* Less padding on mobile */
+    }
 }
 
 /* --- Page Header --- */
@@ -1223,6 +1250,7 @@ footer h4 { color: var(--white); margin-bottom: 1.5rem; font-size: 1.2rem; }
 
 @media (max-width: 768px) {
     .stats-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+    .stat-number { font-size: 40px; }
 }
 
 /* --- Refined Services Grid --- */

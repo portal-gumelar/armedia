@@ -74,9 +74,13 @@ const revealObserver = new IntersectionObserver((entries) => {
             });
         }
     });
-}, { threshold: 0.15 });
+}, { threshold: 0.1 }); // Lower threshold for better mobile reliability
 
-if (hero) revealObserver.observe(hero);
+if (hero) {
+    revealObserver.observe(hero);
+    // Manual trigger for hero in case observer is delayed
+    setTimeout(() => hero.classList.add('animate'), 500);
+}
 reveals.forEach(reveal => revealObserver.observe(reveal));
 
 // --- Parallax Effect ---
