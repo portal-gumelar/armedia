@@ -3,262 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT. Akses Artha Media | Koneksi Satelit Seluruh Indonesia</title>
-    <meta name="description" content="Layanan VSAT terpercaya sejak 2012. Solusi komunikasi satelit untuk area terpencil di seluruh Indonesia.">
-    <link rel="stylesheet" href="/src/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>PT Akses Artha Media | Solusi VSAT & Komunikasi Satelit Terbaik</title>
+    <meta name="description" content="PT Akses Artha Media (AAM) menyediakan layanan VSAT, internet satelit, backhaul BTS, dan solusi komunikasi satelit terpercaya di seluruh Indonesia sejak 2012.">
     <link rel="icon" type="image/png" href="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="/src/js/main.js" defer></script>
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+      #aam-root { font-family: 'Outfit', sans-serif; background: #0b1120; color: #e8edf5; min-height: 100vh; overflow-x: hidden; }
+      #aam-root * { box-sizing: border-box; margin: 0; padding: 0; }
+      #aam-root ::-webkit-scrollbar { width: 5px; }
+      #aam-root ::-webkit-scrollbar-thumb { background: #f5a623; border-radius: 3px; }
+      .aam-nav { position: sticky; top: 0; z-index: 100; background: rgba(11,17,32,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0 32px; }
+      .aam-nav-inner { max-width: 1140px; margin: 0 auto; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+      .aam-navlinks { display: flex; gap: 28px; align-items: center; }
+      .aam-navlink { color: #8899aa; font-size: 13px; font-weight: 500; text-decoration: none; cursor: pointer; letter-spacing: 0.2px; transition: color 0.2s; border: none; background: none; font-family: inherit; }
+      .aam-navlink:hover { color: #f5a623; }
+      .aam-btn { background: linear-gradient(135deg, #f5a623, #e8920e); color: #0b1120; border: none; padding: 10px 22px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit; transition: all 0.25s; letter-spacing: 0.2px; }
+      .aam-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,166,35,0.35); }
+      .aam-btn-ghost { background: transparent; color: #e8edf5; border: 1.5px solid rgba(255,255,255,0.18); padding: 10px 22px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; font-family: inherit; transition: all 0.25s; }
+      .aam-btn-ghost:hover { border-color: #f5a623; color: #f5a623; }
+      .aam-section { padding: 80px 32px; }
+      .aam-inner { max-width: 1140px; margin: 0 auto; }
+      .aam-tag { display: inline-block; background: rgba(245,166,35,0.12); color: #f5a623; border-radius: 6px; padding: 4px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 12px; }
+      .aam-h2 { font-size: 36px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.15; }
+      .aam-muted { color: #7a8fa0; font-size: 15px; line-height: 1.8; }
+      .aam-grid { background-image: linear-gradient(rgba(245,166,35,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(245,166,35,0.025) 1px, transparent 1px); background-size: 48px 48px; }
+      .aam-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 24px 22px; transition: all 0.3s; position: relative; overflow: hidden; }
+      .aam-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #f5a623, transparent); opacity: 0; transition: opacity 0.3s; }
+      .aam-card:hover { transform: translateY(-5px); border-color: rgba(245,166,35,0.22); box-shadow: 0 14px 36px rgba(0,0,0,0.3); }
+      .aam-card:hover::before { opacity: 1; }
+      @keyframes aam-float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(1.5deg); } }
+      .aam-float { animation: aam-float 6s ease-in-out infinite; }
+      @keyframes aam-countup { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      .aam-stat-num { font-size: 40px; font-weight: 900; color: #f5a623; letter-spacing: -1.5px; animation: aam-countup 0.8s ease forwards; }
+      .aam-gold { background: linear-gradient(135deg, #f5a623, #ffd166); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      
+      /* New Reveal Animations */
+      .aam-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+      .aam-reveal.active { opacity: 1; transform: translateY(0); }
+      .aam-delay-1 { transition-delay: 0.1s; }
+      .aam-delay-2 { transition-delay: 0.2s; }
+      .aam-delay-3 { transition-delay: 0.3s; }
+      
+      .aam-testimonial { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 16px; padding: 32px 28px; }
+      .aam-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 11px 14px; color: #e8edf5; font-size: 14px; outline: none; font-family: inherit; transition: border-color 0.2s; }
+      .aam-input:focus { border-color: rgba(245,166,35,0.45); }
+      .aam-input::placeholder { color: #445566; }
+      select.aam-input option { background: #0b1120; color: #e8edf5; }
+
+      @media (max-width: 768px) {
+        .aam-nav { padding: 0 16px; position: relative; }
+        .aam-nav-inner { height: auto; padding: 16px 0; flex-direction: column; gap: 16px; }
+        .aam-navlinks { flex-wrap: wrap; justify-content: center; gap: 12px; }
+        .aam-navlink { font-size: 12px; }
+        .aam-btn { width: 100%; text-align: center; }
+        
+        .aam-section { padding: 48px 20px; }
+        .aam-h2 { font-size: 28px; }
+        .aam-muted { font-size: 14px; }
+
+        /* Hero Mobile */
+        #aam-home { padding: 40px 20px 60px !important; text-align: center; }
+        #aam-home h1 { font-size: 34px !important; }
+        #aam-home p { margin: 0 auto 24px !important; }
+        #aam-home .aam-inner > div { flex-direction: column-reverse !important; gap: 40px !important; }
+        #aam-home div[style*="display:flex"] { justify-content: center !important; }
+        #aam-home .aam-float { min-width: auto !important; flex: 1 !important; width: 100% !important; }
+
+        /* Tentang Mobile */
+        #aam-tentang { padding: 48px 20px; }
+        #aam-tentang .aam-inner > div { flex-direction: column !important; gap: 32px !important; }
+        #aam-tentang div[style*="flex:1"] { min-width: auto !important; }
+
+        /* Grids Mobile */
+        #aam-services-grid, #aam-industries-grid, #aam-steps-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+        div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; gap: 24px !important; }
+        
+        /* Kenapa ARMEDIA Beda Mobile */
+        section[style*="background:rgba(245,166,35,0.02)"] div[style*="display:grid"] { grid-template-columns: 1fr !important; gap: 16px !important; }
+        
+        /* Testimonial Mobile */
+        #aam-testimoni { padding: 48px 20px; }
+        .aam-testimonial { padding: 24px 20px; }
+
+        /* Footer Mobile */
+        footer .aam-inner > div[style*="display:grid"] { grid-template-columns: 1fr !important; gap: 32px !important; text-align: center; }
+        footer .aam-inner img { margin: 0 auto 16px !important; }
+        footer div[style*="justify-content:space-between"] { justify-content: center !important; text-align: center; }
+      }
+    </style>
 </head>
 <body>
 
-    <div class="cursor-glow" id="cursor-glow"></div>
+<div id="aam-root">
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 var(--space-4);">
-            <a href="/index.html" class="logo">
-                <img loading="lazy" src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" alt="PT. Akses Artha Media Logo" class="nav-logo-img">
-            </a>
-            <ul class="nav-links">
-                <li><a href="/index.html" class="nav-link">Home</a></li>
-                <li><a href="/index.html#about" class="nav-link">Tentang Kami</a></li>
-                <li><a href="/pages/products.html" class="nav-link">Produk</a></li>
-                <li><a href="/pages/services.html" class="nav-link">Layanan</a></li>
-                <li><a href="/pages/blog.html" class="nav-link">Blog</a></li>
-                <li><a href="/pages/faq.html" class="nav-link">FAQ</a></li>
-                <li><a href="/pages/testimonials.html" class="nav-link">Testimoni</a></li>
-                <li><a href="/pages/contact.html" class="nav-cta">Hubungi Kami</a></li>
+  <!-- NAV -->
+  <nav class="aam-nav">
+    <div class="aam-nav-inner">
+      <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" alt="Akses Artha Media" style="height:40px;object-fit:contain;">
+      <div class="aam-navlinks">
+        <button class="aam-navlink" onclick="aamScrollTo('aam-home')">HOME</button>
+        <button class="aam-navlink" onclick="aamScrollTo('aam-tentang')">TENTANG KAMI</button>
+        <button class="aam-navlink" onclick="aamScrollTo('aam-testimoni')">TESTIMONY</button>
+        <button class="aam-btn" onclick="aamScrollTo('aam-kontak')">DAFTAR BERLANGGANAN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="aam-home" class="aam-grid" style="padding:80px 32px 100px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:15%;right:8%;width:460px;height:460px;background:radial-gradient(circle,rgba(245,166,35,0.07) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+    <div style="position:absolute;bottom:10%;left:4%;width:280px;height:280px;background:radial-gradient(circle,rgba(56,130,246,0.05) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+    <div style="max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:56px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:300px;">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.09);border:1px solid rgba(245,166,35,0.2);border-radius:24px;padding:5px 16px;margin-bottom:24px;">
+          <span style="width:6px;height:6px;background:#f5a623;border-radius:50%;display:inline-block;"></span>
+          <span style="color:#f5a623;font-size:11px;font-weight:700;letter-spacing:0.9px;">VSAT · SATELIT · TELEKOMUNIKASI</span>
+        </div>
+        <h1 style="font-size:50px;font-weight:900;line-height:1.1;letter-spacing:-1px;margin-bottom:18px;">
+          Bikin Masa Depan Digital<br>
+          <span class="aam-gold">Jadi Nyata 🚀</span>
+        </h1>
+        <p class="aam-muted" style="max-width:460px;margin-bottom:32px;">
+          Di <strong>ARMEDIA</strong>, kita bukan cuma ISP biasa. Kita hadir buat mastiin kamu, bisnis kamu, dan komunitas kamu selalu terkoneksi tanpa batas dengan internet yang stabil dan kencang. 🌐
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;">
+          <button class="aam-btn" style="padding:13px 30px;font-size:14px;" onclick="aamScrollTo('aam-kontak')">Daftar Berlangganan →</button>
+        </div>
+        <div style="display:flex;gap:36px;flex-wrap:wrap;">
+          <div><div style="font-size:22px;font-weight:800;color:#f5a623;">100+</div><div style="font-size:12px;color:#556677;margin-top:2px;font-weight:500;">Klien Aktif</div></div>
+          <div><div style="font-size:22px;font-weight:800;color:#f5a623;">12 Thn</div><div style="font-size:12px;color:#556677;margin-top:2px;font-weight:500;">Pengalaman</div></div>
+          <div><div style="font-size:22px;font-weight:800;color:#f5a623;">24/7</div><div style="font-size:12px;color:#556677;margin-top:2px;font-weight:500;">Technical Support</div></div>
+        </div>
+      </div>
+      <div class="aam-float" style="flex:1;min-width:320px;display:flex;justify-content:center;position:relative;">
+        <div style="position:relative;width:100%;max-width:500px;">
+          <img src="/images/hero.png" alt="ARMEDIA Digital Connectivity" style="width:100%;height:auto;border-radius:24px;box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(245,166,35,0.15);border: 1px solid rgba(255,255,255,0.1);">
+          <div style="position:absolute;inset:0;background:radial-gradient(circle at center, transparent 30%, rgba(11,17,32,0.4) 100%);border-radius:24px;pointer-events:none;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENTANG -->
+  <section id="aam-tentang" class="aam-section" style="position:relative;background:#0b1120;">
+    
+    <div class="aam-inner">
+      <div style="text-align:center;margin-bottom:64px;" class="aam-reveal">
+        <h2 class="aam-h2" style="margin-bottom:16px;">Kenalan Dulu Yuk dengan AAM</h2>
+        <p class="aam-muted" style="max-width:640px;margin:0 auto;font-size:16px;">
+          Kami PT Akses Artha Media, tapi boleh panggil AAM aja. Udah jalan sejak 12 Desember 2012 di bidang solution & integration.
+        </p>
+      </div>
+
+      <div style="display:flex;gap:80px;align-items:flex-start;flex-wrap:wrap;">
+        <div style="flex:1;min-width:320px;padding-top:20px;" class="aam-reveal aam-delay-1">
+          <p class="aam-muted" style="margin-bottom:32px;font-size:16px;line-height:1.8;">
+            Tahun 2017 jadi turning point kami. Mulai serius ngembangkan layanan komunikasi data satelit pakai teknologi VSAT. Kenapa? Karena kami lihat banyak banget area di Indonesia yang susah dapat koneksi internet stabil.
+          </p>
+          <p class="aam-muted" style="font-size:16px;line-height:1.8;">
+            Tower seluler? Belum tentu ada. Kabel fiber optik? Jangankan dipasang, dijangkau aja susah. Nah, di sinilah VSAT jadi solusi. Cuma butuh antena dish kecil, langsung nyambung ke satelit. Beres.
+          </p>
+        </div>
+
+        <div style="flex:1;min-width:320px;">
+          <!-- Visi Card -->
+          <div class="aam-card aam-reveal aam-delay-2" style="margin-bottom:24px;padding:36px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:24px;margin-bottom:20px;opacity:0.8;" class="aam-float">🎯</div>
+            <h3 style="font-size:24px;font-weight:700;color:#e8edf5;margin-bottom:14px;">Visi Kami</h3>
+            <p style="color:#7a8fa0;font-size:15px;line-height:1.7;">
+              Jadi perusahaan yang terdepan dalam kasih solusi komunikasi bisnis di Indonesia. Ga cuma jualan produk, tapi beneran jadi partner yang ngerti kebutuhan Anda.
+            </p>
+          </div>
+
+          <!-- Misi Card -->
+          <div class="aam-card aam-reveal aam-delay-3" style="padding:36px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:24px;margin-bottom:20px;opacity:0.8;" class="aam-float">⚡</div>
+            <h3 style="font-size:24px;font-weight:700;color:#e8edf5;margin-bottom:14px;">Misi Kami</h3>
+            <ul style="list-style:none;padding:0;">
+              <li style="color:#7a8fa0;font-size:15px;line-height:1.7;margin-bottom:10px;display:flex;gap:10px;">
+                <span>•</span> <span>Bangun tim yang profesional dan terus belajar</span>
+              </li>
+              <li style="color:#7a8fa0;font-size:15px;line-height:1.7;margin-bottom:10px;display:flex;gap:10px;">
+                <span>•</span> <span>Ciptakan produk yang efisien, handal, dan inovatif</span>
+              </li>
+              <li style="color:#7a8fa0;font-size:15px;line-height:1.7;display:flex;gap:10px;">
+                <span>•</span> <span>Kontribusi maksimal buat pertumbuhan Akses Group</span>
+              </li>
             </ul>
-            <div class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="hero reveal" id="hero">
-        <div class="particles" id="hero-particles"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Koneksi Satelit untuk Seluruh Indonesia</h1>
-                <p>Layanan VSAT terpercaya sejak 2012. Dari Sabang sampai Merauke, dari pegunungan hingga pulau terpencil - kami pastikan bisnis Anda tetap terhubung.</p>
-                <div class="hero-btns">
-                    <a href="/pages/contact.html?source=hero" class="btn btn-primary">Konsultasi Gratis</a>
-                    <a href="/pages/services.html" class="btn btn-outline">Lihat Layanan</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="spline-container">
-                    <i data-lucide="satellite" style="width: 120px; height: 120px; color: var(--accent-primary);"></i>
-                </div>
-            </div>
+  <!-- KENAPA ARMEDIA -->
+  <section class="aam-section" style="background:rgba(245,166,35,0.02);">
+    <div class="aam-inner">
+      <div style="text-align:center;margin-bottom:52px;">
+        <div class="aam-tag">Keunggulan Kami</div>
+        <h2 class="aam-h2" style="margin-top:10px;">Kenapa ARMEDIA Beda?</h2>
+        <p class="aam-muted" style="max-width:600px;margin:14px auto 0;">Kita gak cuma kasih internet, kita kasih kenyamanan buat semua aktivitas digital kamu.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div style="text-align:center;padding:20px;">
+          <div style="font-size:40px;margin-bottom:16px;">🚀</div>
+          <h3 style="font-size:18px;font-weight:700;color:#e8edf5;margin-bottom:10px;">Kecepatan 1:1 Simetris</h3>
+          <p style="color:#7a8fa0;font-size:14px;line-height:1.6;">Upload kencang, Download kencang. Pas banget buat yang hobi streaming, gaming, atau meeting online tanpa patah-patah.</p>
         </div>
-    </section>
+        <div style="text-align:center;padding:20px;">
+          <div style="font-size:40px;margin-bottom:16px;">♾️</div>
+          <h3 style="font-size:18px;font-weight:700;color:#e8edf5;margin-bottom:10px;">Unlimited Tanpa FUP</h3>
+          <p style="color:#7a8fa0;font-size:14px;line-height:1.6;">Gak ada drama kuota habis atau kecepatan turun di tengah bulan. Internetan sepuasnya, kapan aja!</p>
+        </div>
+        <div style="text-align:center;padding:20px;">
+          <div style="font-size:40px;margin-bottom:16px;">🏠</div>
+          <h3 style="font-size:18px;font-weight:700;color:#e8edf5;margin-bottom:10px;">Stabil Banyak Perangkat</h3>
+          <p style="color:#7a8fa0;font-size:14px;line-height:1.6;">Satu koneksi buat sekeluarga. Tetap stabil walau dipakai banyak HP, laptop, dan smart TV sekaligus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Stats Counter Section -->
-    <section class="stats-section reveal">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" data-target="100">0</div>
-                    <div class="stat-label">Klien Aktif</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="6">0</div>
-                    <div class="stat-label">Tahun Pengalaman</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="24">0</div>
-                    <div class="stat-label">Support 24/7</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- STATS BAR -->
+  <div style="background:rgba(245,166,35,0.055);border-top:1px solid rgba(245,166,35,0.12);border-bottom:1px solid rgba(245,166,35,0.12);padding:32px 32px;">
+    <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center;">
+      <div><div class="aam-stat-num" id="s1">0+</div><div class="aam-muted" style="font-size:13px;margin-top:4px;">Bisnis yang Udah Terkoneksi 🏢</div></div>
+      <div><div class="aam-stat-num" id="s2">0 Thn</div><div class="aam-muted" style="font-size:13px;margin-top:4px;">Tahun Jagain Koneksi Anda ⏳</div></div>
+      <div><div class="aam-stat-num" id="s3">0%</div><div class="aam-muted" style="font-size:13px;margin-top:4px;">Jaminan Internet Nyala Terus 💡</div></div>
+    </div>
+  </div>
 
-    <!-- About Section -->
-    <section id="about" class="reveal">
-        <div class="container">
-            <div class="section-title">
-                <h2>Kenalan Dulu Yuk dengan AAM</h2>
-                <p>Kami PT Akses Artha Media, tapi boleh panggil AAM aja. Udah jalan sejak 12 Desember 2012 di bidang solution & integration.</p>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>Tahun 2017 jadi turning point kami. Mulai serius ngembangkan layanan komunikasi data satelit pakai teknologi VSAT. Kenapa? Karena kami lihat banyak banget area di Indonesia yang susah dapat koneksi internet stabil.</p>
-                    <p>Tower seluler? Belum tentu ada. Kabel fiber optik? Jangankan dipasang, dijangkau aja susah. Nah, di sinilah VSAT jadi solusi. Cuma butuh antena dish kecil, langsung nyambung ke satelit. Beres.</p>
-                </div>
-                <div class="vission-mission">
-                    <div class="card">
-                        <i data-lucide="target"></i>
-                        <h3>Visi Kami</h3>
-                        <p>Jadi perusahaan yang terdepan dalam kasih solusi komunikasi bisnis di Indonesia. Ga cuma jualan produk, tapi beneran jadi partner yang ngerti kebutuhan Anda.</p>
-                    </div>
-                    <div class="card">
-                        <i data-lucide="zap"></i>
-                        <h3>Misi Kami</h3>
-                        <ul>
-                            <li>• Bangun tim yang profesional dan terus belajar</li>
-                            <li>• Ciptakan produk yang efisien, handal, dan inovatif</li>
-                            <li>• Kontribusi maksimal buat pertumbuhan Akses Group</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- LAYANAN -->
+  <section id="aam-layanan" class="aam-section">
+    <div class="aam-inner">
+      <div style="text-align:center;margin-bottom:52px;">
+        <div class="aam-tag">Solusi Kami</div>
+        <h2 class="aam-h2" style="margin-top:10px;">Paket Internet yang Pas Buat Kamu</h2>
+        <p class="aam-muted" style="max-width:500px;margin:14px auto 0;">Pilih layanan yang sesuai dengan kebutuhan rumah atau bisnis kamu. Berlangganan simpel, internetan lancar.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;" id="aam-services-grid"></div>
+    </div>
+  </section>
 
-    <!-- Services Grid Section -->
-    <section class="services-section bg-slate reveal">
-        <div class="container">
-            <div class="section-title">
-                <h2>Layanan Kami</h2>
-                <p>Solusi komunikasi satelit end-to-end untuk kebutuhan korporasi dan industri.</p>
-            </div>
-            <div class="services-grid">
-                <!-- Card 1 -->
-                <div class="service-card reveal-stagger card-vsatip">
-                    <i data-lucide="network"></i>
-                    <h3>VSAT-IP</h3>
-                    <p>Koneksi internet cepat berbasis IP untuk kebutuhan kantor cabang, remote site, dan UMKM di seluruh Indonesia.</p>
-                    <a href="pages/services.html#vsatip" class="text-link">Learn More →</a>
-                </div>
-                <!-- Card 2 -->
-                <div class="service-card reveal-stagger card-scpc">
-                    <i data-lucide="cpu"></i>
-                    <h3>VSAT SCPC</h3>
-                    <p>Dedicated bandwidth tanpa sharing untuk aplikasi kritikal seperti perbankan, VPN, dan backhaul operator.</p>
-                    <a href="pages/services.html#vsatscpc" class="text-link">Learn More →</a>
-                </div>
-                <!-- Card 3 -->
-                <div class="service-card reveal-stagger card-backhaul">
-                    <i data-lucide="tower-control"></i>
-                    <h3>Backhaul Cell</h3>
-                    <p>Menghubungkan BTS operator seluler di area remote ke core network pusat dengan latensi rendah.</p>
-                    <a href="pages/services.html#backhaul" class="text-link">Learn More →</a>
-                </div>
-                <!-- Card 4 -->
-                <div class="service-card reveal-stagger card-broadcasting">
-                    <i data-lucide="radio"></i>
-                    <h3>Broadcasting</h3>
-                    <p>Layanan SNG dan BAS untuk stasiun TV yang membutuhkan pengiriman video live dari lapangan.</p>
-                    <a href="pages/services.html#broadcasting" class="text-link">Learn More →</a>
-                </div>
-                <!-- Card 5 -->
-                <div class="service-card reveal-stagger card-maritime">
-                    <i data-lucide="ship"></i>
-                    <h3>Maritime</h3>
-                    <p>Koneksi satelit di laut lepas untuk kapal kargo, pesiar, dan kapal tanker tetap terhubung 24/7.</p>
-                    <a href="pages/services.html#maritime" class="text-link">Learn More →</a>
-                </div>
-                <!-- Card 6 -->
-                <div class="service-card reveal-stagger card-industrial">
-                    <i data-lucide="database"></i>
-                    <h3>Industrial/SCADA</h3>
-                    <p>Monitoring data sensor (M2M) untuk industri minyak, gas, dan pertambangan di lokasi ekstrem.</p>
-                    <a href="pages/services.html#industrial" class="text-link">Learn More →</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- INDUSTRI -->
+  <section id="aam-industri" style="padding:72px 32px;background:rgba(255,255,255,0.01);">
+    <div class="aam-inner">
+      <div style="text-align:center;margin-bottom:48px;">
+        <div class="aam-tag">Klien Kami</div>
+        <h2 class="aam-h2" style="margin-top:10px;">Dipercaya Berbagai Industri</h2>
+        <p class="aam-muted" style="margin-top:12px;">Lebih dari satu dekade melayani berbagai sektor bisnis di seluruh Indonesia.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;" id="aam-industries-grid"></div>
+    </div>
+  </section>
 
-    <!-- Industries -->
-    <section class="industries reveal">
-        <div class="glow-bg"></div>
-        <div class="container">
-            <div class="section-title">
-                <h2>Dipercaya Berbagai Industri</h2>
-                <p>Lebih dari 6 tahun melayani berbagai sektor bisnis kritikal di seluruh penjuru Indonesia.</p>
-            </div>
-            <div class="bento-grid">
-                <div class="bento-item large reveal-stagger">
-                    <div class="bento-content">
-                        <i data-lucide="tower-control"></i>
-                        <h4>Telekomunikasi</h4>
-                        <p>Infrastruktur backhaul untuk operator seluler di area rural.</p>
-                    </div>
-                </div>
-                <div class="bento-item reveal-stagger">
-                    <div class="bento-content">
-                        <i data-lucide="landmark"></i>
-                        <h4>Perbankan</h4>
-                    </div>
-                </div>
-                <div class="bento-item reveal-stagger">
-                    <div class="bento-content">
-                        <i data-lucide="ship"></i>
-                        <h4>Maritim</h4>
-                    </div>
-                </div>
-                <div class="bento-item reveal-stagger">
-                    <div class="bento-content">
-                        <i data-lucide="tv"></i>
-                        <h4>Broadcasting</h4>
-                    </div>
-                </div>
-                <div class="bento-item large reveal-stagger">
-                    <div class="bento-content">
-                        <i data-lucide="drill"></i>
-                        <h4>Energi & Tambang</h4>
-                        <p>Monitoring data real-time untuk lokasi pertambangan ekstrem.</p>
-                    </div>
-                </div>
-                <div class="bento-item reveal-stagger">
-                    <div class="bento-content">
-                        <i data-lucide="building-2"></i>
-                        <h4>Pemerintahan</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="cta-banner">
-                <h3>Industri Anda belum ada di list?</h3>
-                <p>Mari kita diskusikan solusi yang pas buat Anda.</p>
-                <a href="/pages/contact.html" class="btn btn-primary">Hubungi Kami</a>
-            </div>
-        </div>
-    </section>
+  <!-- HOW IT WORKS -->
+  <section class="aam-section">
+    <div class="aam-inner">
+      <div style="text-align:center;margin-bottom:52px;">
+        <div class="aam-tag">Cara Kerja</div>
+        <h2 class="aam-h2" style="margin-top:10px;">Dari Konsultasi Sampai Online</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;position:relative;">
+        <div style="position:absolute;top:31px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(245,166,35,0.25),transparent);"></div>
+        <div id="aam-steps-grid"></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <img loading="lazy" src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" alt="PT. Akses Artha Media Logo" class="footer-logo-img">
-                    <p>Connecting Indonesia, One Satellite at a Time</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="/index.html">Home</a></li>
-                        <li><a href="/index.html#about">Tentang Kami</a></li>
-                        <li><a href="/pages/products.html">Produk</a></li>
-                        <li><a href="/pages/services.html">Layanan</a></li>
-                        <li><a href="/pages/blog.html">Blog</a></li>
-                        <li><a href="/pages/faq.html">FAQ</a></li>
-                        <li><a href="/pages/testimonials.html">Testimoni</a></li>
-                        <li><a href="/pages/contact.html">Hubungi Kami</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Perum Kota Wisata Blok SEC No.15, Bogor 16968</p>
-                    <p><i class="fas fa-phone"></i> 021-22472319</p>
-                    <p><i class="fas fa-envelope"></i> care@aksesartamedia.id</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 PT Akses Artha Media. All Rights Reserved. Powered by <a href="https://lacosdev.com" target="_blank" style="color: var(--secondary); text-decoration: underline;">lacosdev.com</a></p>
-            </div>
+  <!-- TESTIMONIALS -->
+  <section id="aam-testimoni" style="padding:72px 32px;background:rgba(255,255,255,0.01);">
+    <div class="aam-inner" style="max-width:780px;">
+      <div style="text-align:center;margin-bottom:44px;">
+        <div class="aam-tag">Testimoni</div>
+        <h2 class="aam-h2" style="margin-top:10px;">Kata Klien Kami</h2>
+      </div>
+      <div class="aam-testimonial" id="aam-tcard">
+        <div style="font-size:48px;color:rgba(245,166,35,0.2);line-height:1;margin-bottom:14px;font-family:Georgia,serif;">❝</div>
+        <p id="aam-tquote" style="font-size:16px;line-height:1.85;color:#c0cedd;margin-bottom:24px;min-height:80px;"></p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <div id="aam-tname" style="font-weight:700;font-size:15px;color:#e8edf5;"></div>
+            <div id="aam-trole" style="font-size:13px;color:#556677;margin-top:3px;"></div>
+          </div>
+          <div style="display:flex;gap:7px;" id="aam-tdots"></div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- KONTAK -->
+  <section id="aam-kontak" class="aam-section">
+    <div class="aam-inner">
+      <div style="text-align:center;margin-bottom:52px;">
+        <div class="aam-tag">Kontak</div>
+        <h2 class="aam-h2" style="margin-top:10px;">Mari Ngobrol</h2>
+        <p class="aam-muted" style="margin-top:12px;">Ada proyek? Mau tanya dulu juga tidak masalah — kami senang berbagi info. 😊</p>
+      </div>
+      <div style="display:flex;gap:44px;align-items:flex-start;flex-wrap:wrap;">
+        <div style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:14px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div><label style="display:block;font-size:12px;font-weight:600;color:#7a8fa0;margin-bottom:6px;letter-spacing:0.3px;">NAMA LENGKAP</label><input class="aam-input" type="text" placeholder="Nama Anda"></div>
+            <div><label style="display:block;font-size:12px;font-weight:600;color:#7a8fa0;margin-bottom:6px;letter-spacing:0.3px;">PERUSAHAAN</label><input class="aam-input" type="text" placeholder="PT / CV / Instansi"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div><label style="display:block;font-size:12px;font-weight:600;color:#7a8fa0;margin-bottom:6px;letter-spacing:0.3px;">EMAIL</label><input class="aam-input" type="email" placeholder="email@perusahaan.com"></div>
+            <div><label style="display:block;font-size:12px;font-weight:600;color:#7a8fa0;margin-bottom:6px;letter-spacing:0.3px;">NO. TELEPON</label><input class="aam-input" type="tel" placeholder="08xx-xxxx-xxxx"></div>
+          </div>
+          <div>
+            <label style="display:block;font-size:12px;font-weight:600;color:#7a8fa0;margin-bottom:6px;letter-spacing:0.3px;">LAYANAN YANG DIMINATI</label>
+            <select class="aam-input">
+              <option value="">-- Pilih Layanan --</option>
+              <option>VSAT-IP (Internet Satelit)</option>
+              <option>VSAT SCPC (Dedicated)</option>
+              <option>Backhaul BTS</option>
+              <option>Broadcasting / BAS</option>
+              <option>Maritime VSAT</option>
+              <option>Solar Panel System</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:12px;font-weight:600;color:#7a8fa0;margin-bottom:6px;letter-spacing:0.3px;">PESAN</label>
+            <textarea class="aam-input" rows="4" placeholder="Ceritakan kebutuhan Anda..."></textarea>
+          </div>
+          <button class="aam-btn" style="width:100%;padding:14px;font-size:14px;">Kirim Pesan →</button>
+        </div>
+        <div style="flex:0 0 300px;min-width:250px;display:flex;flex-direction:column;gap:14px;">
+          <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:26px;">
+            <div style="font-size:14px;font-weight:700;color:#e8edf5;margin-bottom:18px;">📋 Info Kontak</div>
+            <div style="display:flex;gap:12px;margin-bottom:14px;"><span style="font-size:17px;margin-top:1px;">📍</span><div><div style="font-size:11px;color:#f5a623;font-weight:600;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.4px;">Alamat</div><div style="font-size:13px;color:#7a8fa0;line-height:1.65;">Perum Kota Wisata Blok SEC No.15, Ciangsana, Gunung Putri, Kab. Bogor 16968</div></div></div>
+            <div style="display:flex;gap:12px;margin-bottom:14px;"><span style="font-size:17px;">📞</span><div><div style="font-size:11px;color:#f5a623;font-weight:600;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.4px;">Telepon</div><div style="font-size:13px;color:#7a8fa0;">(021) 22472319 / 84936142</div></div></div>
+            <div style="display:flex;gap:12px;margin-bottom:14px;"><span style="font-size:17px;">✉️</span><div><div style="font-size:11px;color:#f5a623;font-weight:600;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.4px;">Email</div><div style="font-size:13px;color:#7a8fa0;">care@aksesartamedia.id</div></div></div>
+            <div style="display:flex;gap:12px;"><span style="font-size:17px;">🕒</span><div><div style="font-size:11px;color:#f5a623;font-weight:600;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.4px;">Jam Kerja</div><div style="font-size:13px;color:#7a8fa0;">Senin–Jumat, 08.00–17.00 WIB</div></div></div>
+          </div>
+          <div style="background:rgba(245,166,35,0.07);border:1px solid rgba(245,166,35,0.16);border-radius:14px;padding:20px;text-align:center;">
+            <div style="font-size:13px;color:#f5a623;font-weight:700;margin-bottom:6px;">💬 Chat via WhatsApp</div>
+            <div style="font-size:12px;color:#556677;margin-bottom:14px;line-height:1.6;">Respon lebih cepat dalam jam kerja</div>
+            <a href="https://wa.me/6221224723190?text=Halo%2C saya tertarik layanan VSAT AAM" target="_blank" style="text-decoration:none;display:block;">
+              <button class="aam-btn" style="width:100%;font-size:13px;">Mulai Chat WhatsApp</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid rgba(255,255,255,0.06);padding:44px 32px 24px;background:rgba(0,0,0,0.25);">
+    <div class="aam-inner">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px;flex-wrap:wrap;">
+        <div>
+          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" alt="Akses Artha Media" style="height:34px;margin-bottom:14px;display:block;">
+          <p style="color:#445566;font-size:13px;line-height:1.8;max-width:230px;">Solusi komunikasi satelit terpercaya untuk bisnis di seluruh Indonesia.</p>
+        </div>
+        <div><div style="font-size:11px;font-weight:700;color:#f5a623;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Layanan</div><div style="font-size:13px;color:#445566;margin-bottom:9px;">VSAT-IP</div><div style="font-size:13px;color:#445566;margin-bottom:9px;">VSAT SCPC</div><div style="font-size:13px;color:#445566;margin-bottom:9px;">Backhaul BTS</div><div style="font-size:13px;color:#445566;">Broadcasting</div></div>
+        <div><div style="font-size:11px;font-weight:700;color:#f5a623;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Industri</div><div style="font-size:13px;color:#445566;margin-bottom:9px;">Telekomunikasi</div><div style="font-size:13px;color:#445566;margin-bottom:9px;">Perbankan</div><div style="font-size:13px;color:#445566;margin-bottom:9px;">Maritim</div><div style="font-size:13px;color:#445566;">Pemerintahan</div></div>
+        <div><div style="font-size:11px;font-weight:700;color:#f5a623;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Perusahaan</div><div style="font-size:13px;color:#445566;margin-bottom:9px;">Tentang Kami</div><div style="font-size:13px;color:#445566;margin-bottom:9px;">Partnership</div><div style="font-size:13px;color:#445566;">Karir</div></div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;">
+        <span style="font-size:12px;color:#334455;">© <span id="current-year"></span> PT Akses Artha Media. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+function aamScrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+const services = [
+  { icon: '🏠', title: 'ARMEDIA Home', tag: 'Residensial', desc: 'Internet fiber super cepat untuk keluarga. Streaming 4K lancar, belajar dari rumah jadi makin seru tanpa lag.' },
+  { icon: '💼', title: 'ARMEDIA Business', tag: 'Korporasi', desc: 'Solusi internet dedicated dengan SLA tinggi. Mastiin operasional bisnis dan kantor Anda jalan terus 24/7.' },
+  { icon: '🏪', title: 'ARMEDIA UMKM', tag: 'Bisnis Lokal', desc: 'Paket hemat dengan kualitas hebat. Dukung digitalisasi UMKM biar makin dikenal luas dan jualan makin lancar.' },
+  { icon: '🌐', title: 'Managed Services', tag: 'IT Support', desc: 'Gak usah pusing mikirin IT. Kita bantu manage jaringan, WiFi, dan keamanan digital bisnis Anda.' },
+  { icon: '🛰️', title: 'VSAT Satellite', tag: 'Remote Area', desc: 'Buat area yang belum terjangkau fiber, VSAT kita siap hubungkan lokasi terpencil Anda ke dunia digital.' },
+  { icon: '⚡', title: 'Smart Networking', tag: 'Advanced', desc: 'Optimasi jaringan otomatis untuk performa terbaik di setiap detik. Teknologi cerdas buat masa depan.' },
+];
+const sg = document.getElementById('aam-services-grid');
+services.forEach(s => {
+  sg.innerHTML += `<div class="aam-card"><div style="display:inline-block;background:rgba(245,166,35,0.12);color:#f5a623;border-radius:5px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:0.7px;text-transform:uppercase;margin-bottom:12px;">${s.tag}</div><div style="font-size:34px;margin-bottom:11px;">${s.icon}</div><h3 style="font-size:17px;font-weight:700;color:#e8edf5;margin-bottom:8px;">${s.title}</h3><p style="color:#6a7f90;font-size:13px;line-height:1.75;">${s.desc}</p></div>`;
+});
+
+const industries = [
+  { icon: '📱', name: 'Telekomunikasi', desc: 'Backhaul BTS remote' },
+  { icon: '🏦', name: 'Perbankan', desc: 'Transaksi real-time aman' },
+  { icon: '⚓', name: 'Maritim', desc: 'Koneksi di laut lepas' },
+  { icon: '📺', name: 'Broadcasting', desc: 'Live siaran dari lapangan' },
+  { icon: '🏛️', name: 'Pemerintahan', desc: 'E-Gov hingga pelosok' },
+  { icon: '⛏️', name: 'Energi & Tambang', desc: 'Monitoring SCADA remote' },
+];
+const ig = document.getElementById('aam-industries-grid');
+industries.forEach(ind => {
+  ig.innerHTML += `<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:22px 18px;text-align:center;transition:all 0.3s;cursor:default;" onmouseover="this.style.background='rgba(245,166,35,0.07)';this.style.borderColor='rgba(245,166,35,0.28)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.03)';this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform='none'"><div style="font-size:34px;margin-bottom:10px;">${ind.icon}</div><div style="font-size:14px;font-weight:700;color:#e8edf5;margin-bottom:5px;">${ind.name}</div><div style="font-size:12px;color:#556677;">${ind.desc}</div></div>`;
+});
+
+const steps = [
+  { step: '01', icon: '📍', title: 'Cek Area & Survey', desc: 'Cukup kasih tahu lokasi Anda, tim kami akan cek ketersediaan jaringan fiber di area tersebut.' },
+  { step: '02', icon: '📝', title: 'Pilih Paket', desc: 'Pilih paket yang paling pas buat kebutuhan rumah atau bisnis Anda. Transparan, tanpa biaya tersembunyi.' },
+  { step: '03', icon: '⚡', title: 'Instalasi Cepat', desc: 'Teknisi profesional kami akan pasang perangkat dan mastiin internet Anda aktif dalam waktu singkat.' },
+  { step: '04', icon: '🌍', title: 'Langsung Online!', desc: 'Selamat! Sekarang Anda sudah terkoneksi dengan masa depan digital yang stabil dan kencang.' },
+];
+const stepsEl = document.getElementById('aam-steps-grid');
+stepsEl.style.display = 'contents';
+steps.forEach(s => {
+  stepsEl.innerHTML += `<div style="text-align:center;padding:0 16px;"><div style="width:62px;height:62px;border-radius:50%;background:rgba(245,166,35,0.1);border:2px solid rgba(245,166,35,0.22);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:26px;">${s.icon}</div><div style="font-size:10px;color:#f5a623;font-weight:700;letter-spacing:1px;margin-bottom:7px;">STEP ${s.step}</div><h4 style="font-size:14px;font-weight:700;color:#e8edf5;margin-bottom:7px;">${s.title}</h4><p style="font-size:12px;color:#556677;line-height:1.75;">${s.desc}</p></div>`;
+});
+
+const testimonials = [
+  { quote: 'Kantor cabang kami di pulau kecil dekat Raja Ampat. Provider lain tidak mau masuk. AAM mau, dan hasilnya memuaskan. Dua tahun lebih tidak ada masalah serius.', name: 'Budi Santoso', role: 'IT Manager · Bank Daerah Papua' },
+  { quote: 'Sebagai stasiun TV lokal, kami sering liputan di daerah yang susah sinyal. SNG dari AAM jadi penyelamat. Live report lancar, kualitas gambar bagus.', name: 'Rahmat Hidayat', role: 'Technical Director · TV Nusantara' },
+  { quote: 'Kami operate 15 kapal nelayan. Dulu komunikasi susah banget. Sekarang pakai Maritime VSAT dari AAM, koordinasi jadi mudah. Bahkan bisa video call dengan anak buah di laut.', name: 'Capt. Joko W.', role: 'Fleet Manager · CV. Samudera Jaya' },
+  { quote: 'Site tambang kami di pedalaman Kalimantan. AAM install VSAT + solar panel karena tidak ada PLN. Sudah 3 tahun non-stop. Maintenance selalu on-time. Professional!', name: 'Andi Wijaya', role: 'Site Manager · PT. Mineral Resources' },
+];
+let tIdx = 0;
+function renderT() {
+  const t = testimonials[tIdx];
+  document.getElementById('aam-tquote').textContent = t.quote;
+  document.getElementById('aam-tname').textContent = t.name;
+  document.getElementById('aam-trole').textContent = t.role;
+  const dots = document.getElementById('aam-tdots');
+  dots.innerHTML = '';
+  testimonials.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.style.cssText = `width:${i===tIdx?22:7}px;height:7px;border-radius:4px;background:${i===tIdx?'#f5a623':'rgba(255,255,255,0.15)'};border:none;cursor:pointer;transition:all 0.3s;padding:0;`;
+    d.onclick = () => { tIdx = i; renderT(); };
+    dots.appendChild(d);
+  });
+}
+renderT();
+setInterval(() => { tIdx = (tIdx + 1) % testimonials.length; renderT(); }, 5000);
+
+// Count-up stats
+const targets = [[100, '+', 's1'], [12, ' Thn', 's2'], [99.5, '%', 's3']];
+let done = false;
+function runCountup() {
+  if (done) return;
+  done = true;
+  targets.forEach(([target, suffix, id]) => {
+    const el = document.getElementById(id);
+    const isDecimal = target % 1 !== 0;
+    let start = 0;
+    const steps = 60;
+    const interval = 1800 / steps;
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const val = isDecimal ? (target * ease).toFixed(1) : Math.floor(target * ease);
+      el.textContent = val + suffix;
+      if (step >= steps) { el.textContent = target + suffix; clearInterval(timer); }
+    }, interval);
+  });
+}
+  const statsEl = document.getElementById('s1');
+  if (statsEl) observer.observe(statsEl.closest('div').parentElement);
+
+  // Reveal observer
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.aam-reveal').forEach(el => revealObserver.observe(el));
+
+  // Set current year
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
