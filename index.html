@@ -65,10 +65,20 @@
       padding: 0 48px;
     }
 
+    .aam-navlinks {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .aam-menu-toggle {
+      display: none;
+    }
+
     .aam-navlink {
       color: var(--text-dark);
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       text-transform: uppercase;
@@ -116,17 +126,52 @@
       border-radius: 14px;
       font-weight: 800;
       cursor: pointer;
-      transition: 0.4s;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Dribbble Bouncy */
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 10px;
     }
 
+    .nav-cta {
+      background: var(--primary);
+      color: white !important;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      font-size: 13px !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-4px) scale(1.05); /* Dribbble Hover */
+      box-shadow: 0 15px 25px rgba(244, 121, 32, 0.4);
+    }
+
     .aam-btn:hover {
       background: var(--primary-dark);
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(244, 121, 32, 0.3);
+      transform: translateY(-6px) scale(1.03); /* Dribbble Hover */
+      box-shadow: 0 20px 40px rgba(244, 121, 32, 0.35);
+    }
+
+    /* Behance-style Category Tags */
+    .behance-tag {
+      background: rgba(244, 121, 32, 0.1);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 16px;
+      text-transform: uppercase;
     }
 
     .aam-section {
@@ -139,11 +184,42 @@
     }
 
     .aam-h2 {
-      font-size: 56px;
-      font-weight: 900;
-      letter-spacing: -2px;
-      line-height: 1.1;
-      margin-bottom: 40px;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.2;
+      margin-bottom: 30px;
+    }
+
+    .aam-main-title {
+      background: linear-gradient(135deg, var(--bg-navy) 20%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .testimoni-card {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .testimoni-card::before {
+      content: '"';
+      position: absolute;
+      top: 10px;
+      right: 30px;
+      font-size: 140px;
+      font-family: Georgia, serif;
+      color: rgba(244, 121, 32, 0.08);
+      z-index: -1;
+      line-height: 1;
+    }
+
+    .blog-card-img img {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .blog-card:hover .blog-card-img img {
+      transform: scale(1.08);
     }
 
     /* Premium Share Section */
@@ -254,30 +330,153 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .mobile-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100vh;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      z-index: 1999;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     .mobile-menu {
       position: fixed;
       top: 0;
-      right: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-navy);
+      left: -100%;
+      width: 85%;
+      max-width: 400px;
+      height: 100vh;
+      background: #ffffff;
       z-index: 2000;
-      padding: 40px;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 30px;
-      transition: 0.5s;
+      transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 20px 0 60px rgba(0,0,0,0.15);
+      overflow-y: auto;
     }
 
     .mobile-menu.active {
-      right: 0;
+      left: 0;
     }
 
-    .mobile-menu a {
-      color: white;
-      font-size: 32px;
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 24px 24px 24px !important;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .mobile-menu-close {
+      background: transparent;
+      border: none;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 8px;
+      margin-left: -8px;
+      transition: 0.3s;
+    }
+
+    .mobile-menu-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .mobile-menu-body {
+      padding: 32px 24px !important;
+      flex: 1;
+      width: 100%;
+    }
+
+    .mobile-menu-group {
+      margin-bottom: 40px;
+    }
+
+    .mobile-menu-label {
+      font-size: 11px;
       font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px !important;
+      width: 100%;
+    }
+
+    .mobile-menu-links a {
+      color: var(--text-dark);
+      font-size: 16px;
+      font-weight: 500;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: color 0.3s, padding 0.3s;
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    
+    .mobile-menu.active .mobile-menu-links a {
+      animation: menuSlideFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    
+    .mobile-menu.active .mobile-menu-group:nth-child(1) .mobile-menu-links a:nth-child(1) { animation-delay: 0.1s; }
+    .mobile-menu.active .mobile-menu-group:nth-child(1) .mobile-menu-links a:nth-child(2) { animation-delay: 0.15s; }
+    .mobile-menu.active .mobile-menu-group:nth-child(1) .mobile-menu-links a:nth-child(3) { animation-delay: 0.2s; }
+    .mobile-menu.active .mobile-menu-group:nth-child(1) .mobile-menu-links a:nth-child(4) { animation-delay: 0.25s; }
+    .mobile-menu.active .mobile-menu-group:nth-child(1) .mobile-menu-links a:nth-child(5) { animation-delay: 0.3s; }
+    
+    .mobile-menu.active .mobile-menu-group:nth-child(2) .mobile-menu-links a:nth-child(1) { animation-delay: 0.35s; }
+    .mobile-menu.active .mobile-menu-group:nth-child(2) .mobile-menu-links a:nth-child(2) { animation-delay: 0.4s; }
+
+    @keyframes menuSlideFade {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .mobile-menu-links a i {
+      color: var(--text-muted);
+      width: 20px; height: 20px;
+    }
+
+    .mobile-menu-links a:hover {
+      color: var(--primary);
+      padding-left: 10px;
+    }
+
+    .mobile-menu-links a:hover i {
+      color: var(--primary);
+    }
+
+    .mobile-menu-footer {
+      padding: 24px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 600;
     }
 
     @media (max-width: 1280px) {
@@ -293,7 +492,8 @@
     @media (max-width: 1024px) {
       .aam-nav-inner {
         height: 70px;
-        padding: 0 15px;
+        padding: 0 20px;
+        gap: 8px;
       }
 
       .aam-navlinks {
@@ -301,11 +501,38 @@
       }
 
       .aam-menu-toggle {
-        display: block !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(24, 13, 57, 0.05);
+        border: 1px solid rgba(24, 13, 57, 0.1);
+        cursor: pointer;
+        transition: 0.3s;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+      .aam-menu-toggle:hover {
+        background: rgba(24, 13, 57, 0.1);
+        transform: scale(1.05);
       }
 
       .aam-mobile-cta {
         display: flex !important;
+        padding: 8px 12px !important;
+        font-size: 10px !important;
+        white-space: nowrap;
+        flex-shrink: 1;
+        text-align: center;
+      }
+      
+      .aam-nav-inner img {
+        height: 30px !important;
+        max-width: 120px;
+        object-fit: contain;
+        flex-shrink: 1;
       }
 
       .aam-section {
@@ -313,7 +540,7 @@
       }
 
       .aam-h2 {
-        font-size: 38px;
+        font-size: 32px !important;
         text-align: center;
       }
 
@@ -358,22 +585,132 @@
     }
 
     @media (max-width: 480px) {
+      .aam-nav-inner {
+        padding: 0 16px;
+        gap: 6px;
+      }
+      
+      .aam-nav-inner img {
+        height: 26px !important;
+        max-width: 100px;
+      }
+      
+      .aam-menu-toggle {
+        width: 36px;
+        height: 36px;
+      }
+
+      .aam-mobile-cta {
+        padding: 6px 8px !important;
+        font-size: 9px !important;
+      }
+
       .aam-section {
-        padding: 40px 15px;
+        padding: 50px 16px;
       }
 
-      .aam-promo-card-flashy h2 {
-        font-size: 36px !important;
+      .aam-h2 {
+        font-size: 32px !important;
+        margin-bottom: 24px !important;
+        line-height: 1.2 !important;
       }
 
-      .aam-promo-card-flashy .price-box span {
-        font-size: 52px !important;
+      /* Responsive Scaling */
+      .aam-promo-wrapper {
+        padding: 30px 20px !important;
+        border-radius: 30px !important;
       }
+
+      .aam-promo-wrapper .speed-text {
+        font-size: 48px !important;
+      }
+
+      .aam-promo-wrapper .price-text {
+        font-size: 42px !important;
+      }
+
+      .aam-promo-wrapper .btn-text {
+        font-size: 15px !important;
+        padding: 16px !important;
+      }
+
+      .about-badge {
+        padding: 20px !important;
+        bottom: -15px !important;
+        right: -15px !important;
+        border-radius: 20px !important;
+      }
+
+      .about-badge p:first-child {
+        font-size: 32px !important;
+      }
+
+      .blog-card {
+        border-radius: 24px !important;
+      }
+
+      .blog-card-img {
+        height: 180px !important;
+      }
+
+      .blog-card-content {
+        padding: 24px !important;
+      }
+
+      /* Footer Mobile */
+      .aam-footer { padding: 80px 24px 40px !important; }
+      .aam-footer::before, .aam-footer::after { display: none; }
+      .footer-grid { grid-template-columns: 1fr; gap: 50px; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 16px; margin-top: 60px; }
+      .footer-brand { max-width: 100%; text-align: left; }
+      .footer-brand img { margin: 0 0 24px 0; }
+      .footer-contact-list { align-items: flex-start; }
+      .footer-title { text-align: left; }
     }
 
     body {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Footer Base */
+    .aam-footer { padding: 100px 48px 40px; background: #000000; color: white; position: relative; border-top: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
+    .aam-footer::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 70%; height: 1px; background: linear-gradient(90deg, transparent, rgba(244,121,32,0.5), transparent); }
+    .aam-footer::after { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 40%; height: 150px; background: radial-gradient(100% 100% at 50% 0%, rgba(244,121,32,0.1) 0%, transparent 100%); pointer-events: none; }
+    
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 80px; align-items: start; position: relative; z-index: 1; }
+    .footer-brand { max-width: 320px; }
+    .footer-brand img { height: 40px; margin-bottom: 24px; filter: brightness(0) invert(1); }
+    .footer-brand p { color: rgba(255,255,255,0.7); font-size: 15px; font-weight: 400; line-height: 1.8; letter-spacing: 0.2px; }
+    
+    .footer-title { color: white; font-size: 13px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; opacity: 0.9; }
+    
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0; margin: 0; }
+    .footer-links li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: inline-flex; align-items: center; }
+    .footer-links li a:hover { color: white; transform: translateX(8px); }
+    
+    .footer-contact-list { list-style: none; display: flex; flex-direction: column; gap: 24px; padding: 0; margin: 0; }
+    .footer-contact-list li { display: flex; align-items: center; gap: 16px; color: white; }
+    .footer-icon-wrapper { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    .footer-contact-list li:hover .footer-icon-wrapper { background: var(--primary); border-color: var(--primary); transform: scale(1.1) translateY(-5px); box-shadow: 0 10px 30px rgba(244,121,32,0.3); }
+    .footer-contact-list li i { color: rgba(255,255,255,0.7); width: 20px; height: 20px; transition: 0.3s; }
+    .footer-contact-list li:hover i { color: white; }
+    
+    .footer-contact-text { display: flex; flex-direction: column; gap: 4px; }
+    .footer-contact-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+    .footer-contact-value { font-size: 16px; color: rgba(255,255,255,0.9); font-weight: 600; letter-spacing: 0.5px; }
+
+    .footer-bottom { margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,0.5); position: relative; z-index: 1; }
+
+    .grid-testimoni {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+    }
+    .grid-testimoni > div {
+      flex: 1 1 300px;
+      max-width: 450px;
     }
 
     .gsap-reveal {
@@ -454,6 +791,159 @@
       border-color: var(--primary);
       box-shadow: 0 20px 40px rgba(244, 121, 32, 0.15);
     }
+
+    /* Floating Glass Promo */
+    .glass-promo {
+      background: rgba(255, 255, 255, 0.7) !important;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      box-shadow: 0 40px 100px rgba(244, 121, 32, 0.15), inset 0 0 0 1px rgba(255,255,255,0.8) !important;
+      transform: translateY(0);
+      animation: float-promo 6s ease-in-out infinite;
+    }
+    @keyframes float-promo {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); box-shadow: 0 50px 120px rgba(244, 121, 32, 0.2), inset 0 0 0 1px rgba(255,255,255,0.8) !important; }
+    }
+
+    /* Bento Grid Layout */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 24px;
+    }
+    .bento-item {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+    }
+    .bento-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.1);
+    }
+    .bento-item::after {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top right, rgba(244,121,32,0.03), transparent 50%); pointer-events: none;
+    }
+    .bento-large {
+      grid-column: span 2;
+      grid-row: span 2;
+      background: #f8f9fa;
+      color: var(--text-dark);
+    }
+    .bento-large .bento-title { color: var(--bg-navy); font-size: 28px; line-height: 1.3; }
+    .bento-large .bento-text { color: var(--text-muted); font-size: 16px; }
+    .bento-large .bento-icon { background: white; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    .bento-icon { width: 56px; height: 56px; background: #f8f9fa; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+    .bento-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.3px; color: var(--bg-navy); }
+    .bento-text { color: var(--text-muted); line-height: 1.7; font-size: 15px; }
+
+    @media (max-width: 1024px) {
+      .bento-grid { grid-template-columns: 1fr 1fr; }
+      .bento-large { grid-column: span 2; }
+    }
+    @media (max-width: 768px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-large { grid-column: span 1; grid-row: span 1; }
+      .bento-large .bento-title { font-size: 24px; }
+    }
+
+    /* Marquee */
+    .marquee-wrapper {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      width: 100%;
+      padding: 20px 0;
+    }
+    .marquee-wrapper::before, .marquee-wrapper::after {
+      content: ''; position: absolute; top: 0; width: 150px; height: 100%; z-index: 2; pointer-events: none;
+    }
+    .marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg-subtle), transparent); }
+    .marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--bg-subtle), transparent); }
+    .marquee-content {
+      display: inline-flex;
+      gap: 30px;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-item {
+      flex: 0 0 auto;
+      width: 350px;
+      height: 250px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      transform: translateZ(0);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    }
+    .marquee-item img {
+      width: 100%; height: 100%; object-fit: cover; transition: 0.5s;
+    }
+    .marquee-item:hover img { transform: scale(1.05); }
+    @media (max-width: 768px) {
+      .marquee-wrapper::before, .marquee-wrapper::after { width: 50px; }
+      .marquee-item { width: 280px; height: 200px; }
+    }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 15px)); } }
+
+    /* Sticky Mobile CTA */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 8px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      width: 90%;
+      max-width: 350px;
+    }
+    .sticky-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 16px;
+      border-radius: 40px;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 768px) {
+      .sticky-cta { display: flex; }
+      body { padding-bottom: 100px; }
+    }
+
+    /* Glass Callout */
+    .oled-callout {
+      margin-top: 100px;
+      padding: 60px 40px;
+      background: linear-gradient(135deg, rgba(244,121,32,0.05) 0%, rgba(255,255,255,0) 100%);
+      border-radius: 30px;
+      color: var(--text-dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(244,121,32,0.1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+    }
   </style>
 </head>
 
@@ -467,16 +957,44 @@
       <span>Tautan Berhasil Disalin!</span>
     </div>
 
-    <!-- MOBILE MENU -->
+    <!-- MOBILE OVERLAY -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
+
+    <!-- MOBILE MENU (KALSTORE STYLE) -->
     <div class="mobile-menu" id="mobileMenu">
-      <button onclick="toggleMenu()" style="align-self:flex-end; background:none; border:none; color:white;"><i
-          data-lucide="x" style="width:48px; height:48px;"></i></button>
-      <a href="/pages/berlangganan.html" style="color:var(--primary); font-weight:900;">BERLANGGANAN</a>
-      <a href="/index.html">HOME</a>
-      <a href="/index.html#aam-tentang" onclick="toggleMenu()">TENTANG</a>
-      <a href="/index.html#aam-galeri" onclick="toggleMenu()">GALERI</a>
-      <a href="/index.html#aam-testimoni" onclick="toggleMenu()">TESTIMONI</a>
-      <a href="/index.html#aam-blog" onclick="toggleMenu()">BLOG</a>
+      <div class="mobile-menu-header">
+        <button class="mobile-menu-close" onclick="toggleMenu()">
+          <i data-lucide="x" style="width:24px; height:24px;"></i>
+        </button>
+        <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:24px;">
+        <div style="width:24px;"></div> <!-- Placeholder to keep logo centered -->
+      </div>
+      
+      <div class="mobile-menu-body">
+        <div class="mobile-menu-group">
+          <div class="mobile-menu-label">NAVIGASI</div>
+          <div class="mobile-menu-links">
+            <a href="/index.html" onclick="toggleMenu()">Home</a>
+            <a href="/index.html#aam-tentang" onclick="toggleMenu()">Tentang Kami</a>
+            <a href="/index.html#aam-galeri" onclick="toggleMenu()">Infrastruktur</a>
+            <a href="/index.html#aam-testimoni" onclick="toggleMenu()">Testimoni</a>
+            <a href="/index.html#aam-blog" onclick="toggleMenu()">Artikel & Berita</a>
+          </div>
+        </div>
+
+        <div class="mobile-menu-group">
+          <div class="mobile-menu-label">LAYANAN</div>
+          <div class="mobile-menu-links">
+            <a href="/pages/berlangganan.html" style="color:var(--primary);">
+              <i data-lucide="zap"></i> Berlangganan
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-menu-footer">
+        <i data-lucide="globe" style="width:18px; height:18px;"></i> Indonesia Raya
+      </div>
     </div>
 
     <!-- NAV -->
@@ -492,11 +1010,10 @@
           <a class="aam-navlink" href="/index.html#aam-galeri">GALERI</a>
           <a class="aam-navlink" href="/index.html#aam-testimoni">TESTIMONI</a>
           <a class="aam-navlink" href="/index.html#aam-blog">BLOG</a>
-          <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn">DAFTAR</a>
+          <a href="https://gumelar.armedia.id/" class="nav-cta magnetic-btn">DAFTAR</a>
         </div>
-        <button class="aam-menu-toggle" onclick="toggleMenu()"
-          style="display:none; border:none; background:none; cursor:pointer;">
-          <i data-lucide="menu" style="width:32px; height:32px; color:var(--bg-navy);"></i>
+        <button class="aam-menu-toggle" onclick="toggleMenu()">
+          <i data-lucide="menu" style="width:24px; height:24px; color:var(--bg-navy);"></i>
         </button>
       </div>
     </nav>
@@ -506,17 +1023,24 @@
       <div class="aam-inner"
         style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:60px; align-items:center;">
         <div style="width:100%;">
-          <h1 class="gsap-reveal"
+          <h1 class="gsap-reveal aam-main-title"
             style="font-size:64px; font-weight:900; letter-spacing:-2px; line-height:1.1; margin-bottom:30px;">
             Konektivitas Tanpa Batas Masa Depan</h1>
           <p class="gsap-reveal" style="font-size:20px; color:var(--text-muted); margin-bottom:40px;">Solusi internet
             Fiber Optic dan VSAT terbaik untuk mengakselerasi digitalisasi bisnis Anda.</p>
+          <div style="display: flex; gap: 16px; margin-top: 40px;">
+            <a href="#aam-tentang" class="aam-btn" style="background: transparent; color: var(--bg-navy); border: 2px solid var(--border); padding: 16px 32px;">Pelajari Lebih Lanjut</a>
+          </div>
+        </div>
+        
+        <!-- RIGHT COLUMN: PROMO CARD -->
+        <div style="flex:1; min-width:300px; display: flex; justify-content: center;" class="gsap-reveal">
           <!-- CLEAN PREMIUM PROMO CARD (GUYUB_1) -->
-          <div class="gsap-reveal" style="margin: 30px 0; background: #fff; border-radius: 40px; padding: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.05); border: 1px solid var(--border); max-width: 450px; width: 100%;">
+          <div class="aam-promo-wrapper glass-promo" style="border-radius: 40px; padding: 40px; max-width: 450px; width: 100%; box-shadow: 0 20px 60px rgba(244, 121, 32, 0.15), inset 0 0 0 1px rgba(244,121,32,0.1);">
             <div style="text-align: center; margin-bottom: 30px;">
               <p style="color: var(--primary); font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">CUKUP MBAYAR WULANANE</p>
               <p style="color: var(--text-muted); font-weight: 800; font-size: 18px; margin-bottom: 10px;">STARTER</p>
-              <div style="font-size: 64px; font-weight: 950; color: var(--bg-navy); display: flex; align-items: baseline; justify-content: center; gap: 10px;">
+              <div class="speed-text" style="font-size: 64px; font-weight: 950; color: var(--bg-navy); display: flex; align-items: baseline; justify-content: center; gap: 10px;">
                 20 <span style="font-size: 24px; font-weight: 900;">Mbps</span>
               </div>
               <p style="color: var(--primary); font-weight: 900; font-size: 14px; margin-top: 5px;">Bayar 115.000 Langsung ON / 20 Mbps</p>
@@ -540,18 +1064,12 @@
             <div style="text-align: center; padding-top: 30px; border-top: 1px solid var(--border); margin-bottom: 30px;">
               <p style="font-size: 18px; font-weight: 800; color: var(--bg-navy); margin-bottom: 5px;">Hanya</p>
               <div style="display: flex; align-items: baseline; justify-content: center;">
-                 <span style="font-size: 56px; font-weight: 950; color: var(--primary); line-height: 1;">115.000</span>
+                 <span class="price-text" style="font-size: 56px; font-weight: 950; color: var(--primary); line-height: 1;">115.000</span>
                  <span style="font-size: 18px; font-weight: 800; color: var(--text-muted); margin-left: 5px;">/bln</span>
               </div>
             </div>
 
-            <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn" style="width: 100%; justify-content: center; padding: 20px; font-size: 20px;">BERLANGGANAN SEKARANG</a>
-          </div>
-        </div>
-        <div style="flex:1; min-width:300px;" class="gsap-reveal">
-          <div style="position:relative; border-radius:40px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,0.1);">
-            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200"
-              style="width:100%; height:auto; display:block;">
+            <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn btn-text" style="width: 100%; justify-content: center; padding: 20px; font-size: 20px;">BERLANGGANAN SEKARANG</a>
           </div>
         </div>
       </div>
@@ -561,7 +1079,7 @@
     <section id="aam-tentang" class="aam-section" style="background:#fff;">
       <div class="aam-inner">
         <div
-          style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:80px; align-items:center;">
+          style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:80px; align-items:center;">
           <div class="gsap-reveal">
             <h2 class="aam-h2" style="margin-bottom:20px;">Tentang Kami</h2>
             <h3 style="font-size:24px; color:var(--primary); font-weight:800; margin-bottom:10px;">PT AKSES ARTHA MEDIA
@@ -583,7 +1101,7 @@
           <div class="gsap-reveal" style="position:relative;">
             <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1000"
               style="width:100%; border-radius:40px; box-shadow:0 30px 60px rgba(0,0,0,0.1);">
-            <div
+            <div class="about-badge"
               style="position:absolute; bottom:-30px; right:-30px; background:var(--primary); color:white; padding:40px; border-radius:30px; box-shadow:0 20px 40px rgba(244,121,32,0.3);">
               <p style="font-size:48px; font-weight:900; line-height:1;">100%</p>
               <p style="font-weight:700; opacity:0.8;">Local Support</p>
@@ -591,68 +1109,65 @@
           </div>
         </div>
 
-        <div style="margin-top:120px;">
-          <h2 class="gsap-reveal aam-h2" style="text-align:center; font-size:42px; margin-bottom:60px;">Mengapa Bermitra
-            dengan ARMEDIA?</h2>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px;">
-            <div class="gsap-reveal"
-              style="background:var(--bg-subtle); padding:40px; border-radius:30px; border:1px solid var(--border);">
-              <div
-                style="width:64px; height:64px; background:white; border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
-                <i data-lucide="zap" style="color:var(--primary); width:32px; height:32px;"></i>
+        <div style="margin-top:100px;">
+          <h2 class="gsap-reveal aam-h2" style="text-align:center;">Mengapa Bermitra<br>dengan ARMEDIA?</h2>
+          <div class="bento-grid">
+            
+            <div class="bento-item bento-large gsap-reveal">
+              <div class="bento-icon">
+                <i data-lucide="zap" style="color:var(--primary); width:28px; height:28px;"></i>
               </div>
-              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Koneksi Stabil & Presisi</h4>
-              <p style="color:var(--text-muted); line-height:1.6;">Infrastruktur modern yang menjamin minim hambatan
-                untuk mendukung denyut nadi produktivitas Anda.</p>
+              <h4 class="bento-title">Koneksi Stabil & Presisi</h4>
+              <p class="bento-text">Infrastruktur Fiber Optic modern yang menjamin minim hambatan untuk mendukung denyut nadi produktivitas Anda tanpa jeda. Teknologi jaringan kami didesain khusus untuk mengatasi <em>bottleneck</em> data pada jam-jam sibuk, memberikan <strong>bandwidth berdedikasi</strong> (<em>dedicated bandwidth</em>) yang stabil siang dan malam.</p>
             </div>
-            <div class="gsap-reveal"
-              style="background:var(--bg-subtle); padding:40px; border-radius:30px; border:1px solid var(--border);">
-              <div
-                style="width:64px; height:64px; background:white; border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
-                <i data-lucide="layers" style="color:var(--primary); width:32px; height:32px;"></i>
+
+            <div class="bento-item gsap-reveal" style="transition-delay: 0.1s;">
+              <div class="bento-icon">
+                <i data-lucide="layers" style="color:var(--primary); width:28px; height:28px;"></i>
               </div>
-              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Layanan Terintegrasi</h4>
-              <p style="color:var(--text-muted); line-height:1.6;">Solusi digital yang adaptif dan dirancang khusus
-                untuk kebutuhan personal maupun korporasi.</p>
+              <h4 class="bento-title">Layanan<br>Terintegrasi</h4>
+              <p class="bento-text">Solusi digital yang adaptif dan dirancang khusus untuk kebutuhan personal maupun korporasi berskala enterprise.</p>
             </div>
-            <div class="gsap-reveal"
-              style="background:var(--bg-subtle); padding:40px; border-radius:30px; border:1px solid var(--border);">
-              <div
-                style="width:64px; height:64px; background:white; border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
-                <i data-lucide="shield-check" style="color:var(--primary); width:32px; height:32px;"></i>
+
+            <div class="bento-item gsap-reveal" style="transition-delay: 0.2s;">
+              <div class="bento-icon">
+                <i data-lucide="shield-check" style="color:var(--primary); width:28px; height:28px;"></i>
               </div>
-              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Integritas & Dukungan Lokal</h4>
-              <p style="color:var(--text-muted); line-height:1.6;">Komitmen pada transparansi layanan dan kecepatan
-                respon teknis dalam mendampingi transformasi digital Anda.</p>
+              <h4 class="bento-title">Dukungan<br>Lokal 100%</h4>
+              <p class="bento-text">Komitmen pada kecepatan respon teknis dalam mendampingi transformasi digital Anda kapanpun dibutuhkan.</p>
             </div>
+
           </div>
         </div>
 
-        <div class="gsap-reveal"
-          style="margin-top:100px; padding:60px; background:var(--bg-navy); border-radius:40px; color:white; text-align:center;">
-          <p style="font-size:22px; line-height:1.8; opacity:0.9; max-width:900px; margin:0 auto;">
+        <div class="gsap-reveal oled-callout">
+          <p style="font-size:20px; line-height:1.8; opacity:0.8; max-width:900px; margin:0 auto; font-weight: 500;">
             Di era informasi yang bergerak cepat, ARMEDIA tidak hanya menawarkan kecepatan, tetapi juga kemudahan akses
-            bagi seluruh lapisan masyarakat untuk terus bertumbuh. Kami hadir untuk memastikan Anda tetap selangkah di
-            depan, menghubungkan setiap potensi menuju masa depan yang lebih cerdas dan terkoneksi.
+            bagi seluruh lapisan masyarakat untuk terus bertumbuh. <strong style="font-weight: 800; color: var(--primary);">Kami hadir untuk memastikan Anda tetap selangkah di depan</strong>, menghubungkan setiap potensi menuju masa depan yang lebih cerdas dan terkoneksi.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="aam-galeri" class="aam-section" style="background:var(--bg-subtle);">
-      <div class="aam-inner">
+    <!-- GALLERY (MARQUEE) -->
+    <section id="aam-galeri" class="aam-section" style="background:var(--bg-subtle); overflow: hidden;">
+      <div class="aam-inner" style="max-width: 100%; padding: 0;">
         <h2 class="gsap-reveal aam-h2" style="text-align:center;">Infrastruktur Teknologi</h2>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
-          <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img
-              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800"
-              style="width:100%; height:100%; object-fit:cover;"></div>
-          <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img
-              src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?q=80&w=800"
-              style="width:100%; height:100%; object-fit:cover;"></div>
-          <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img
-              src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800"
-              style="width:100%; height:100%; object-fit:cover;"></div>
+        
+        <div class="marquee-wrapper gsap-reveal">
+          <div class="marquee-content">
+            <!-- Set 1 -->
+            <div class="marquee-item"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800" alt="Infrastruktur"></div>
+            <div class="marquee-item"><img src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?q=80&w=800" alt="Fiber Optic"></div>
+            <div class="marquee-item"><img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800" alt="Server Data"></div>
+            <div class="marquee-item"><img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800" alt="Teknologi"></div>
+            
+            <!-- Set 2 (Duplicate for infinite scroll) -->
+            <div class="marquee-item"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800" alt="Infrastruktur"></div>
+            <div class="marquee-item"><img src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?q=80&w=800" alt="Fiber Optic"></div>
+            <div class="marquee-item"><img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800" alt="Server Data"></div>
+            <div class="marquee-item"><img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800" alt="Teknologi"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -663,8 +1178,8 @@
     <section id="aam-testimoni" class="aam-section" style="background:#fff;">
       <div class="aam-inner">
         <h2 class="gsap-reveal aam-h2" style="text-align:center;">Apa Kata Mereka?</h2>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:32px;">
-          <div class="gsap-reveal"
+        <div class="grid-testimoni">
+          <div class="gsap-reveal testimoni-card"
             style="padding:40px; border-radius:30px; background:var(--bg-subtle); border:1px solid var(--border);">
             <div style="display:flex; gap:4px; color:var(--primary); margin-bottom:20px;">
               <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
@@ -676,14 +1191,14 @@
             <p style="font-size:18px; line-height:1.6; font-style:italic; margin-bottom:24px;">"Internet dari ARMEDIA
               sangat stabil. Sangat membantu operasional kantor kami yang membutuhkan koneksi cepat setiap hari."</p>
             <div style="display:flex; align-items:center; gap:16px;">
-              <div style="width:50px; height:50px; border-radius:50%; background:#ddd;"></div>
+              <div style="width:50px; height:50px; border-radius:50%; background:#ddd; overflow:hidden;"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150" style="width:100%; height:100%; object-fit:cover;"></div>
               <div>
                 <p style="font-weight:800;">Budi Santoso</p>
                 <p style="font-size:14px; color:var(--text-muted);">Manager IT, Jakarta</p>
               </div>
             </div>
           </div>
-          <div class="gsap-reveal"
+          <div class="gsap-reveal testimoni-card"
             style="padding:40px; border-radius:30px; background:var(--bg-subtle); border:1px solid var(--border);">
             <div style="display:flex; gap:4px; color:var(--primary); margin-bottom:20px;">
               <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
@@ -695,13 +1210,94 @@
             <p style="font-size:18px; line-height:1.6; font-style:italic; margin-bottom:24px;">"Layanan pelanggan
               ARMEDIA sangat responsif. Jika ada kendala teknis, tim mereka langsung datang menangani."</p>
             <div style="display:flex; align-items:center; gap:16px;">
-              <div style="width:50px; height:50px; border-radius:50%; background:#ddd;"></div>
+              <div style="width:50px; height:50px; border-radius:50%; background:#ddd; overflow:hidden;"><img src="https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?q=80&w=150" style="width:100%; height:100%; object-fit:cover;"></div>
               <div>
                 <p style="font-weight:800;">Siti Aminah</p>
                 <p style="font-size:14px; color:var(--text-muted);">Pemilik Café, Bandung</p>
               </div>
             </div>
           </div>
+          
+          <!-- REVIEW 3 -->
+          <div class="gsap-reveal testimoni-card"
+            style="padding:40px; border-radius:30px; background:var(--bg-subtle); border:1px solid var(--border);">
+            <div style="display:flex; gap:4px; color:var(--primary); margin-bottom:20px;">
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+            </div>
+            <p style="font-size:18px; line-height:1.6; font-style:italic; margin-bottom:24px;">"Sejak menggunakan Armedia, lab komputer sekolah dan ujian online siswa berjalan tanpa hambatan sama sekali. Ping stabil dan bandwidth sangat bisa diandalkan."</p>
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div style="width:50px; height:50px; border-radius:50%; background:#ddd; overflow:hidden;"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150" style="width:100%; height:100%; object-fit:cover;"></div>
+              <div>
+                <p style="font-weight:800;">Ahmad Fauzi</p>
+                <p style="font-size:14px; color:var(--text-muted);">Kepala Sekolah, Surabaya</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- REVIEW 4 -->
+          <div class="gsap-reveal testimoni-card"
+            style="padding:40px; border-radius:30px; background:var(--bg-subtle); border:1px solid var(--border);">
+            <div style="display:flex; gap:4px; color:var(--primary); margin-bottom:20px;">
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+            </div>
+            <p style="font-size:18px; line-height:1.6; font-style:italic; margin-bottom:24px;">"Upload file video besar ke server sekarang jauh lebih cepat. Cocok banget buat tim kreatif kami yang sering kirim revisi ke klien."</p>
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div style="width:50px; height:50px; border-radius:50%; background:#ddd; overflow:hidden;"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150" style="width:100%; height:100%; object-fit:cover;"></div>
+              <div>
+                <p style="font-weight:800;">Rina Wati</p>
+                <p style="font-size:14px; color:var(--text-muted);">Founder Studio Animasi, Yogyakarta</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- REVIEW 5 -->
+          <div class="gsap-reveal testimoni-card"
+            style="padding:40px; border-radius:30px; background:var(--bg-subtle); border:1px solid var(--border);">
+            <div style="display:flex; gap:4px; color:var(--primary); margin-bottom:20px;">
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+            </div>
+            <p style="font-size:18px; line-height:1.6; font-style:italic; margin-bottom:24px;">"Sistem kasir cloud dan sinkronisasi stok toko kami nggak pernah putus koneksinya. Sangat krusial buat kelancaran transaksi setiap hari."</p>
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div style="width:50px; height:50px; border-radius:50%; background:#ddd; overflow:hidden;"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150" style="width:100%; height:100%; object-fit:cover;"></div>
+              <div>
+                <p style="font-weight:800;">Hendra Saputra</p>
+                <p style="font-size:14px; color:var(--text-muted);">Pemilik Toko Retail, Semarang</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- REVIEW 6 -->
+          <div class="gsap-reveal testimoni-card"
+            style="padding:40px; border-radius:30px; background:var(--bg-subtle); border:1px solid var(--border);">
+            <div style="display:flex; gap:4px; color:var(--primary); margin-bottom:20px;">
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+            </div>
+            <p style="font-size:18px; line-height:1.6; font-style:italic; margin-bottom:24px;">"Kerja remote butuh koneksi tanpa jeda untuk Zoom dengan klien luar negeri. Armedia ngasih latency yang super kecil dan kecepatan asli."</p>
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div style="width:50px; height:50px; border-radius:50%; background:#ddd; overflow:hidden;"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150" style="width:100%; height:100%; object-fit:cover;"></div>
+              <div>
+                <p style="font-weight:800;">Dewi Lestari</p>
+                <p style="font-size:14px; color:var(--text-muted);">Freelancer & UI/UX, Bali</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -710,34 +1306,64 @@
     <section id="aam-blog" class="aam-section" style="background:var(--bg-subtle);">
       <div class="aam-inner">
         <h2 class="gsap-reveal aam-h2" style="text-align:center;">Wawasan Digital</h2>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:32px;">
-          <div class="gsap-reveal"
-            style="overflow:hidden; border-radius:30px; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
-            <div style="height:220px; background:#eee;"><img
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:32px;">
+          <div class="gsap-reveal blog-card"
+            style="overflow:hidden; border-radius:30px; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+            <div class="blog-card-img" style="height:220px; background:#eee;"><img
                 src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800"
                 style="width:100%; height:100%; object-fit:cover;"></div>
-            <div style="padding:32px;">
-              <p style="color:var(--primary); font-weight:800; font-size:14px; margin-bottom:12px;">TEKNOLOGI</p>
+            <div class="blog-card-content" style="padding:32px; display: flex; flex-direction: column; flex: 1;">
+              <span class="behance-tag">TEKNOLOGI</span>
               <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Masa Depan 5G di Indonesia</h4>
               <p style="color:var(--text-muted); line-height:1.6; margin-bottom:24px;">Bagaimana teknologi 5G akan
                 merubah cara kita berinteraksi secara digital di masa depan.</p>
               <a href="#"
-                style="color:var(--text-dark); font-weight:800; text-decoration:none; display:flex; align-items:center; gap:8px;">Baca
+                style="color:var(--text-dark); font-weight:800; text-decoration:none; display:flex; align-items:center; gap:8px; margin-top: auto;">Baca
                 Selengkapnya <i data-lucide="arrow-right" style="width:18px;"></i></a>
             </div>
           </div>
-          <div class="gsap-reveal"
-            style="overflow:hidden; border-radius:30px; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
-            <div style="height:220px; background:#eee;"><img
+          <div class="gsap-reveal blog-card"
+            style="overflow:hidden; border-radius:30px; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+            <div class="blog-card-img" style="height:220px; background:#eee;"><img
                 src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800"
                 style="width:100%; height:100%; object-fit:cover;"></div>
-            <div style="padding:32px;">
-              <p style="color:var(--primary); font-weight:800; font-size:14px; margin-bottom:12px;">KEAMANAN</p>
+            <div class="blog-card-content" style="padding:32px; display: flex; flex-direction: column; flex: 1;">
+              <span class="behance-tag">KEAMANAN</span>
               <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Pentingnya Cybersecurity Bagi UMKM</h4>
               <p style="color:var(--text-muted); line-height:1.6; margin-bottom:24px;">Tips melindungi data bisnis Anda
                 dari serangan siber yang semakin marak.</p>
               <a href="#"
-                style="color:var(--text-dark); font-weight:800; text-decoration:none; display:flex; align-items:center; gap:8px;">Baca
+                style="color:var(--text-dark); font-weight:800; text-decoration:none; display:flex; align-items:center; gap:8px; margin-top: auto;">Baca
+                Selengkapnya <i data-lucide="arrow-right" style="width:18px;"></i></a>
+            </div>
+          </div>
+          <!-- KARTU 3 -->
+          <div class="gsap-reveal blog-card"
+            style="overflow:hidden; border-radius:30px; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+            <div class="blog-card-img" style="height:220px; background:#eee;"><img
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800"
+                style="width:100%; height:100%; object-fit:cover;" alt="Fiber Optic Server"></div>
+            <div class="blog-card-content" style="padding:32px; display: flex; flex-direction: column; flex: 1;">
+              <span class="behance-tag">INFRASTRUKTUR</span>
+              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Fiber Optic untuk Skala Enterprise</h4>
+              <p style="color:var(--text-muted); line-height:1.6; margin-bottom:24px;">Pelajari mengapa infrastruktur kabel optik adalah tulang punggung konektivitas yang wajib dimiliki bisnis modern.</p>
+              <a href="#"
+                style="color:var(--text-dark); font-weight:800; text-decoration:none; display:flex; align-items:center; gap:8px; margin-top: auto;">Baca
+                Selengkapnya <i data-lucide="arrow-right" style="width:18px;"></i></a>
+            </div>
+          </div>
+          <!-- KARTU 4 -->
+          <div class="gsap-reveal blog-card"
+            style="overflow:hidden; border-radius:30px; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+            <div class="blog-card-img" style="height:220px; background:#eee;"><img
+                src="https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=800"
+                style="width:100%; height:100%; object-fit:cover;" alt="Smart Home Technology"></div>
+            <div class="blog-card-content" style="padding:32px; display: flex; flex-direction: column; flex: 1;">
+              <span class="behance-tag">INTERNET OF THINGS</span>
+              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Tren Smart Home & IoT 2026</h4>
+              <p style="color:var(--text-muted); line-height:1.6; margin-bottom:24px;">Rumah cerdas butuh koneksi cerdas. Pastikan bandwidth Anda siap menangani puluhan perangkat pintar sekaligus.</p>
+              <a href="#"
+                style="color:var(--text-dark); font-weight:800; text-decoration:none; display:flex; align-items:center; gap:8px; margin-top: auto;">Baca
                 Selengkapnya <i data-lucide="arrow-right" style="width:18px;"></i></a>
             </div>
           </div>
@@ -745,30 +1371,60 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer id="aam-kontak" style="padding:100px 48px; background:var(--bg-navy); color:white;">
-      <div class="aam-inner">
-        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:60px;">
-          <div style="max-width:400px;">
-            <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513"
-              style="height:60px; margin-bottom:40px; filter: brightness(0) invert(1);">
-            <p style="opacity:0.7; font-size:18px; line-height:1.8;">Menyediakan akses digital seluas mungkin untuk
-              Indonesia yang lebih maju.</p>
-          </div>
-          <div>
-            <h4
-              style="margin-bottom:30px; color:var(--primary); font-weight:900; letter-spacing:2px; text-transform:uppercase;">
-              Kontak Kami</h4>
-            <p style="font-size:20px; font-weight:700; margin-bottom:10px;">care@aksesartamedia.id</p>
-            <p style="font-size:20px; font-weight:700;">(021) 22472319</p>
-          </div>
+  <!-- FOOTER -->
+  <footer id="aam-kontak" class="aam-footer">
+    <div class="aam-inner">
+      <div class="footer-grid">
+        <div class="footer-brand gsap-reveal">
+          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" alt="Armedia Logo">
+          <p>Menghubungkan Indonesia dengan akses internet berkecepatan tinggi yang andal, stabil, dan tanpa batas untuk mendukung gaya hidup digital modern.</p>
         </div>
-        <div
-          style="margin-top:100px; text-align:center; opacity:0.3; font-size:14px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
-          © 2026 PT AKSES ARTHA MEDIA. Digital Bridge to the Future.
+        
+        <div class="gsap-reveal" style="transition-delay: 0.1s;">
+          <h4 class="footer-title">Navigasi</h4>
+          <ul class="footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/berlangganan.html">Berlangganan</a></li>
+            <li><a href="/index.html#aam-tentang">Tentang Kami</a></li>
+            <li><a href="/index.html#aam-blog">Artikel & Berita</a></li>
+          </ul>
+        </div>
+
+        <div class="gsap-reveal" style="transition-delay: 0.2s;">
+          <h4 class="footer-title">Hubungi Kami</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <div class="footer-icon-wrapper"><i data-lucide="mail"></i></div>
+              <div class="footer-contact-text">
+                <span class="footer-contact-label">Email Dukungan</span>
+                <span class="footer-contact-value">care@aksesartamedia.id</span>
+              </div>
+            </li>
+            <li>
+              <div class="footer-icon-wrapper"><i data-lucide="phone"></i></div>
+              <div class="footer-contact-text">
+                <span class="footer-contact-label">Telepon (Office)</span>
+                <span class="footer-contact-value">(021) 22472319</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-    </footer>
+      
+      <div class="footer-bottom gsap-reveal" style="transition-delay: 0.3s;">
+        <p>© 2026 PT AKSES ARTHA MEDIA. All rights reserved.</p>
+        <p>Digital Bridge to the Future.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta">
+    <a href="/pages/berlangganan.html">
+      <i data-lucide="zap" style="width: 20px; height: 20px;"></i>
+      BERLANGGANAN SEKARANG
+    </a>
+  </div>
 
   </div>
 
@@ -789,6 +1445,7 @@
 
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
+      document.getElementById('mobileOverlay').classList.toggle('active');
     }
 
     function aamScrollTo(id) {

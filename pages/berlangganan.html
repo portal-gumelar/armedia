@@ -30,7 +30,7 @@
       #aam-root { font-family: 'Outfit', sans-serif; background: #ffffff; color: var(--text-dark); min-height: 100vh; overflow-x: hidden; }
       #aam-root * { box-sizing: border-box; margin: 0; padding: 0; }
       
-      .aam-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: 0.4s; height: 80px; }
+      .aam-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.9); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: 0.4s; height: 100px; }
       .aam-nav-inner { max-width: 1400px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; }
       
       .aam-navlink { color: var(--text-dark); font-size: 14px; font-weight: 800; text-decoration: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s; position: relative; }
@@ -47,11 +47,26 @@
       .aam-inner { max-width: 1300px; margin: 0 auto; }
       .aam-h2 { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 40px; }
 
-      .aam-price-card:hover { transform: translateY(-10px) !important; border-color: var(--primary); box-shadow: 0 20px 40px rgba(244,121,32,0.15); }
+      .aam-price-card:hover { transform: translateY(-10px) !important; box-shadow: 0 30px 60px rgba(244,121,32,0.1) !important; }
 
-      .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: var(--bg-navy); z-index: 2000; padding: 40px; display: flex; flex-direction: column; gap: 30px; transition: 0.5s; }
+      /* Modern Mobile Menu */
+      .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: rgba(10, 10, 12, 0.85); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); z-index: 2000; padding: 0 40px; display: flex; flex-direction: column; justify-content: center; transition: right 0.6s cubic-bezier(0.77, 0, 0.175, 1); }
       .mobile-menu.active { right: 0; }
-      .mobile-menu a { color: white; font-size: 32px; font-weight: 800; text-decoration: none; }
+      
+      .mobile-menu-close { position: absolute; top: 30px; right: 30px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+      .mobile-menu-close:hover { background: rgba(255, 255, 255, 0.15); transform: rotate(90deg) scale(1.1); }
+      
+      .mobile-menu-links { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+      .mobile-menu-links a { color: rgba(255, 255, 255, 0.6); font-size: 26px; font-weight: 400; text-decoration: none; letter-spacing: 2px; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: block; text-align: center; border-bottom: none; padding: 10px 0; }
+      .mobile-menu-links a i { display: none; }
+      .mobile-menu-links a:hover { color: white; transform: scale(1.05); }
+      
+      .mobile-menu-links a.cta-link { color: var(--primary); font-weight: 700; border-bottom: none; margin-top: 20px; justify-content: center; background: rgba(244, 121, 32, 0.1); border: 1px solid rgba(244, 121, 32, 0.3); padding: 16px; border-radius: 16px; font-size: 16px; letter-spacing: 1px; }
+      .mobile-menu-links a.cta-link:hover { background: var(--primary); color: white; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(244, 121, 32, 0.3); padding-left: 0; }
+
+      .pricing-header { text-align: center; margin-bottom: 80px; }
+      .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-bottom: 80px; align-items: center; }
+      .pricing-grid-secondary { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center; }
 
       @media (max-width: 1280px) {
         .aam-nav-inner { padding: 0 24px; }
@@ -59,19 +74,84 @@
       }
 
       @media (max-width: 1024px) {
-        .aam-nav-inner { height: 80px; padding: 0 32px; }
+        .aam-nav-inner { height: 70px; padding: 0 28px; }
         .aam-navlinks { display: none; }
-        .aam-menu-toggle { display: block !important; }
-        .aam-section { padding: 80px 24px; }
-        .aam-h2 { font-size: 38px; text-align: center; }
+      .aam-menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(24, 13, 57, 0.05);
+        border: 1px solid rgba(24, 13, 57, 0.1);
+        cursor: pointer;
+        transition: 0.3s;
+        margin-left: 10px;
+      }
+      .aam-menu-toggle:hover {
+        background: rgba(24, 13, 57, 0.1);
+        transform: scale(1.05);
+      }
         
-        .aam-price-card { transform: scale(1) !important; margin: 0 !important; }
+        .aam-price-card { transform: scale(1) !important; margin: 0 !important; z-index: 1 !important; }
+        .pricing-grid, .pricing-grid-secondary { gap: 24px; }
       }
 
-      @media (max-width: 768px) {
-        .aam-section { padding: 60px 20px; }
-        .aam-h2 { font-size: 30px !important; }
+      @media (max-width: 480px) {
+        .aam-section { padding: 50px 20px !important; }
+        .aam-h2 { font-size: 32px !important; margin-bottom: 16px !important; line-height: 1.2; }
+        
+        .pricing-header { margin-bottom: 40px; }
+        .pricing-grid { margin-bottom: 30px; gap: 20px; }
+        .pricing-grid-secondary { gap: 20px; }
+
+        .aam-price-card { padding: 30px 24px !important; border-radius: 30px !important; }
+        .aam-price-card .price-lg { font-size: 42px !important; }
+        .aam-price-card .speed-lg { font-size: 48px !important; }
+        .aam-price-card .speed-unit { font-size: 18px !important; }
+        .aam-price-card .btn-lg { font-size: 16px !important; padding: 14px !important; }
+        .aam-price-card ul li { font-size: 15px !important; margin-bottom: 12px !important; }
+
+        /* Footer Mobile */
+        .aam-footer { padding: 80px 24px 40px !important; }
+        .aam-footer::before, .aam-footer::after { display: none; }
+        .footer-grid { grid-template-columns: 1fr; gap: 50px; }
+        .footer-bottom { flex-direction: column; text-align: center; gap: 16px; margin-top: 60px; }
+        .footer-brand { max-width: 100%; text-align: left; }
+        .footer-brand img { margin: 0 0 24px 0; }
+        .footer-contact-list { align-items: flex-start; }
+        .footer-title { text-align: left; }
       }
+
+      /* Footer Base */
+      .aam-footer { padding: 100px 48px 40px; background: #000000; color: white; position: relative; border-top: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
+      .aam-footer::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 70%; height: 1px; background: linear-gradient(90deg, transparent, rgba(244,121,32,0.5), transparent); }
+      .aam-footer::after { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 40%; height: 150px; background: radial-gradient(100% 100% at 50% 0%, rgba(244,121,32,0.1) 0%, transparent 100%); pointer-events: none; }
+      
+      .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 80px; align-items: start; position: relative; z-index: 1; }
+      .footer-brand { max-width: 320px; }
+      .footer-brand img { height: 40px; margin-bottom: 24px; filter: brightness(0) invert(1); }
+      .footer-brand p { color: rgba(255,255,255,0.5); font-size: 15px; font-weight: 400; line-height: 1.8; letter-spacing: 0.2px; }
+      
+      .footer-title { color: white; font-size: 13px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; opacity: 0.9; }
+      
+      .footer-links { list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0; margin: 0; }
+      .footer-links li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: inline-flex; align-items: center; }
+      .footer-links li a:hover { color: white; transform: translateX(8px); }
+      
+      .footer-contact-list { list-style: none; display: flex; flex-direction: column; gap: 24px; padding: 0; margin: 0; }
+      .footer-contact-list li { display: flex; align-items: center; gap: 16px; color: white; }
+      .footer-icon-wrapper { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+      .footer-contact-list li:hover .footer-icon-wrapper { background: var(--primary); border-color: var(--primary); transform: scale(1.1) translateY(-5px); box-shadow: 0 10px 30px rgba(244,121,32,0.3); }
+      .footer-contact-list li i { color: rgba(255,255,255,0.7); width: 20px; height: 20px; transition: 0.3s; }
+      .footer-contact-list li:hover i { color: white; }
+      
+      .footer-contact-text { display: flex; flex-direction: column; gap: 4px; }
+      .footer-contact-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+      .footer-contact-value { font-size: 16px; color: rgba(255,255,255,0.9); font-weight: 600; letter-spacing: 0.5px; }
+
+      .footer-bottom { margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,0.3); position: relative; z-index: 1; }
 
       .gsap-reveal { opacity: 0; transform: translateY(30px); }
     </style>
@@ -82,19 +162,24 @@
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-    <button onclick="toggleMenu()" style="align-self:flex-end; background:none; border:none; color:white;"><i data-lucide="x" style="width:48px; height:48px;"></i></button>
-    <a href="/pages/berlangganan.html" class="active" style="color:var(--primary); font-weight:900;">BERLANGGANAN</a>
-    <a href="/index.html">HOME</a>
-    <a href="/index.html#aam-tentang">TENTANG</a>
-    <a href="/index.html#aam-galeri">GALERI</a>
-    <a href="/index.html#aam-testimoni">TESTIMONI</a>
-    <a href="/index.html#aam-blog">BLOG</a>
+    <button class="mobile-menu-close" onclick="toggleMenu()">
+      <i data-lucide="x" style="width:28px; height:28px;"></i>
+    </button>
+    <div class="mobile-menu-links">
+      <a href="/index.html" onclick="toggleMenu()">HOME <i data-lucide="arrow-right" style="width:24px; height:24px;"></i></a>
+      <a href="/index.html#aam-tentang" onclick="toggleMenu()">TENTANG <i data-lucide="arrow-right" style="width:24px; height:24px;"></i></a>
+      <a href="/index.html#aam-galeri" onclick="toggleMenu()">GALERI <i data-lucide="arrow-right" style="width:24px; height:24px;"></i></a>
+      <a href="/index.html#aam-testimoni" onclick="toggleMenu()">TESTIMONI <i data-lucide="arrow-right" style="width:24px; height:24px;"></i></a>
+      <a href="/index.html#aam-blog" onclick="toggleMenu()">BLOG <i data-lucide="arrow-right" style="width:24px; height:24px;"></i></a>
+      <a href="/pages/berlangganan.html" class="cta-link">BERLANGGANAN SEKARANG</a>
+    </div>
   </div>
 
   <!-- NAV -->
   <nav class="aam-nav" id="mainNav">
     <div class="aam-nav-inner">
-      <a href="/index.html"><img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:48px; cursor:pointer;"></a>
+      <a href="/index.html"><img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:36px; cursor:pointer;"></a>
+      <a href="/pages/berlangganan.html" class="aam-mobile-cta" style="display:none; background:var(--primary); color:white; padding:10px 14px; border-radius:12px; font-weight:900; font-size:11px; text-decoration:none; text-transform:uppercase; letter-spacing:1px; box-shadow:0 10px 20px rgba(244,121,32,0.25); border: 1px solid rgba(255,255,255,0.3);">PAKET INTERNET</a>
       <div class="aam-navlinks">
         <a class="aam-navlink active" href="/pages/berlangganan.html" style="color:var(--primary);">BERLANGGANAN</a>
         <a class="aam-navlink" href="/index.html">HOME</a>
@@ -104,126 +189,177 @@
         <a class="aam-navlink" href="/index.html#aam-blog">BLOG</a>
         <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn">DAFTAR</a>
       </div>
-      <button class="aam-menu-toggle" onclick="toggleMenu()" style="display:none; border:none; background:none; cursor:pointer;">
-        <i data-lucide="menu" style="width:32px; height:32px; color:var(--bg-navy);"></i>
+      <button class="aam-menu-toggle" onclick="toggleMenu()">
+        <i data-lucide="menu" style="width:24px; height:24px; color:var(--bg-navy);"></i>
       </button>
     </div>
   </nav>
 
   <!-- PRICING / BERLANGGANAN PAGE CONTENT -->
-  <section id="aam-berlangganan" class="aam-section" style="padding-top:180px;">
+  <section id="aam-berlangganan" class="aam-section" style="padding-top:160px; background:var(--bg-subtle);">
     <div class="aam-inner">
-      <div style="text-align:center; margin-bottom:80px;">
-        <p class="gsap-reveal" style="color:var(--primary); font-weight:800; letter-spacing:2px; margin-bottom:10px;">INTERNET RAKYAT / MURAH</p>
-        <h1 class="gsap-reveal aam-h2">Paket ARMEDIANET</h1>
-        <p class="gsap-reveal" style="font-size:20px; color:var(--text-muted); max-width:800px; margin:0 auto;">Solusi internet stabil dengan harga bersahabat. Segera berlangganan paket yang sesuai dengan kebutuhan digital Anda.</p>
+      <div class="pricing-header">
+        <p class="gsap-reveal" style="color:var(--primary); font-weight:800; letter-spacing:2px; margin-bottom:15px; text-transform:uppercase;">Infrastruktur Kelas Enterprise</p>
+        <h1 class="gsap-reveal aam-h2" style="color:var(--bg-navy);">Pilih Paket Terbaikmu</h1>
+        <p class="gsap-reveal" style="font-size:20px; color:var(--text-muted); max-width:700px; margin:0 auto; line-height:1.6;">Dirancang khusus dengan kecepatan stabil, ping rendah, dan tanpa batasan FUP untuk pengalaman digital tanpa kompromi.</p>
       </div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-bottom:80px;">
-        <!-- Card 1 -->
-        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:1px solid var(--border); text-align:center; transition:0.4s;">
-          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">STARTER</h4>
-          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">20 <span style="font-size:20px;">Mbps</span></div>
-          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 20 Mbps</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
-            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
-          </ul>
-          <div style="padding-top:30px; border-top:1px solid var(--border);">
-            <p style="font-size:16px; font-weight:700;">Hanya</p>
-            <p style="font-size:42px; font-weight:900; color:var(--primary);">115.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
-            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
+      <div class="pricing-grid">
+        
+        <!-- STARTER (20 Mbps) -->
+        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:50px 40px; border-radius:40px; border:1px solid rgba(24,13,57,0.08); text-align:left; transition:0.4s; position:relative;">
+          <h4 style="font-size:16px; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:15px;">STARTER</h4>
+          <div class="speed-lg" style="font-size:64px; font-weight:900; color:var(--bg-navy); margin-bottom:10px; line-height:1;">20 <span class="speed-unit" style="font-size:24px;">Mbps</span></div>
+          <p style="color:var(--text-muted); font-size:16px; margin-bottom:30px;">Koneksi dasar yang stabil untuk kebutuhan personal di rumah.</p>
+          
+          <div style="margin-bottom:40px;">
+            <p style="font-size:14px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Hanya</p>
+            <div style="display:flex; align-items:baseline; gap:8px;">
+              <span class="price-lg" style="font-size:48px; font-weight:900; color:var(--bg-navy); line-height:1;">Rp 115k</span>
+              <span style="font-size:16px; font-weight:700; color:var(--text-muted);">/bln</span>
+            </div>
           </div>
+
+          <ul style="list-style:none; font-size:16px; color:var(--text-dark); font-weight:600; margin-bottom:40px; display:flex; flex-direction:column; gap:16px;">
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.1);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Kecepatan 20 Mbps</li>
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.1);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Unlimited Tanpa FUP</li>
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.1);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Modem Dual Band 5G</li>
+          </ul>
+
+          <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn btn-lg" style="width:100%; justify-content:center; padding:20px; font-size:18px; background:white; color:var(--bg-navy); border:2px solid var(--border); box-shadow:none;">PILIH STARTER</a>
         </div>
-        <!-- Card 2 -->
-        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:2px solid var(--primary); text-align:center; transition:0.4s; transform: scale(1.05); box-shadow: 0 30px 60px rgba(244,121,32,0.15); position:relative;">
-          <div style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); background:var(--primary); color:white; padding:8px 30px; border-radius:30px; font-size:14px; font-weight:900; letter-spacing:1px;">PALING POPULER</div>
-          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">FAMILY</h4>
-          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">30 <span style="font-size:20px;">Mbps</span></div>
-          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 30 Mbps</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
-            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
-          </ul>
-          <div style="padding-top:30px; border-top:1px solid var(--border);">
-            <p style="font-size:16px; font-weight:700;">Hanya</p>
-            <p style="font-size:42px; font-weight:900; color:var(--primary);">142.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
-            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
+
+        <!-- FAMILY (30 Mbps) - POPULAR / OLED BLACK -->
+        <div class="gsap-reveal aam-price-card" style="background:var(--bg-navy); color:white; padding:60px 40px; border-radius:40px; border:1px solid rgba(255,255,255,0.1); text-align:left; transition:0.4s; position:relative; box-shadow:0 40px 80px rgba(24,13,57,0.3); transform: scale(1.05); z-index:10;">
+          <div style="position:absolute; top:-20px; right:40px; background:linear-gradient(135deg, #FDB913, #F47920); color:white; padding:10px 24px; border-radius:30px; font-size:14px; font-weight:900; letter-spacing:1px; box-shadow:0 10px 20px rgba(244,121,32,0.3);">PALING POPULER</div>
+          
+          <h4 style="font-size:16px; font-weight:800; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:2px; margin-bottom:15px;">FAMILY</h4>
+          <div class="speed-lg" style="font-size:72px; font-weight:900; color:white; margin-bottom:10px; line-height:1;">30 <span class="speed-unit" style="font-size:24px;">Mbps</span></div>
+          <p style="color:rgba(255,255,255,0.7); font-size:16px; margin-bottom:30px;">Streaming lancar dan gaming tanpa lag untuk seluruh keluarga.</p>
+          
+          <div style="margin-bottom:40px;">
+            <p style="font-size:14px; font-weight:700; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Hanya</p>
+            <div style="display:flex; align-items:baseline; gap:8px;">
+              <span class="price-lg" style="font-size:56px; font-weight:900; color:var(--primary); line-height:1;">Rp 142k</span>
+              <span style="font-size:16px; font-weight:700; color:rgba(255,255,255,0.5);">/bln</span>
+            </div>
           </div>
+
+          <ul style="list-style:none; font-size:16px; color:white; font-weight:600; margin-bottom:40px; display:flex; flex-direction:column; gap:16px;">
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.2);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Kecepatan 30 Mbps</li>
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.2);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Prioritas Streaming</li>
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.2);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Unlimited Tanpa FUP</li>
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.2);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Modem Dual Band 5G</li>
+          </ul>
+
+          <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn btn-lg" style="width:100%; justify-content:center; padding:20px; font-size:18px; background:var(--primary); color:white; border:none;">BERLANGGANAN SEKARANG</a>
         </div>
-        <!-- Card 3 -->
-        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:1px solid var(--border); text-align:center; transition:0.4s;">
-          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">PREMIUM</h4>
-          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">50 <span style="font-size:20px;">Mbps</span></div>
-          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 50 Mbps</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
-            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
-          </ul>
-          <div style="padding-top:30px; border-top:1px solid var(--border);">
-            <p style="font-size:16px; font-weight:700;">Hanya</p>
-            <p style="font-size:42px; font-weight:900; color:var(--primary);">182.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
-            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
+
+        <!-- PREMIUM (50 Mbps) -->
+        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:50px 40px; border-radius:40px; border:1px solid rgba(24,13,57,0.08); text-align:left; transition:0.4s; position:relative;">
+          <h4 style="font-size:16px; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:15px;">PREMIUM</h4>
+          <div class="speed-lg" style="font-size:64px; font-weight:900; color:var(--bg-navy); margin-bottom:10px; line-height:1;">50 <span class="speed-unit" style="font-size:24px;">Mbps</span></div>
+          <p style="color:var(--text-muted); font-size:16px; margin-bottom:30px;">Performa tingkat tinggi untuk produktivitas maksimal.</p>
+          
+          <div style="margin-bottom:40px;">
+            <p style="font-size:14px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Hanya</p>
+            <div style="display:flex; align-items:baseline; gap:8px;">
+              <span class="price-lg" style="font-size:48px; font-weight:900; color:var(--bg-navy); line-height:1;">Rp 182k</span>
+              <span style="font-size:16px; font-weight:700; color:var(--text-muted);">/bln</span>
+            </div>
           </div>
+
+          <ul style="list-style:none; font-size:16px; color:var(--text-dark); font-weight:600; margin-bottom:40px; display:flex; flex-direction:column; gap:16px;">
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.1);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Kecepatan 50 Mbps</li>
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.1);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Unlimited Tanpa FUP</li>
+            <li style="display:flex; align-items:center; gap:12px;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(244,121,32,0.1);display:flex;align-items:center;justify-content:center;"><i data-lucide="check" style="width:16px; color:var(--primary);"></i></div> Dukungan Smart Home</li>
+          </ul>
+
+          <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn btn-lg" style="width:100%; justify-content:center; padding:20px; font-size:18px; background:white; color:var(--bg-navy); border:2px solid var(--border); box-shadow:none;">PILIH PREMIUM</a>
         </div>
       </div>
+      
+      <!-- High Tier Grid -->
+      <div class="pricing-grid-secondary">
+         <!-- TURBO (75 Mbps) -->
+         <div class="gsap-reveal aam-price-card" style="background:#fff; padding:50px 40px; border-radius:40px; border:1px solid rgba(24,13,57,0.08); text-align:left; transition:0.4s;">
+          <h4 style="font-size:16px; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:15px;">TURBO</h4>
+          <div class="speed-lg" style="font-size:64px; font-weight:900; color:var(--bg-navy); margin-bottom:10px; line-height:1;">75 <span class="speed-unit" style="font-size:24px;">Mbps</span></div>
+          <p style="color:var(--text-muted); font-size:16px; margin-bottom:30px;">Dirancang khusus bagi kreator konten & profesional.</p>
+          
+          <div style="margin-bottom:40px;">
+            <p style="font-size:14px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Hanya</p>
+            <div style="display:flex; align-items:baseline; gap:8px;">
+              <span class="price-lg" style="font-size:48px; font-weight:900; color:var(--bg-navy); line-height:1;">Rp 260k</span>
+              <span style="font-size:16px; font-weight:700; color:var(--text-muted);">/bln</span>
+            </div>
+          </div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
-         <!-- Card 4 -->
-         <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:1px solid var(--border); text-align:center; transition:0.4s;">
-          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">TURBO</h4>
-          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">75 <span style="font-size:20px;">Mbps</span></div>
-          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 75 Mbps</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
-            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
-          </ul>
-          <div style="padding-top:30px; border-top:1px solid var(--border);">
-            <p style="font-size:16px; font-weight:700;">Hanya</p>
-            <p style="font-size:42px; font-weight:900; color:var(--primary);">260.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
-            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
-          </div>
+          <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn btn-lg" style="width:100%; justify-content:center; padding:20px; font-size:18px; background:white; color:var(--bg-navy); border:2px solid var(--border); box-shadow:none;">PILIH TURBO</a>
         </div>
-        <!-- Card 5 -->
-        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:1px solid var(--border); text-align:center; transition:0.4s;">
-          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">ULTIMATE</h4>
-          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">100 <span style="font-size:20px;">Mbps</span></div>
-          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 100 Mbps</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
-            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
-            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
-          </ul>
-          <div style="padding-top:30px; border-top:1px solid var(--border);">
-            <p style="font-size:16px; font-weight:700;">Hanya</p>
-            <p style="font-size:42px; font-weight:900; color:var(--primary);">330.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
-            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
+        <!-- ULTIMATE (100 Mbps) -->
+        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:50px 40px; border-radius:40px; border:1px solid rgba(24,13,57,0.08); text-align:left; transition:0.4s;">
+          <h4 style="font-size:16px; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:15px;">ULTIMATE</h4>
+          <div class="speed-lg" style="font-size:64px; font-weight:900; color:var(--bg-navy); margin-bottom:10px; line-height:1;">100 <span class="speed-unit" style="font-size:24px;">Mbps</span></div>
+          <p style="color:var(--text-muted); font-size:16px; margin-bottom:30px;">Kapasitas maksimal untuk bisnis atau perusahaan skala besar.</p>
+          
+          <div style="margin-bottom:40px;">
+            <p style="font-size:14px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">Hanya</p>
+            <div style="display:flex; align-items:baseline; gap:8px;">
+              <span class="price-lg" style="font-size:48px; font-weight:900; color:var(--bg-navy); line-height:1;">Rp 330k</span>
+              <span style="font-size:16px; font-weight:700; color:var(--text-muted);">/bln</span>
+            </div>
           </div>
+
+          <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn btn-lg" style="width:100%; justify-content:center; padding:20px; font-size:18px; background:white; color:var(--bg-navy); border:2px solid var(--border); box-shadow:none;">PILIH ULTIMATE</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer id="aam-kontak" style="padding:100px 48px; background:var(--bg-navy); color:white;">
+  <footer id="aam-kontak" class="aam-footer">
     <div class="aam-inner">
-      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:60px;">
-        <div style="max-width:400px;">
-          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:60px; margin-bottom:40px; filter: brightness(0) invert(1);">
-          <p style="opacity:0.7; font-size:18px; line-height:1.8;">Menyediakan akses digital seluas mungkin untuk Indonesia yang lebih maju.</p>
+      <div class="footer-grid">
+        <div class="footer-brand gsap-reveal">
+          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" alt="Armedia Logo">
+          <p>Menghubungkan Indonesia dengan akses internet berkecepatan tinggi yang andal, stabil, dan tanpa batas untuk mendukung gaya hidup digital modern.</p>
         </div>
-        <div>
-          <h4 style="margin-bottom:30px; color:var(--primary); font-weight:900; letter-spacing:2px; text-transform:uppercase;">Kontak Kami</h4>
-          <p style="font-size:20px; font-weight:700; margin-bottom:10px;">care@aksesartamedia.id</p>
-          <p style="font-size:20px; font-weight:700;">(021) 22472319</p>
+        
+        <div class="gsap-reveal" style="transition-delay: 0.1s;">
+          <h4 class="footer-title">Navigasi</h4>
+          <ul class="footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/berlangganan.html">Berlangganan</a></li>
+            <li><a href="/index.html#aam-tentang">Tentang Kami</a></li>
+            <li><a href="/index.html#aam-blog">Artikel & Berita</a></li>
+          </ul>
+        </div>
+
+        <div class="gsap-reveal" style="transition-delay: 0.2s;">
+          <h4 class="footer-title">Hubungi Kami</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <div class="footer-icon-wrapper"><i data-lucide="mail"></i></div>
+              <div class="footer-contact-text">
+                <span class="footer-contact-label">Email Dukungan</span>
+                <span class="footer-contact-value">care@aksesartamedia.id</span>
+              </div>
+            </li>
+            <li>
+              <div class="footer-icon-wrapper"><i data-lucide="phone"></i></div>
+              <div class="footer-contact-text">
+                <span class="footer-contact-label">Telepon (Office)</span>
+                <span class="footer-contact-value">(021) 22472319</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <div style="margin-top:100px; text-align:center; opacity:0.3; font-size:14px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
-        © 2026 PT AKSES ARTHA MEDIA. Digital Bridge to the Future.
+      
+      <div class="footer-bottom gsap-reveal" style="transition-delay: 0.3s;">
+        <p>© 2026 PT AKSES ARTHA MEDIA. All rights reserved.</p>
+        <p>Digital Bridge to the Future.</p>
       </div>
     </div>
   </footer>
