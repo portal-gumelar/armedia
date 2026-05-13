@@ -7,34 +7,37 @@
     <meta name="description" content="PT Akses Artha Media (ARMEDIA) menyediakan layanan internet ISP, VSAT, dan solusi komunikasi data terpercaya di seluruh Indonesia sejak 2012.">
     <link rel="icon" type="image/png" href="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513">
     
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
       
       :root {
-        --primary: #006677;
-        --primary-dark: #004a61;
+        --primary: #2A8E9E;
+        --primary-dark: #1e6d7a;
         --bg-white: #ffffff;
-        --bg-light: #f8fafc;
-        --bg-navy: #002d3b;
-        --text-dark: #0b1120;
-        --text-muted: #64748b;
-        --border: rgba(0,0,0,0.06);
+        --bg-subtle: #E9F3F4;
+        --bg-navy: #180D39;
+        --text-dark: #1D1E20;
+        --text-muted: #5a6b72;
+        --border: rgba(0,0,0,0.08);
       }
 
-      #aam-root { font-family: 'Outfit', sans-serif; background: var(--bg-white); color: var(--text-dark); min-height: 100vh; overflow-x: hidden; }
+      #aam-root { font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-white); color: var(--text-dark); min-height: 100vh; overflow-x: hidden; scroll-behavior: smooth; }
       #aam-root * { box-sizing: border-box; margin: 0; padding: 0; }
       
       #aam-root ::-webkit-scrollbar { width: 6px; }
       #aam-root ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
       
-      .aam-nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+      .aam-nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: all 0.3s; }
       .aam-nav-inner { max-width: 1400px; margin: 0 auto; height: 90px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; }
       .aam-navlinks { display: flex; gap: 48px; align-items: center; }
-      .aam-navlink { color: var(--text-dark); font-size: 16px; font-weight: 500; text-decoration: none; cursor: pointer; transition: color 0.2s; border: none; background: none; font-family: inherit; }
-      .aam-navlink:hover { color: var(--primary); }
+      .aam-navlink { color: var(--text-dark); font-size: 16px; font-weight: 500; text-decoration: none; cursor: pointer; transition: all 0.3s; border: none; background: none; font-family: inherit; }
+      .aam-navlink:hover { color: var(--primary); transform: translateY(-1px); }
       
-      .aam-btn { background: var(--primary); color: #ffffff; border: none; padding: 16px 36px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; font-family: inherit; transition: all 0.25s; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
-      .aam-btn:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,102,119,0.25); }
+      .aam-btn { background: var(--primary); color: #ffffff; border: none; padding: 16px 36px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; font-family: inherit; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+      .aam-btn:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 15px 35px rgba(42,142,158,0.3); }
       
       .aam-section { padding: 140px 48px; }
       .aam-inner { max-width: 1300px; margin: 0 auto; }
@@ -42,31 +45,42 @@
       .aam-h2 { font-size: 56px; font-weight: 800; letter-spacing: -2px; line-height: 1.1; }
       .aam-muted { color: var(--text-muted); font-size: 20px; line-height: 1.8; }
       
-      .aam-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
-      .aam-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,102,119,0.08); }
+      .aam-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 20px; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+      .aam-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 30px 60px rgba(42,142,158,0.1); }
       
       .aam-stat-num { font-size: 56px; font-weight: 900; color: var(--primary); letter-spacing: -2px; }
       
+      /* REVEAL ANIMATION */
+      .aam-reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.23, 1, 0.32, 1); }
+      .aam-reveal.active { opacity: 1; transform: translateY(0); }
+      
       @media (max-width: 992px) {
         .aam-nav { padding: 0 16px; }
+        .aam-nav-inner { height: 70px; padding: 0 16px; }
         .aam-navlinks { display: none; }
-        .aam-navlinks.active { 
-          display: flex; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; 
-          background: white; padding: 32px; border-bottom: 1px solid var(--border); gap: 24px;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
+        .aam-navlinks.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: white; padding: 32px; border-bottom: 1px solid var(--border); gap: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .aam-menu-toggle { display: block !important; }
-        .aam-h1 { font-size: 40px; text-align: center; }
-        .aam-h2 { font-size: 30px; }
-        .aam-section { padding: 60px 20px; }
-        .aam-inner > div[style*="display:flex"] { flex-direction: column !important; gap: 32px !important; text-align: center; }
+        .aam-h1 { font-size: 44px; text-align: center; }
+        .aam-h2 { font-size: 34px; }
+        .aam-section { padding: 80px 24px; }
+        .aam-inner > div[style*="display:flex"] { flex-direction: column !important; gap: 40px !important; text-align: center; }
         .aam-hero-content { align-items: center; text-align: center; }
         .aam-hero-input-group { flex-direction: column; width: 100%; margin-top: 10px; }
         .aam-hero-input-group input { width: 100% !important; margin-bottom: 12px; }
-        .aam-hero-img-container { margin-top: 20px; order: 2; }
-        .aam-hero-logos { justify-content: center; flex-wrap: wrap; gap: 20px !important; }
-        #aam-home { padding: 40px 20px !important; }
+        .aam-hero-img-container { margin-top: 40px; order: 2; }
+        .aam-hero-logos { justify-content: center; flex-wrap: wrap; gap: 24px !important; }
+        #aam-home { padding: 40px 24px !important; }
+        .aam-footer-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
       }
+      
+      @media (min-width: 993px) and (max-width: 1200px) {
+        .aam-nav-inner { padding: 0 24px; }
+        .aam-navlinks { gap: 24px; }
+        .aam-h1 { font-size: 56px; }
+        .aam-inner { padding: 0 24px; }
+        .aam-footer-grid { grid-template-columns: 1.5fr 1fr 1fr !important; gap: 40px !important; }
+      }
+
       .aam-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; }
       .aam-menu-toggle span { display: block; width: 24px; height: 2px; background: var(--text-dark); margin: 5px 0; transition: 0.3s; }
       
@@ -75,7 +89,7 @@
         50% { transform: translateY(-15px); }
         100% { transform: translateY(0px); }
       }
-      .aam-float { animation: float 4s ease-in-out infinite; }
+      .aam-float { animation: float 6s ease-in-out infinite; }
     </style>
 </head>
 <body>
@@ -85,161 +99,171 @@
   <!-- NAV -->
   <nav class="aam-nav">
     <div class="aam-nav-inner">
-      <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" alt="Akses Artha Media" style="height:36px;object-fit:contain;">
+      <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" alt="Akses Artha Media" style="height:44px;object-fit:contain;">
       <button class="aam-menu-toggle" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </button>
       <div class="aam-navlinks" id="navLinks">
-        <button class="aam-navlink" onclick="aamScrollTo('aam-home')">HOME</button>
-        <button class="aam-navlink" onclick="aamScrollTo('aam-tentang')">TENTANG KAMI</button>
-        <button class="aam-navlink" onclick="aamScrollTo('aam-testimoni')">TESTIMONY</button>
-        <button class="aam-btn" onclick="aamScrollTo('aam-kontak')">DAFTAR SEKARANG</button>
+        <button class="aam-navlink" onclick="aamScrollTo('aam-home')">Home</button>
+        <button class="aam-navlink" onclick="aamScrollTo('aam-tentang')">Tentang Kami</button>
+        <button class="aam-navlink" onclick="aamScrollTo('aam-testimoni')">Testimoni</button>
+        <button class="aam-btn" onclick="aamScrollTo('aam-kontak')">Mulai Berlangganan</button>
       </div>
     </div>
   </nav>
 
-  <!-- HERO (Finpay Layout) -->
-  <section id="aam-home" style="padding:120px 32px; background:var(--bg-white);">
+  <!-- HERO -->
+  <section id="aam-home" style="padding:120px 48px; background:var(--bg-white);">
     <div class="aam-inner" style="display:flex; align-items:center; gap:80px; flex-wrap:wrap;">
-      <div style="flex:1; min-width:320px;" class="aam-hero-content">
-        <div style="color:var(--primary); font-weight:800; font-size:14px; margin-bottom:16px; text-transform:uppercase; letter-spacing:1px;">INTERNET SECEPAT KILAT ⚡</div>
+      <div style="flex:1; min-width:320px;" class="aam-hero-content aam-reveal">
+        <div style="color:var(--primary); font-weight:800; font-size:14px; margin-bottom:16px; text-transform:uppercase; letter-spacing:2px; display:flex; align-items:center; gap:8px;">
+           <i data-lucide="zap" style="width:16px;height:16px;"></i> Internet Secepat Kilat
+        </div>
         <h1 class="aam-h1">Bikin Masa Depan Digital Jadi Nyata.</h1>
-        <p class="aam-muted" style="margin-bottom:40px; max-width:500px;">Di ARMEDIA, kita bukan cuma ISP biasa. Kita hadir buat mastiin kamu selalu terkoneksi tanpa batas dengan internet yang stabil dan kencang.</p>
-        <div style="display:flex; gap:12px; margin-bottom:48px;" class="aam-hero-input-group">
-          <input type="email" placeholder="Email Anda" style="padding:16px 24px; border:1px solid #e2e8f0; border-radius:8px; width:280px; outline:none; font-family:inherit;">
-          <button class="aam-btn" style="justify-content: center;">Daftar Sekarang <span style="font-size:18px;">→</span></button>
+        <p class="aam-muted" style="margin-bottom:40px; max-width:540px;">Di ARMEDIA, kami bukan sekadar penyedia internet. Kami adalah mitra yang memastikan bisnis Anda tetap terkoneksi tanpa batas dengan performa stabil.</p>
+        <div style="display:flex; gap:16px; margin-bottom:56px;" class="aam-hero-input-group">
+          <input type="email" placeholder="Masukkan Email Anda" style="padding:18px 24px; border:1.5px solid #e2e8f0; border-radius:12px; width:300px; outline:none; font-family:inherit; transition:0.3s; font-size:16px;">
+          <button class="aam-btn" style="justify-content: center;">Coba Gratis <i data-lucide="arrow-right"></i></button>
         </div>
-        <div style="display:flex; gap:40px; align-items:center; opacity:0.6; filter:grayscale(1);" class="aam-hero-logos">
-          <span style="font-weight:900; font-size:14px;">TELEKOMUNIKASI</span>
-          <span style="font-weight:900; font-size:14px;">PERBANKAN</span>
-          <span style="font-weight:900; font-size:14px;">MARITIM</span>
+        <div style="display:flex; gap:48px; align-items:center; opacity:0.4; filter:grayscale(1);" class="aam-hero-logos">
+          <div style="display:flex; align-items:center; gap:8px;"><i data-lucide="smartphone"></i> <span style="font-weight:900; font-size:13px;">TELEKOMUNIKASI</span></div>
+          <div style="display:flex; align-items:center; gap:8px;"><i data-lucide="landmark"></i> <span style="font-weight:900; font-size:13px;">PERBANKAN</span></div>
+          <div style="display:flex; align-items:center; gap:8px;"><i data-lucide="ship"></i> <span style="font-weight:900; font-size:13px;">MARITIM</span></div>
         </div>
       </div>
-      <div style="flex:1.2; min-width:320px;" class="aam-hero-img-container">
-        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" alt="ARMEDIA Hero" class="aam-float" style="width:100%; height:auto; border-radius:24px; box-shadow: 0 40px 80px rgba(0,0,0,0.15);">
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT (Finpay Dark Block) -->
-  <section id="aam-tentang" style="padding:120px 32px; background:var(--bg-navy); color:white;">
-    <div class="aam-inner">
-      <div style="display:flex; align-items:flex-start; gap:80px; flex-wrap:wrap;">
-        <div style="flex:1;">
-          <div style="color:var(--primary); font-weight:700; margin-bottom:16px; text-transform:uppercase; letter-spacing:1px; font-size:14px;">Kenalan Dulu Yuk</div>
-          <h2 class="aam-h2" style="color:white; margin-bottom:24px;">Kenalan Dulu Yuk dengan AAM</h2>
-          <p style="opacity:0.8; font-size:18px; line-height:1.8; margin-bottom:24px;">Kami PT Akses Artha Media, tapi boleh panggil AAM aja. Udah jalan sejak 12 Desember 2012 di bidang solution & integration.</p>
-          <p style="opacity:0.6; font-size:16px; line-height:1.8;">Tahun 2017 jadi turning point kami. Mulai serius ngembangkan layanan komunikasi data satelit pakai teknologi VSAT. Karena kami lihat banyak area di Indonesia yang susah dapat internet stabil.</p>
-        </div>
-        <div style="flex:1; display:grid; grid-template-columns:1fr 1fr; gap:32px;">
-          <div>
-            <h4 style="margin-bottom:12px; color:var(--primary);">🎯 Visi</h4>
-            <p style="opacity:0.6; font-size:14px;">Jadi perusahaan terdepan dalam solusi komunikasi bisnis di Indonesia. Beneran jadi partner yang ngerti kebutuhan Anda.</p>
-          </div>
-          <div>
-            <h4 style="margin-bottom:12px; color:var(--primary);">⚡ Misi</h4>
-            <p style="opacity:0.6; font-size:14px;">Menciptakan produk efisien, handal, dan inovatif serta membangun tim profesional yang terus belajar.</p>
-          </div>
-        </div>
+      <div style="flex:1.2; min-width:320px;" class="aam-hero-img-container aam-reveal" style="transition-delay:0.2s">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="ARMEDIA Technology" class="aam-float" style="width:100%; height:auto; border-radius:32px; box-shadow: 0 50px 100px rgba(42,142,158,0.2);">
       </div>
     </div>
   </section>
 
-  <!-- ADVANTAGES (Finpay Why Prefer) -->
+  <!-- ABOUT DARK BLOCK -->
+  <section id="aam-tentang" style="padding:140px 48px; background:var(--bg-navy); color:white; position:relative; overflow:hidden;">
+    <!-- Decorative Elements -->
+    <div style="position:absolute; top:0; right:0; width:60%; height:100%; background:radial-gradient(circle at 70% 30%, rgba(42,142,158,0.2) 0%, transparent 70%);"></div>
+    <div style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0.05; background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+    
+    <div class="aam-inner" style="position:relative; z-index:2;">
+      <div style="display:flex; align-items:flex-start; gap:100px; flex-wrap:wrap;">
+        <div style="flex:1.2;" class="aam-reveal">
+          <div style="color:var(--primary); font-weight:700; margin-bottom:20px; text-transform:uppercase; letter-spacing:2px; font-size:14px; display:flex; align-items:center; gap:10px;">
+            <span style="width:30px;height:2px;background:var(--primary);"></span> Kenalan Dulu Yuk
+          </div>
+          <h2 class="aam-h2" style="color:white; margin-bottom:32px;">Konektivitas Tanpa Batas dari Sabang sampai Merauke.</h2>
+          <p style="opacity:0.8; font-size:20px; line-height:1.8; margin-bottom:32px; font-weight:300;">Kami <span style="color:var(--primary); font-weight:700;">PT Akses Artha Media (AAM)</span>, beroperasi sejak <span style="border-bottom:1px solid var(--primary);">12 Desember 2012</span> sebagai garda terdepan solusi integrasi data di Indonesia.</p>
+          <p style="opacity:0.6; font-size:16px; line-height:1.9;">Tahun <span style="color:white; font-weight:700;">2017</span> menjadi titik balik kami untuk menghadirkan VSAT, menjangkau area tersulit di Indonesia yang tidak terjangkau kabel fisik.</p>
+        </div>
+        <div style="flex:1; display:grid; grid-template-columns:1fr; gap:40px;" class="aam-reveal" style="transition-delay:0.3s">
+          <div class="aam-card" style="padding:48px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-top:4px solid var(--primary);">
+            <div style="color:var(--primary); margin-bottom:24px;"><i data-lucide="target" style="width:48px;height:48px;"></i></div>
+            <h4 style="margin-bottom:16px; color:white; font-size:24px; font-weight:800;">Visi Kami</h4>
+            <p style="opacity:0.6; font-size:15px; line-height:1.7;">Menjadi pemimpin terdepan dalam solusi komunikasi bisnis di Indonesia, bertindak sebagai partner strategis yang memahami setiap dinamika bisnis Anda.</p>
+          </div>
+          <div class="aam-card" style="padding:48px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-top:4px solid white;">
+            <div style="color:white; margin-bottom:24px;"><i data-lucide="award" style="width:48px;height:48px;"></i></div>
+            <h4 style="margin-bottom:16px; color:white; font-size:24px; font-weight:800;">Misi Kami</h4>
+            <p style="opacity:0.6; font-size:15px; line-height:1.7;">Membangun ekosistem teknologi yang inovatif, handal, dan efisien melalui tim profesional yang berdedikasi tinggi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANTAGES -->
   <section class="aam-section" style="background:var(--bg-white); text-align:center;">
     <div class="aam-inner">
-      <div style="color:var(--primary); font-weight:700; margin-bottom:16px; font-size:14px;">KEUNGGULAN</div>
-      <h2 class="aam-h2" style="margin-bottom:64px;">Kenapa ARMEDIA Beda?</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px;">
-        <div class="aam-card" style="padding:40px;">
-          <div style="font-size:40px; margin-bottom:20px;">🚀</div>
-          <h4 style="margin-bottom:12px; font-size:20px;">Kecepatan 1:1</h4>
-          <p class="aam-muted" style="font-size:15px;">Upload & Download simetris. Pas buat streaming, gaming, atau meeting tanpa patah-patah.</p>
+      <div style="color:var(--primary); font-weight:700; margin-bottom:20px; font-size:14px; letter-spacing:2px;" class="aam-reveal">MENGAPA KAMI?</div>
+      <h2 class="aam-h2" style="margin-bottom:80px;" class="aam-reveal">Standard Performa Kelas Dunia</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:40px;">
+        <div class="aam-card aam-reveal" style="padding:56px; transition-delay:0.1s">
+          <div style="color:var(--primary); margin-bottom:28px;"><i data-lucide="refresh-cw" style="width:44px;height:44px;"></i></div>
+          <h4 style="margin-bottom:16px; font-size:22px; font-weight:800;">Simetris 1:1</h4>
+          <p class="aam-muted" style="font-size:16px;">Keseimbangan upload dan download tanpa gangguan. Ideal untuk operasi bisnis skala besar.</p>
         </div>
-        <div class="aam-card" style="padding:40px;">
-          <div style="font-size:40px; margin-bottom:20px;">♾️</div>
-          <h4 style="margin-bottom:12px; font-size:20px;">Unlimited Tanpa FUP</h4>
-          <p class="aam-muted" style="font-size:15px;">Gak ada drama kuota habis atau kecepatan turun. Internetan sepuasnya kapan saja!</p>
+        <div class="aam-card aam-reveal" style="padding:56px; transition-delay:0.2s">
+          <div style="color:var(--primary); margin-bottom:28px;"><i data-lucide="infinity" style="width:44px;height:44px;"></i></div>
+          <h4 style="margin-bottom:16px; font-size:22px; font-weight:800;">Unlimited Tanpa FUP</h4>
+          <p class="aam-muted" style="font-size:16px;">Bebas kuota tanpa penurunan kecepatan. Produktivitas tanpa batas setiap hari.</p>
         </div>
-        <div class="aam-card" style="padding:40px;">
-          <div style="font-size:40px; margin-bottom:20px;">📡</div>
-          <h4 style="margin-bottom:12px; font-size:20px;">Stabil Banyak Perangkat</h4>
-          <p class="aam-muted" style="font-size:15px;">Tetap stabil walau dipakai banyak HP, laptop, dan smart TV sekaligus di rumah.</p>
+        <div class="aam-card aam-reveal" style="padding:56px; transition-delay:0.3s">
+          <div style="color:var(--primary); margin-bottom:28px;"><i data-lucide="shield-check" style="width:44px;height:44px;"></i></div>
+          <h4 style="margin-bottom:16px; font-size:22px; font-weight:800;">Stabilitas Tinggi</h4>
+          <p class="aam-muted" style="font-size:16px;">Performa jaringan yang konsisten meskipun digunakan oleh banyak perangkat secara simultan.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STATS & CLIENTS (Finpay Innovative Block) -->
-  <section class="aam-section" style="background:var(--bg-light); text-align:center;">
+  <!-- STATS -->
+  <section class="aam-section" style="background:var(--bg-subtle); text-align:center;">
     <div class="aam-inner">
-      <h2 class="aam-h2" style="margin-bottom:80px;">Telah membantu ratusan perusahaan</h2>
-      <div style="display:flex; justify-content:center; gap:80px; flex-wrap:wrap; margin-bottom:80px;">
-        <div><div class="aam-stat-num" id="s1">0+</div><div class="aam-muted">Klien Aktif</div></div>
-        <div><div class="aam-stat-num" id="s2">0 Thn</div><div class="aam-muted">Pengalaman</div></div>
-        <div><div class="aam-stat-num" id="s3">0%</div><div class="aam-muted">SLA Guarantee</div></div>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:24px;">
-        <div class="aam-card" style="padding:24px; background:white;">Telekomunikasi</div>
-        <div class="aam-card" style="padding:24px; background:white;">Perbankan</div>
-        <div class="aam-card" style="padding:24px; background:white;">Maritim</div>
-        <div class="aam-card" style="padding:24px; background:white;">Pemerintahan</div>
+      <h2 class="aam-h2 aam-reveal" style="margin-bottom:100px;">Dipercaya oleh Industri Terkemuka</h2>
+      <div style="display:flex; justify-content:center; gap:100px; flex-wrap:wrap;" class="aam-reveal">
+        <div><div class="aam-stat-num" id="s1">0+</div><div class="aam-muted" style="font-weight:600;">Klien Korporat</div></div>
+        <div><div class="aam-stat-num" id="s2">0 Thn</div><div class="aam-muted" style="font-weight:600;">Dedikasi Layanan</div></div>
+        <div><div class="aam-stat-num" id="s3">0%</div><div class="aam-muted" style="font-weight:600;">SLA Guaranteed</div></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA (Finpay Ready Block) -->
-  <section class="aam-section">
+  <!-- CTA -->
+  <section class="aam-section" style="background:var(--bg-navy); padding-bottom:0;">
     <div class="aam-inner">
-      <div style="background:var(--bg-navy); border-radius:24px; padding:80px; display:flex; align-items:center; gap:64px; flex-wrap:wrap; color:white;">
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:32px; padding:100px 80px; display:flex; align-items:center; gap:80px; flex-wrap:wrap; color:white; overflow:hidden; position:relative;" class="aam-reveal">
+        <div style="position:absolute; bottom:-10%; left:-5%; width:40%; height:40%; background:radial-gradient(circle, rgba(42,142,158,0.2) 0%, transparent 70%);"></div>
         <div style="flex:1;">
-          <h2 class="aam-h2" style="color:white; margin-bottom:20px;">Siap tingkatkan koneksi bisnis Anda?</h2>
-          <p style="opacity:0.7; margin-bottom:32px;">Hubungi tim ARMEDIA hari ini untuk konsultasi solusi internet satelit atau fiber yang paling pas buat Anda.</p>
-          <div style="display:flex; gap:16px;">
-            <button class="aam-btn">Daftar Sekarang</button>
-            <button style="background:transparent; border:1px solid white; color:white; padding:14px 32px; border-radius:8px; cursor:pointer; font-family:inherit; font-weight:700;">Hubungi Kami</button>
+          <h2 class="aam-h2" style="color:white; margin-bottom:24px;">Siap bertransformasi ke digital?</h2>
+          <p style="opacity:0.7; margin-bottom:48px; font-size:20px; font-weight:300;">Dapatkan konsultasi gratis mengenai infrastruktur jaringan yang paling efisien untuk kebutuhan spesifik bisnis Anda.</p>
+          <div style="display:flex; gap:20px;">
+            <button class="aam-btn">Hubungi Kami <i data-lucide="phone"></i></button>
+            <button style="background:transparent; border:1.5px solid white; color:white; padding:16px 36px; border-radius:12px; cursor:pointer; font-family:inherit; font-weight:700; transition:0.3s;" onmouseover="this.style.background='white'; this.style.color='var(--bg-navy)'" onmouseout="this.style.background='transparent'; this.style.color='white'">Konsultasi Gratis</button>
           </div>
         </div>
-        <div style="flex:1; text-align:right;">
-          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=600" style="width:100%; border-radius:16px;">
+        <div style="flex:0.8; text-align:right;" class="aam-float">
+          <img src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?q=80&w=1200&auto=format&fit=crop" style="width:100%; border-radius:24px; box-shadow:0 40px 80px rgba(0,0,0,0.4);">
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer style="padding:80px 32px 40px; border-top:1px solid var(--border);">
+  <footer style="padding:80px 48px 48px; border-top:1px solid rgba(255,255,255,0.05); background:var(--bg-navy); color:white;">
     <div class="aam-inner">
-      <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:64px; margin-bottom:64px;">
-        <div>
-          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:40px; margin-bottom:20px;">
-          <p class="aam-muted" style="font-size:14px;">PT Akses Artha Media (armedia.id)<br>Solusi komunikasi satelit terpercaya sejak 2012.</p>
-        </div>
-        <div>
-          <h4 style="font-size:14px; margin-bottom:20px; color:var(--text-dark);">Solusi</h4>
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <a href="#" class="aam-navlink" style="font-size:14px;">VSAT Satelit</a>
-            <a href="#" class="aam-navlink" style="font-size:14px;">Fiber Optik</a>
-            <a href="#" class="aam-navlink" style="font-size:14px;">Managed Services</a>
+      <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:80px; margin-bottom:80px;" class="aam-footer-grid">
+        <div class="aam-reveal">
+          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:48px; margin-bottom:28px; filter: brightness(0) invert(1);">
+          <p style="font-size:15px; max-width:300px; opacity:0.6; line-height:1.7;">Solusi infrastruktur jaringan dan komunikasi satelit terpercaya di Indonesia sejak 2012.</p>
+          <div style="display:flex; gap:20px; color:white; margin-top:32px;">
+            <i data-lucide="linkedin" style="cursor:pointer; transition:0.3s; opacity:0.5;" onmouseover="this.style.opacity='1'; this.style.color='var(--primary)'" onmouseout="this.style.opacity='0.5'; this.style.color='white'"></i>
+            <i data-lucide="instagram" style="cursor:pointer; transition:0.3s; opacity:0.5;" onmouseover="this.style.opacity='1'; this.style.color='var(--primary)'" onmouseout="this.style.opacity='0.5'; this.style.color='white'"></i>
+            <i data-lucide="facebook" style="cursor:pointer; transition:0.3s; opacity:0.5;" onmouseover="this.style.opacity='1'; this.style.color='var(--primary)'" onmouseout="this.style.opacity='0.5'; this.style.color='white'"></i>
           </div>
         </div>
-        <div>
-          <h4 style="font-size:14px; margin-bottom:20px; color:var(--text-dark);">Perusahaan</h4>
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <a href="#" class="aam-navlink" style="font-size:14px;">Tentang Kami</a>
-            <a href="#" class="aam-navlink" style="font-size:14px;">Kontak</a>
+        <div class="aam-reveal" style="transition-delay:0.1s">
+          <h4 style="font-size:15px; margin-bottom:28px; color:white; text-transform:uppercase; letter-spacing:2px; font-weight:800;">Layanan</h4>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <a href="#" class="aam-navlink" style="font-size:14px; padding:0; color:white; opacity:0.5;">VSAT Satellite</a>
+            <a href="#" class="aam-navlink" style="font-size:14px; padding:0; color:white; opacity:0.5;">Fiber Dedicated</a>
+            <a href="#" class="aam-navlink" style="font-size:14px; padding:0; color:white; opacity:0.5;">Cloud Solution</a>
           </div>
         </div>
-        <div>
-          <h4 style="font-size:14px; margin-bottom:20px; color:var(--text-dark);">Bantuan</h4>
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <a href="#" class="aam-navlink" style="font-size:14px;">care@aksesartamedia.id</a>
-            <a href="#" class="aam-navlink" style="font-size:14px;">SLA 99.9%</a>
+        <div class="aam-reveal" style="transition-delay:0.2s">
+          <h4 style="font-size:15px; margin-bottom:28px; color:white; text-transform:uppercase; letter-spacing:2px; font-weight:800;">Hubungi Kami</h4>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <a href="mailto:care@aksesartamedia.id" class="aam-navlink" style="font-size:14px; padding:0; color:white; opacity:0.5;">care@aksesartamedia.id</a>
+            <p style="font-size:14px; opacity:0.5;">(021) 22472319</p>
+          </div>
+        </div>
+        <div class="aam-reveal" style="transition-delay:0.3s">
+          <h4 style="font-size:15px; margin-bottom:28px; color:white; text-transform:uppercase; letter-spacing:2px; font-weight:800;">Bantuan</h4>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <a href="#" class="aam-navlink" style="font-size:14px; padding:0; color:white; opacity:0.5;">Pusat Bantuan</a>
+            <a href="#" class="aam-navlink" style="font-size:14px; padding:0; color:white; opacity:0.5;">Syarat & Ketentuan</a>
           </div>
         </div>
       </div>
-      <div style="border-top:1px solid var(--border); padding-top:32px; text-align:center;">
-        <p style="font-size:14px; color:var(--text-muted);">© <span id="current-year"></span> PT Akses Artha Media (armedia.id). All Rights Reserved.</p>
+      <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:48px; text-align:center;">
+        <p style="font-size:14px; opacity:0.4;">© <span id="current-year"></span> PT Akses Artha Media (armedia.id). All Rights Reserved.</p>
       </div>
     </div>
   </footer>
@@ -247,6 +271,9 @@
 </div>
 
 <script>
+// Initialize Lucide Icons
+lucide.createIcons();
+
 function toggleMenu() {
   const links = document.getElementById('navLinks');
   links.classList.toggle('active');
@@ -257,7 +284,7 @@ function aamScrollTo(id) {
   links.classList.remove('active');
   const el = document.getElementById(id);
   if (el) {
-    const offset = 80;
+    const offset = 90;
     const bodyRect = document.body.getBoundingClientRect().top;
     const elementRect = el.getBoundingClientRect().top;
     const elementPosition = elementRect - bodyRect;
@@ -266,29 +293,35 @@ function aamScrollTo(id) {
   }
 }
 
-// Count-up
-const obs = new IntersectionObserver((entries) => {
+// Reveal Animation Logic
+const revealCallback = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const targets = [[100, '+', 's1'], [12, ' Thn', 's2'], [99.9, '%', 's3']];
-      targets.forEach(([target, suffix, id]) => {
-        const el = document.getElementById(id);
-        let start = 0;
-        const duration = 2000;
-        const stepTime = 30;
-        const totalSteps = duration / stepTime;
-        const inc = target / totalSteps;
-        const timer = setInterval(() => {
-          start += inc;
-          if (start >= target) { el.textContent = target + suffix; clearInterval(timer); }
-          else { el.textContent = (target % 1 === 0 ? Math.floor(start) : start.toFixed(1)) + suffix; }
-        }, stepTime);
-      });
-      obs.unobserve(entry.target);
+      entry.target.classList.add('active');
+      
+      // Count-up logic specifically for stats section
+      if (entry.target.contains(document.getElementById('s1'))) {
+        const stats = [[100, '+', 's1'], [12, ' Thn', 's2'], [99.9, '%', 's3']];
+        stats.forEach(([target, suffix, id]) => {
+          const el = document.getElementById(id);
+          let start = 0;
+          const duration = 2000;
+          const stepTime = 30;
+          const totalSteps = duration / stepTime;
+          const inc = target / totalSteps;
+          const timer = setInterval(() => {
+            start += inc;
+            if (start >= target) { el.textContent = target + suffix; clearInterval(timer); }
+            else { el.textContent = (target % 1 === 0 ? Math.floor(start) : start.toFixed(1)) + suffix; }
+          }, stepTime);
+        });
+      }
     }
   });
-}, { threshold: 0.5 });
-obs.observe(document.getElementById('s1').parentElement.parentElement);
+};
+
+const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.05 });
+document.querySelectorAll('.aam-reveal').forEach(el => revealObserver.observe(el));
 
 document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
