@@ -1,286 +1,863 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT Akses Artha Media | Jembatan Digital Masa Depan</title>
-    
-    <!-- SEO -->
-    <meta name="description" content="ISP terbaik dengan konektivitas Fiber Optic dan VSAT untuk solusi bisnis dan rumah tangga di Indonesia.">
-    <link rel="icon" type="image/png" href="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513">
-    
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
-      
-      :root {
-        --primary: #F47920;
-        --primary-dark: #d6610f;
-        --bg-navy: #180D39;
-        --bg-subtle: #FDF7F2;
-        --text-dark: #180D39;
-        --text-muted: #5a6b72;
-        --border: rgba(24, 13, 57, 0.08);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PT Akses Artha Media | Jembatan Digital Masa Depan</title>
+
+  <!-- SEO -->
+  <meta name="description"
+    content="ISP terbaik dengan konektivitas Fiber Optic dan VSAT untuk solusi bisnis dan rumah tangga di Indonesia.">
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+    :root {
+      --primary: #F47920;
+      --primary-dark: #d6610f;
+      --bg-navy: #180D39;
+      --bg-subtle: #FDF7F2;
+      --text-dark: #180D39;
+      --text-muted: #5a6b72;
+      --border: rgba(24, 13, 57, 0.08);
+    }
+
+    #aam-root {
+      font-family: 'Outfit', sans-serif;
+      background: #ffffff;
+      color: var(--text-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    #aam-root * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .aam-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: 0.4s;
+    }
+
+    .aam-nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .aam-navlink {
+      color: var(--text-dark);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.7;
+      transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+      position: relative;
+    }
+
+    .aam-navlink::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .aam-navlink:hover {
+      color: var(--primary);
+      opacity: 1;
+      text-shadow: 0 0 15px rgba(244, 121, 32, 0.3);
+    }
+
+    .aam-navlink:hover::after {
+      width: 100%;
+    }
+
+    .aam-navlink.active {
+      color: var(--primary);
+      opacity: 1;
+    }
+
+    .aam-navlink.active::after {
+      width: 100%;
+    }
+
+    .aam-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.4s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .aam-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(244, 121, 32, 0.3);
+    }
+
+    .aam-section {
+      padding: 120px 48px;
+    }
+
+    .aam-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .aam-h2 {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 40px;
+    }
+
+    /* Premium Share Section */
+    .aam-share-box {
+      background: linear-gradient(135deg, #1e114a 0%, #180D39 100%);
+      border-radius: 40px;
+      padding: 80px 40px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 40px 100px rgba(24, 13, 57, 0.2);
+    }
+
+    .aam-share-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(244, 121, 32, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .share-grid {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    .share-item {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      text-decoration: none;
+      transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .share-item i {
+      width: 32px;
+      height: 32px;
+    }
+
+    .share-item:hover {
+      transform: translateY(-12px);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Brand Colors on Hover */
+    .share-wa:hover {
+      background: #25D366;
+      box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+    }
+
+    .share-fb:hover {
+      background: #1877F2;
+      box-shadow: 0 15px 30px rgba(24, 119, 242, 0.3);
+    }
+
+    .share-li:hover {
+      background: #0077B5;
+      box-shadow: 0 15px 30px rgba(0, 119, 181, 0.3);
+    }
+
+    .share-x:hover {
+      background: #000000;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .share-copy:hover {
+      background: var(--primary);
+      box-shadow: 0 15px 30px rgba(244, 121, 32, 0.3);
+    }
+
+    /* Centered Toast Notification */
+    #aam-toast {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: rgba(24, 13, 57, 0.95);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 20px 40px;
+      border-radius: 20px;
+      z-index: 9999;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-navy);
+      z-index: 2000;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      transition: 0.5s;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu a {
+      color: white;
+      font-size: 32px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1280px) {
+      .aam-nav-inner {
+        padding: 0 24px;
       }
 
-      #aam-root { font-family: 'Outfit', sans-serif; background: #ffffff; color: var(--text-dark); min-height: 100vh; overflow-x: hidden; }
-      #aam-root * { box-sizing: border-box; margin: 0; padding: 0; }
-      
-      .aam-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: 0.4s; }
-      .aam-nav-inner { max-width: 1400px; margin: 0 auto; height: 100px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; }
-      
-      .aam-navlink { color: var(--text-dark); font-size: 14px; font-weight: 800; text-decoration: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; }
-      .aam-navlink:hover { color: var(--primary); opacity: 1; }
-      
-      .aam-btn { background: var(--primary); color: white; border: none; padding: 16px 32px; border-radius: 14px; font-weight: 800; cursor: pointer; transition: 0.4s; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
-      .aam-btn:hover { background: var(--primary-dark); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(244,121,32,0.3); }
-      
-      .aam-section { padding: 120px 48px; }
-      .aam-inner { max-width: 1300px; margin: 0 auto; }
-      .aam-h2 { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 40px; }
+      .aam-navlink {
+        font-size: 12px;
+      }
+    }
 
-      /* Premium Share Section */
-      .aam-share-box { 
-        background: linear-gradient(135deg, #1e114a 0%, #180D39 100%);
-        border-radius: 40px;
-        padding: 80px 40px;
+    @media (max-width: 1024px) {
+      .aam-nav-inner {
+        height: 70px;
+        padding: 0 15px;
+      }
+
+      .aam-navlinks {
+        display: none;
+      }
+
+      .aam-menu-toggle {
+        display: block !important;
+      }
+
+      .aam-mobile-cta {
+        display: flex !important;
+      }
+
+      .aam-section {
+        padding: 80px 24px;
+      }
+
+      .aam-h2 {
+        font-size: 38px;
         text-align: center;
-        color: white;
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 40px 100px rgba(24, 13, 57, 0.2);
-      }
-      .aam-share-box::before {
-        content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-        background: radial-gradient(circle, rgba(244,121,32,0.1) 0%, transparent 60%);
-        pointer-events: none;
-      }
-      
-      .share-grid { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 48px; }
-      .share-item {
-        width: 72px; height: 72px; border-radius: 22px;
-        display: flex; align-items: center; justify-content: center;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        color: white; text-decoration: none; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        position: relative;
-      }
-      .share-item i { width: 32px; height: 32px; }
-      .share-item:hover { transform: translateY(-12px); color: white; border-color: rgba(255,255,255,0.3); }
-      
-      /* Brand Colors on Hover */
-      .share-wa:hover { background: #25D366; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3); }
-      .share-fb:hover { background: #1877F2; box-shadow: 0 15px 30px rgba(24, 119, 242, 0.3); }
-      .share-li:hover { background: #0077B5; box-shadow: 0 15px 30px rgba(0, 119, 181, 0.3); }
-      .share-x:hover { background: #000000; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); }
-      .share-copy:hover { background: var(--primary); box-shadow: 0 15px 30px rgba(244, 121, 32, 0.3); }
-
-      /* Centered Toast Notification */
-      #aam-toast {
-        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
-        background: rgba(24, 13, 57, 0.95);
-        backdrop-filter: blur(10px);
-        color: white; padding: 20px 40px; border-radius: 20px;
-        z-index: 9999; font-weight: 700; font-size: 18px;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-        opacity: 0; pointer-events: none; visibility: hidden;
-        display: flex; align-items: center; gap: 12px;
-        border: 1px solid rgba(255,255,255,0.1);
       }
 
-      .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: var(--bg-navy); z-index: 2000; padding: 40px; display: flex; flex-direction: column; gap: 30px; transition: 0.5s; }
-      .mobile-menu.active { right: 0; }
-      .mobile-menu a { color: white; font-size: 32px; font-weight: 800; text-decoration: none; }
-
-      @media (max-width: 1024px) {
-        .aam-nav-inner { height: 80px; padding: 0 24px; }
-        .aam-navlinks { display: none; }
-        .aam-menu-toggle { display: block !important; }
-        .aam-section { padding: 80px 24px; }
-        .aam-h2 { font-size: 38px; text-align: center; }
-        .aam-share-box { padding: 60px 24px; border-radius: 30px; }
+      /* Hero Mobile Stack */
+      #aam-home .aam-inner {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 40px !important;
       }
 
-      .gsap-reveal { opacity: 0; transform: translateY(30px); }
-    </style>
+      #aam-home h1 {
+        font-size: clamp(32px, 8vw, 48px) !important;
+        line-height: 1.2 !important;
+      }
+
+      #aam-home p {
+        font-size: 18px !important;
+      }
+
+      /* Flashy Card Responsive */
+      .aam-promo-card-flashy {
+        padding: 30px 15px !important;
+      }
+
+      .aam-promo-card-flashy h2 {
+        font-size: 42px !important;
+      }
+
+      .aam-promo-card-flashy .price-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+      }
+
+      .aam-promo-card-flashy .price-box span {
+        font-size: clamp(48px, 15vw, 72px) !important;
+      }
+
+      .aam-promo-card-flashy h3 {
+        font-size: 42px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .aam-section {
+        padding: 40px 15px;
+      }
+
+      .aam-promo-card-flashy h2 {
+        font-size: 36px !important;
+      }
+
+      .aam-promo-card-flashy .price-box span {
+        font-size: 52px !important;
+      }
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .gsap-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* Promo Card Styling */
+    .aam-promo-card {
+      background: #ffffff;
+      border-radius: 40px;
+      padding: 80px 40px;
+      text-align: center;
+      border: 2px solid var(--primary);
+      box-shadow: 0 30px 60px rgba(244, 121, 32, 0.1);
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .promo-badge {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: white;
+      padding: 10px 30px;
+      border-radius: 50px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      font-size: 14px;
+    }
+
+    .promo-title {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: var(--bg-navy);
+    }
+
+    .promo-price-box {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .promo-price-box .currency {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .promo-price-box .price {
+      font-size: 84px;
+      font-weight: 900;
+      color: var(--bg-navy);
+      line-height: 1;
+    }
+
+    .promo-price-box .period {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .promo-detail {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+
+    .aam-price-card:hover {
+      transform: translateY(-10px) !important;
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(244, 121, 32, 0.15);
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="aam-root">
+  <div id="aam-root">
 
-  <!-- TOAST NOTIF -->
-  <div id="aam-toast">
-    <i data-lucide="check-circle" style="color:var(--primary);"></i>
-    <span>Tautan Berhasil Disalin!</span>
-  </div>
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button onclick="toggleMenu()" style="align-self:flex-end; background:none; border:none; color:white;"><i data-lucide="x" style="width:48px; height:48px;"></i></button>
-    <a onclick="aamScrollTo('aam-home'); toggleMenu()">HOME</a>
-    <a onclick="aamScrollTo('aam-tentang'); toggleMenu()">TENTANG</a>
-    <a onclick="aamScrollTo('aam-galeri'); toggleMenu()">GALERI</a>
-    <a onclick="aamScrollTo('aam-testimoni'); toggleMenu()">TESTIMONI</a>
-    <a onclick="aamScrollTo('aam-blog'); toggleMenu()">BLOG</a>
-  </div>
-
-  <!-- NAV -->
-  <nav class="aam-nav" id="mainNav">
-    <div class="aam-nav-inner">
-      <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:48px; cursor:pointer;" onclick="aamScrollTo('aam-home')">
-      <div class="aam-navlinks">
-        <a class="aam-navlink" onclick="aamScrollTo('aam-home')">HOME</a>
-        <a class="aam-navlink" onclick="aamScrollTo('aam-tentang')">TENTANG</a>
-        <a class="aam-navlink" onclick="aamScrollTo('aam-galeri')">GALERI</a>
-        <a class="aam-navlink" onclick="aamScrollTo('aam-testimoni')">TESTIMONY</a>
-        <a class="aam-navlink" onclick="aamScrollTo('aam-blog')">BLOG</a>
-        <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn">DAFTAR</a>
-      </div>
-      <button class="aam-menu-toggle" onclick="toggleMenu()" style="display:none; border:none; background:none; cursor:pointer;">
-        <i data-lucide="menu" style="width:32px; height:32px; color:var(--bg-navy);"></i>
-      </button>
+    <!-- TOAST NOTIF -->
+    <div id="aam-toast">
+      <i data-lucide="check-circle" style="color:var(--primary);"></i>
+      <span>Tautan Berhasil Disalin!</span>
     </div>
-  </nav>
 
-  <!-- HERO -->
-  <section id="aam-home" class="aam-section" style="padding-top:180px;">
-    <div class="aam-inner" style="display:flex; align-items:center; gap:60px; flex-wrap:wrap;">
-      <div style="flex:1; min-width:320px;">
-        <h1 class="gsap-reveal" style="font-size:64px; font-weight:900; letter-spacing:-2px; line-height:1.1; margin-bottom:30px;">Konektivitas Tanpa Batas Masa Depan</h1>
-        <p class="gsap-reveal" style="font-size:20px; color:var(--text-muted); margin-bottom:40px;">Solusi internet Fiber Optic dan VSAT terbaik untuk mengakselerasi digitalisasi bisnis Anda.</p>
-        <div class="gsap-reveal">
-           <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn" style="padding:20px 48px;">HUBUNGKAN SEKARANG</a>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button onclick="toggleMenu()" style="align-self:flex-end; background:none; border:none; color:white;"><i
+          data-lucide="x" style="width:48px; height:48px;"></i></button>
+      <a href="/pages/berlangganan.html" style="color:var(--primary); font-weight:900;">BERLANGGANAN</a>
+      <a href="/index.html">HOME</a>
+      <a href="/index.html#aam-tentang" onclick="toggleMenu()">TENTANG</a>
+      <a href="/index.html#aam-galeri" onclick="toggleMenu()">GALERI</a>
+      <a href="/index.html#aam-testimoni" onclick="toggleMenu()">TESTIMONI</a>
+      <a href="/index.html#aam-blog" onclick="toggleMenu()">BLOG</a>
+    </div>
+
+    <!-- NAV -->
+    <nav class="aam-nav" id="mainNav">
+      <div class="aam-nav-inner">
+        <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513"
+          style="height:36px; cursor:pointer;" onclick="aamScrollTo('aam-home')">
+        <a href="/pages/berlangganan.html" class="aam-mobile-cta" style="display:none; background:var(--primary); color:white; padding:10px 14px; border-radius:12px; font-weight:900; font-size:11px; text-decoration:none; text-transform:uppercase; letter-spacing:1px; box-shadow:0 10px 20px rgba(244,121,32,0.25); border: 1px solid rgba(255,255,255,0.3);">PAKET INTERNET</a>
+        <div class="aam-navlinks">
+          <a class="aam-navlink" href="/pages/berlangganan.html" style="color:var(--primary);">BERLANGGANAN</a>
+          <a class="aam-navlink" href="/index.html">HOME</a>
+          <a class="aam-navlink" href="/index.html#aam-tentang">TENTANG</a>
+          <a class="aam-navlink" href="/index.html#aam-galeri">GALERI</a>
+          <a class="aam-navlink" href="/index.html#aam-testimoni">TESTIMONI</a>
+          <a class="aam-navlink" href="/index.html#aam-blog">BLOG</a>
+          <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn">DAFTAR</a>
         </div>
+        <button class="aam-menu-toggle" onclick="toggleMenu()"
+          style="display:none; border:none; background:none; cursor:pointer;">
+          <i data-lucide="menu" style="width:32px; height:32px; color:var(--bg-navy);"></i>
+        </button>
       </div>
-      <div style="flex:1; min-width:320px;" class="gsap-reveal">
-        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1000" style="width:100%; border-radius:30px; box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- GALLERY -->
-  <section id="aam-galeri" class="aam-section" style="background:var(--bg-subtle);">
-    <div class="aam-inner">
-      <h2 class="gsap-reveal aam-h2" style="text-align:center;">Infrastruktur Teknologi</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
-        <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800" style="width:100%; height:100%; object-fit:cover;"></div>
-        <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?q=80&w=800" style="width:100%; height:100%; object-fit:cover;"></div>
-        <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800" style="width:100%; height:100%; object-fit:cover;"></div>
-      </div>
-    </div>
-  </section>
+    <!-- HERO -->
+    <section id="aam-home" class="aam-section" style="padding-top:180px;">
+      <div class="aam-inner"
+        style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:60px; align-items:center;">
+        <div style="width:100%;">
+          <h1 class="gsap-reveal"
+            style="font-size:64px; font-weight:900; letter-spacing:-2px; line-height:1.1; margin-bottom:30px;">
+            Konektivitas Tanpa Batas Masa Depan</h1>
+          <p class="gsap-reveal" style="font-size:20px; color:var(--text-muted); margin-bottom:40px;">Solusi internet
+            Fiber Optic dan VSAT terbaik untuk mengakselerasi digitalisasi bisnis Anda.</p>
+          <!-- CLEAN PREMIUM PROMO CARD (GUYUB_1) -->
+          <div class="gsap-reveal" style="margin: 30px 0; background: #fff; border-radius: 40px; padding: 40px; box-shadow: 0 40px 80px rgba(0,0,0,0.05); border: 1px solid var(--border); max-width: 450px; width: 100%;">
+            <div style="text-align: center; margin-bottom: 30px;">
+              <p style="color: var(--primary); font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">CUKUP MBAYAR WULANANE</p>
+              <p style="color: var(--text-muted); font-weight: 800; font-size: 18px; margin-bottom: 10px;">STARTER</p>
+              <div style="font-size: 64px; font-weight: 950; color: var(--bg-navy); display: flex; align-items: baseline; justify-content: center; gap: 10px;">
+                20 <span style="font-size: 24px; font-weight: 900;">Mbps</span>
+              </div>
+              <p style="color: var(--primary); font-weight: 900; font-size: 14px; margin-top: 5px;">Bayar 115.000 Langsung ON / 20 Mbps</p>
+            </div>
 
-  <!-- SHARE SECTION REDESIGNED -->
-  <section id="aam-share" class="aam-section">
-    <div class="aam-inner">
-      <div class="aam-share-box gsap-reveal">
-        <div style="max-width:700px; margin: 0 auto;">
-          <h2 style="font-size:42px; font-weight:900; margin-bottom:20px; line-height:1.2;">Bantu Teman Anda Terhubung!</h2>
-          <p style="font-size:18px; opacity:0.8; line-height:1.6;">Bagikan solusi internet terbaik ini agar rekan dan keluarga Anda juga bisa merasakan konektivitas tanpa batas dari ARMEDIA.</p>
-          
-          <div class="share-grid">
-            <a href="https://api.whatsapp.com/send?text=Ayo%20cek%20layanan%20internet%20terbaik%20dari%20ARMEDIA%20di%20https://armedia.id/" target="_blank" class="share-item share-wa magnetic-btn" title="Kirim via WhatsApp">
-              <i data-lucide="message-circle"></i>
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://armedia.id/" target="_blank" class="share-item share-fb magnetic-btn" title="Bagikan ke Facebook">
-              <i data-lucide="facebook"></i>
-            </a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://armedia.id/" target="_blank" class="share-item share-li magnetic-btn" title="Bagikan ke LinkedIn">
-              <i data-lucide="linkedin"></i>
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://armedia.id/" target="_blank" class="share-item share-x magnetic-btn" title="Bagikan ke X">
-              <i data-lucide="twitter"></i>
-            </a>
-            <button onclick="copyToClipboard()" class="share-item share-copy magnetic-btn" title="Salin Tautan">
-              <i data-lucide="link"></i>
-            </button>
+            <ul style="list-style: none; padding: 0; margin: 0 0 40px 0; display: flex; flex-direction: column; gap: 15px;">
+              <li style="display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 600; color: var(--text-muted);">
+                <i data-lucide="check-circle" style="color: var(--primary); width: 24px; height: 24px;"></i> Upto 20 Mbps
+              </li>
+              <li style="display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 600; color: var(--text-muted);">
+                <i data-lucide="check-circle" style="color: var(--primary); width: 24px; height: 24px;"></i> Download/Upload
+              </li>
+              <li style="display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 600; color: var(--text-muted);">
+                <i data-lucide="check-circle" style="color: var(--primary); width: 24px; height: 24px;"></i> Unlimited
+              </li>
+              <li style="display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 600; color: var(--text-muted);">
+                <i data-lucide="check-circle" style="color: var(--primary); width: 24px; height: 24px;"></i> DUAL BAND 2,4G & 5G
+              </li>
+            </ul>
+
+            <div style="text-align: center; padding-top: 30px; border-top: 1px solid var(--border); margin-bottom: 30px;">
+              <p style="font-size: 18px; font-weight: 800; color: var(--bg-navy); margin-bottom: 5px;">Hanya</p>
+              <div style="display: flex; align-items: baseline; justify-content: center;">
+                 <span style="font-size: 56px; font-weight: 950; color: var(--primary); line-height: 1;">115.000</span>
+                 <span style="font-size: 18px; font-weight: 800; color: var(--text-muted); margin-left: 5px;">/bln</span>
+              </div>
+            </div>
+
+            <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn" style="width: 100%; justify-content: center; padding: 20px; font-size: 20px;">BERLANGGANAN SEKARANG</a>
+          </div>
+        </div>
+        <div style="flex:1; min-width:300px;" class="gsap-reveal">
+          <div style="position:relative; border-radius:40px; overflow:hidden; box-shadow:0 40px 80px rgba(0,0,0,0.1);">
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200"
+              style="width:100%; height:auto; display:block;">
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer id="aam-kontak" style="padding:100px 48px; background:var(--bg-navy); color:white;">
-    <div class="aam-inner">
-      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:60px;">
-        <div style="max-width:400px;">
-          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:60px; margin-bottom:40px; filter: brightness(0) invert(1);">
-          <p style="opacity:0.7; font-size:18px; line-height:1.8;">Menyediakan akses digital seluas mungkin untuk Indonesia yang lebih maju.</p>
+    <!-- ABOUT SECTION -->
+    <section id="aam-tentang" class="aam-section" style="background:#fff;">
+      <div class="aam-inner">
+        <div
+          style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:80px; align-items:center;">
+          <div class="gsap-reveal">
+            <h2 class="aam-h2" style="margin-bottom:20px;">Tentang Kami</h2>
+            <h3 style="font-size:24px; color:var(--primary); font-weight:800; margin-bottom:10px;">PT AKSES ARTHA MEDIA
+              (ARMEDIA)</h3>
+            <p style="font-style:italic; font-size:20px; color:var(--text-dark); font-weight:600; margin-bottom:30px;">
+              "Jembatan Digital Masa Depan"</p>
+            <p style="font-size:18px; line-height:1.8; color:var(--text-muted); margin-bottom:20px;">
+              PT AKSES ARTHA MEDIA atau ARMEDIA adalah perusahaan penyedia layanan internet (ISP) yang berkomitmen untuk
+              menghadirkan konektivitas tanpa batas bagi masyarakat dan pelaku usaha. Kami percaya bahwa akses internet
+              yang stabil dan cepat adalah fondasi utama dalam percepatan digitalisasi di Indonesia.
+            </p>
+            <p style="font-size:18px; line-height:1.8; color:var(--text-muted);">
+              Melalui infrastruktur jaringan yang andal dan inovatif, ARMEDIA hadir sebagai mitra strategis yang
+              berorientasi pada kepuasan pelanggan. Kami menyediakan solusi konektivitas berkecepatan tinggi yang
+              dirancang untuk mendukung berbagai kebutuhan—mulai dari kenyamanan residensial, produktivitas perkantoran,
+              hingga efisiensi operasional UMKM.
+            </p>
+          </div>
+          <div class="gsap-reveal" style="position:relative;">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1000"
+              style="width:100%; border-radius:40px; box-shadow:0 30px 60px rgba(0,0,0,0.1);">
+            <div
+              style="position:absolute; bottom:-30px; right:-30px; background:var(--primary); color:white; padding:40px; border-radius:30px; box-shadow:0 20px 40px rgba(244,121,32,0.3);">
+              <p style="font-size:48px; font-weight:900; line-height:1;">100%</p>
+              <p style="font-weight:700; opacity:0.8;">Local Support</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <h4 style="margin-bottom:30px; color:var(--primary); font-weight:900; letter-spacing:2px; text-transform:uppercase;">Kontak Kami</h4>
-          <p style="font-size:20px; font-weight:700; margin-bottom:10px;">care@aksesartamedia.id</p>
-          <p style="font-size:20px; font-weight:700;">(021) 22472319</p>
+
+        <div style="margin-top:120px;">
+          <h2 class="gsap-reveal aam-h2" style="text-align:center; font-size:42px; margin-bottom:60px;">Mengapa Bermitra
+            dengan ARMEDIA?</h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px;">
+            <div class="gsap-reveal"
+              style="background:var(--bg-subtle); padding:40px; border-radius:30px; border:1px solid var(--border);">
+              <div
+                style="width:64px; height:64px; background:white; border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+                <i data-lucide="zap" style="color:var(--primary); width:32px; height:32px;"></i>
+              </div>
+              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Koneksi Stabil & Presisi</h4>
+              <p style="color:var(--text-muted); line-height:1.6;">Infrastruktur modern yang menjamin minim hambatan
+                untuk mendukung denyut nadi produktivitas Anda.</p>
+            </div>
+            <div class="gsap-reveal"
+              style="background:var(--bg-subtle); padding:40px; border-radius:30px; border:1px solid var(--border);">
+              <div
+                style="width:64px; height:64px; background:white; border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+                <i data-lucide="layers" style="color:var(--primary); width:32px; height:32px;"></i>
+              </div>
+              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Layanan Terintegrasi</h4>
+              <p style="color:var(--text-muted); line-height:1.6;">Solusi digital yang adaptif dan dirancang khusus
+                untuk kebutuhan personal maupun korporasi.</p>
+            </div>
+            <div class="gsap-reveal"
+              style="background:var(--bg-subtle); padding:40px; border-radius:30px; border:1px solid var(--border);">
+              <div
+                style="width:64px; height:64px; background:white; border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px; box-shadow:0 10px 20px rgba(0,0,0,0.05);">
+                <i data-lucide="shield-check" style="color:var(--primary); width:32px; height:32px;"></i>
+              </div>
+              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Integritas & Dukungan Lokal</h4>
+              <p style="color:var(--text-muted); line-height:1.6;">Komitmen pada transparansi layanan dan kecepatan
+                respon teknis dalam mendampingi transformasi digital Anda.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gsap-reveal"
+          style="margin-top:100px; padding:60px; background:var(--bg-navy); border-radius:40px; color:white; text-align:center;">
+          <p style="font-size:22px; line-height:1.8; opacity:0.9; max-width:900px; margin:0 auto;">
+            Di era informasi yang bergerak cepat, ARMEDIA tidak hanya menawarkan kecepatan, tetapi juga kemudahan akses
+            bagi seluruh lapisan masyarakat untuk terus bertumbuh. Kami hadir untuk memastikan Anda tetap selangkah di
+            depan, menghubungkan setiap potensi menuju masa depan yang lebih cerdas dan terkoneksi.
+          </p>
         </div>
       </div>
-      <div style="margin-top:100px; text-align:center; opacity:0.3; font-size:14px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
-        © 2026 PT AKSES ARTHA MEDIA. Digital Bridge to the Future.
+    </section>
+
+    <!-- GALLERY -->
+    <section id="aam-galeri" class="aam-section" style="background:var(--bg-subtle);">
+      <div class="aam-inner">
+        <h2 class="gsap-reveal aam-h2" style="text-align:center;">Infrastruktur Teknologi</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
+          <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img
+              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800"
+              style="width:100%; height:100%; object-fit:cover;"></div>
+          <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img
+              src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?q=80&w=800"
+              style="width:100%; height:100%; object-fit:cover;"></div>
+          <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img
+              src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800"
+              style="width:100%; height:100%; object-fit:cover;"></div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </section>
 
-</div>
 
-<script>
-lucide.createIcons();
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-// Initial Load Animation
-gsap.to(".gsap-reveal", { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power2.out" });
+    <!-- TESTIMONI -->
+    <section id="aam-testimoni" class="aam-section" style="background:#fff;">
+      <div class="aam-inner">
+        <h2 class="gsap-reveal aam-h2" style="text-align:center;">Apa Kata Mereka?</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:32px;">
+          <div class="gsap-reveal"
+            style="padding:40px; border-radius:30px; background:var(--bg-subtle); border:1px solid var(--border);">
+            <div style="display:flex; gap:4px; color:var(--primary); margin-bottom:20px;">
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+            </div>
+            <p style="font-size:18px; line-height:1.6; font-style:italic; margin-bottom:24px;">"Internet dari ARMEDIA
+              sangat stabil. Sangat membantu operasional kantor kami yang membutuhkan koneksi cepat setiap hari."</p>
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div style="width:50px; height:50px; border-radius:50%; background:#ddd;"></div>
+              <div>
+                <p style="font-weight:800;">Budi Santoso</p>
+                <p style="font-size:14px; color:var(--text-muted);">Manager IT, Jakarta</p>
+              </div>
+            </div>
+          </div>
+          <div class="gsap-reveal"
+            style="padding:40px; border-radius:30px; background:var(--bg-subtle); border:1px solid var(--border);">
+            <div style="display:flex; gap:4px; color:var(--primary); margin-bottom:20px;">
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+              <i data-lucide="star" style="fill:var(--primary); width:20px;"></i>
+            </div>
+            <p style="font-size:18px; line-height:1.6; font-style:italic; margin-bottom:24px;">"Layanan pelanggan
+              ARMEDIA sangat responsif. Jika ada kendala teknis, tim mereka langsung datang menangani."</p>
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div style="width:50px; height:50px; border-radius:50%; background:#ddd;"></div>
+              <div>
+                <p style="font-weight:800;">Siti Aminah</p>
+                <p style="font-size:14px; color:var(--text-muted);">Pemilik Café, Bandung</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-// Scroll Reveal
-document.querySelectorAll('.gsap-reveal').forEach(el => {
-  gsap.to(el, {
-    scrollTrigger: { trigger: el, start: "top 90%" },
-    opacity: 1, y: 0, duration: 1, ease: "power2.out"
-  });
-});
+    <!-- BLOG -->
+    <section id="aam-blog" class="aam-section" style="background:var(--bg-subtle);">
+      <div class="aam-inner">
+        <h2 class="gsap-reveal aam-h2" style="text-align:center;">Wawasan Digital</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:32px;">
+          <div class="gsap-reveal"
+            style="overflow:hidden; border-radius:30px; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+            <div style="height:220px; background:#eee;"><img
+                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800"
+                style="width:100%; height:100%; object-fit:cover;"></div>
+            <div style="padding:32px;">
+              <p style="color:var(--primary); font-weight:800; font-size:14px; margin-bottom:12px;">TEKNOLOGI</p>
+              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Masa Depan 5G di Indonesia</h4>
+              <p style="color:var(--text-muted); line-height:1.6; margin-bottom:24px;">Bagaimana teknologi 5G akan
+                merubah cara kita berinteraksi secara digital di masa depan.</p>
+              <a href="#"
+                style="color:var(--text-dark); font-weight:800; text-decoration:none; display:flex; align-items:center; gap:8px;">Baca
+                Selengkapnya <i data-lucide="arrow-right" style="width:18px;"></i></a>
+            </div>
+          </div>
+          <div class="gsap-reveal"
+            style="overflow:hidden; border-radius:30px; background:#fff; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+            <div style="height:220px; background:#eee;"><img
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800"
+                style="width:100%; height:100%; object-fit:cover;"></div>
+            <div style="padding:32px;">
+              <p style="color:var(--primary); font-weight:800; font-size:14px; margin-bottom:12px;">KEAMANAN</p>
+              <h4 style="font-size:22px; font-weight:800; margin-bottom:16px;">Pentingnya Cybersecurity Bagi UMKM</h4>
+              <p style="color:var(--text-muted); line-height:1.6; margin-bottom:24px;">Tips melindungi data bisnis Anda
+                dari serangan siber yang semakin marak.</p>
+              <a href="#"
+                style="color:var(--text-dark); font-weight:800; text-decoration:none; display:flex; align-items:center; gap:8px;">Baca
+                Selengkapnya <i data-lucide="arrow-right" style="width:18px;"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('active');
-}
+    <!-- FOOTER -->
+    <footer id="aam-kontak" style="padding:100px 48px; background:var(--bg-navy); color:white;">
+      <div class="aam-inner">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:60px;">
+          <div style="max-width:400px;">
+            <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513"
+              style="height:60px; margin-bottom:40px; filter: brightness(0) invert(1);">
+            <p style="opacity:0.7; font-size:18px; line-height:1.8;">Menyediakan akses digital seluas mungkin untuk
+              Indonesia yang lebih maju.</p>
+          </div>
+          <div>
+            <h4
+              style="margin-bottom:30px; color:var(--primary); font-weight:900; letter-spacing:2px; text-transform:uppercase;">
+              Kontak Kami</h4>
+            <p style="font-size:20px; font-weight:700; margin-bottom:10px;">care@aksesartamedia.id</p>
+            <p style="font-size:20px; font-weight:700;">(021) 22472319</p>
+          </div>
+        </div>
+        <div
+          style="margin-top:100px; text-align:center; opacity:0.3; font-size:14px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
+          © 2026 PT AKSES ARTHA MEDIA. Digital Bridge to the Future.
+        </div>
+      </div>
+    </footer>
 
-function aamScrollTo(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    gsap.to(window, { duration: 1.2, scrollTo: { y: el.offsetTop - 80 }, ease: "power3.inOut" });
-  }
-}
+  </div>
 
-// Copy to Clipboard with Toast
-function copyToClipboard() {
-  const url = window.location.href;
-  navigator.clipboard.writeText(url).then(() => {
-    const toast = document.getElementById('aam-toast');
-    gsap.to(toast, { visibility: 'visible', opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
-    
-    setTimeout(() => {
-      gsap.to(toast, { opacity: 0, scale: 0.8, duration: 0.5, onComplete: () => {
-        toast.style.visibility = 'hidden';
-      }});
-    }, 3000);
-  });
-}
+  <script>
+    lucide.createIcons();
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-// Magnetic Button Effect
-document.querySelectorAll('.magnetic-btn').forEach(btn => {
-  btn.addEventListener('mousemove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width/2;
-    const y = e.clientY - rect.top - rect.height/2;
-    gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.4 });
-  });
-  btn.addEventListener('mouseleave', () => {
-    gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
-  });
-});
-</script>
+    // Initial Load Animation
+    gsap.to(".gsap-reveal", { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power2.out" });
+
+    // Scroll Reveal
+    document.querySelectorAll('.gsap-reveal').forEach(el => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: "top 90%" },
+        opacity: 1, y: 0, duration: 1, ease: "power2.out"
+      });
+    });
+
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    }
+
+    function aamScrollTo(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        gsap.to(window, { duration: 1.2, scrollTo: { y: el.offsetTop - 80 }, ease: "power3.inOut" });
+      }
+    }
+
+    // Copy to Clipboard with Toast
+    function copyToClipboard() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        const toast = document.getElementById('aam-toast');
+        gsap.to(toast, { visibility: 'visible', opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
+
+        setTimeout(() => {
+          gsap.to(toast, {
+            opacity: 0, scale: 0.8, duration: 0.5, onComplete: () => {
+              toast.style.visibility = 'hidden';
+            }
+          });
+        }, 3000);
+      });
+    }
+
+    // Magnetic Button Effect
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.4 });
+      });
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
+      });
+    });
+
+    // Scroll Spy & Nav Animation
+    window.addEventListener('scroll', () => {
+      let current = '';
+      document.querySelectorAll('section').forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      document.querySelectorAll('.aam-navlink').forEach(link => {
+        link.classList.remove('active');
+        const onclick = link.getAttribute('onclick');
+        if (onclick && onclick.includes(current)) {
+          link.classList.add('active');
+        }
+      });
+
+      // Nav Glass Effect
+      const nav = document.getElementById('mainNav');
+      if (window.scrollY > 50) {
+        nav.style.background = 'rgba(255,255,255,0.95)';
+        nav.style.height = '80px';
+      } else {
+        nav.style.background = 'rgba(255,255,255,0.8)';
+        nav.style.height = '100px';
+      }
+    });
+  </script>
 
 </body>
+
 </html>

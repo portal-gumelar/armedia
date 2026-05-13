@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berlangganan | Paket Internet Guyub ARMEDIA</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Berlangganan paket internet terbaik dari ARMEDIA. Paket Guyub mulai dari 20Mbps hingga 100Mbps dengan harga terjangkau.">
+    <link rel="icon" type="image/png" href="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+      
+      :root {
+        --primary: #F47920;
+        --primary-dark: #d6610f;
+        --bg-navy: #180D39;
+        --bg-subtle: #FDF7F2;
+        --text-dark: #180D39;
+        --text-muted: #5a6b72;
+        --border: rgba(24, 13, 57, 0.08);
+      }
+
+      #aam-root { font-family: 'Outfit', sans-serif; background: #ffffff; color: var(--text-dark); min-height: 100vh; overflow-x: hidden; }
+      #aam-root * { box-sizing: border-box; margin: 0; padding: 0; }
+      
+      .aam-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: 0.4s; height: 80px; }
+      .aam-nav-inner { max-width: 1400px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; }
+      
+      .aam-navlink { color: var(--text-dark); font-size: 14px; font-weight: 800; text-decoration: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s; position: relative; }
+      .aam-navlink::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--primary); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+      .aam-navlink:hover { color: var(--primary); opacity: 1; text-shadow: 0 0 15px rgba(244, 121, 32, 0.3); }
+      .aam-navlink:hover::after { width: 100%; }
+      .aam-navlink.active { color: var(--primary); opacity: 1; }
+      .aam-navlink.active::after { width: 100%; }
+      
+      .aam-btn { background: var(--primary); color: white; border: none; padding: 16px 32px; border-radius: 14px; font-weight: 800; cursor: pointer; transition: 0.4s; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+      .aam-btn:hover { background: var(--primary-dark); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(244,121,32,0.3); }
+      
+      .aam-section { padding: 120px 48px; }
+      .aam-inner { max-width: 1300px; margin: 0 auto; }
+      .aam-h2 { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 40px; }
+
+      .aam-price-card:hover { transform: translateY(-10px) !important; border-color: var(--primary); box-shadow: 0 20px 40px rgba(244,121,32,0.15); }
+
+      .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: var(--bg-navy); z-index: 2000; padding: 40px; display: flex; flex-direction: column; gap: 30px; transition: 0.5s; }
+      .mobile-menu.active { right: 0; }
+      .mobile-menu a { color: white; font-size: 32px; font-weight: 800; text-decoration: none; }
+
+      @media (max-width: 1280px) {
+        .aam-nav-inner { padding: 0 24px; }
+        .aam-navlink { font-size: 12px; }
+      }
+
+      @media (max-width: 1024px) {
+        .aam-nav-inner { height: 80px; padding: 0 32px; }
+        .aam-navlinks { display: none; }
+        .aam-menu-toggle { display: block !important; }
+        .aam-section { padding: 80px 24px; }
+        .aam-h2 { font-size: 38px; text-align: center; }
+        
+        .aam-price-card { transform: scale(1) !important; margin: 0 !important; }
+      }
+
+      @media (max-width: 768px) {
+        .aam-section { padding: 60px 20px; }
+        .aam-h2 { font-size: 30px !important; }
+      }
+
+      .gsap-reveal { opacity: 0; transform: translateY(30px); }
+    </style>
+</head>
+<body>
+
+<div id="aam-root">
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button onclick="toggleMenu()" style="align-self:flex-end; background:none; border:none; color:white;"><i data-lucide="x" style="width:48px; height:48px;"></i></button>
+    <a href="/pages/berlangganan.html" class="active" style="color:var(--primary); font-weight:900;">BERLANGGANAN</a>
+    <a href="/index.html">HOME</a>
+    <a href="/index.html#aam-tentang">TENTANG</a>
+    <a href="/index.html#aam-galeri">GALERI</a>
+    <a href="/index.html#aam-testimoni">TESTIMONI</a>
+    <a href="/index.html#aam-blog">BLOG</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="aam-nav" id="mainNav">
+    <div class="aam-nav-inner">
+      <a href="/index.html"><img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:48px; cursor:pointer;"></a>
+      <div class="aam-navlinks">
+        <a class="aam-navlink active" href="/pages/berlangganan.html" style="color:var(--primary);">BERLANGGANAN</a>
+        <a class="aam-navlink" href="/index.html">HOME</a>
+        <a class="aam-navlink" href="/index.html#aam-tentang">TENTANG</a>
+        <a class="aam-navlink" href="/index.html#aam-galeri">GALERI</a>
+        <a class="aam-navlink" href="/index.html#aam-testimoni">TESTIMONI</a>
+        <a class="aam-navlink" href="/index.html#aam-blog">BLOG</a>
+        <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn">DAFTAR</a>
+      </div>
+      <button class="aam-menu-toggle" onclick="toggleMenu()" style="display:none; border:none; background:none; cursor:pointer;">
+        <i data-lucide="menu" style="width:32px; height:32px; color:var(--bg-navy);"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PRICING / BERLANGGANAN PAGE CONTENT -->
+  <section id="aam-berlangganan" class="aam-section" style="padding-top:180px;">
+    <div class="aam-inner">
+      <div style="text-align:center; margin-bottom:80px;">
+        <p class="gsap-reveal" style="color:var(--primary); font-weight:800; letter-spacing:2px; margin-bottom:10px;">INTERNET RAKYAT / MURAH</p>
+        <h1 class="gsap-reveal aam-h2">Paket ARMEDIANET</h1>
+        <p class="gsap-reveal" style="font-size:20px; color:var(--text-muted); max-width:800px; margin:0 auto;">Solusi internet stabil dengan harga bersahabat. Segera berlangganan paket yang sesuai dengan kebutuhan digital Anda.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-bottom:80px;">
+        <!-- Card 1 -->
+        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:1px solid var(--border); text-align:center; transition:0.4s;">
+          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">STARTER</h4>
+          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">20 <span style="font-size:20px;">Mbps</span></div>
+          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 20 Mbps</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
+            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
+          </ul>
+          <div style="padding-top:30px; border-top:1px solid var(--border);">
+            <p style="font-size:16px; font-weight:700;">Hanya</p>
+            <p style="font-size:42px; font-weight:900; color:var(--primary);">115.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
+            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:2px solid var(--primary); text-align:center; transition:0.4s; transform: scale(1.05); box-shadow: 0 30px 60px rgba(244,121,32,0.15); position:relative;">
+          <div style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); background:var(--primary); color:white; padding:8px 30px; border-radius:30px; font-size:14px; font-weight:900; letter-spacing:1px;">PALING POPULER</div>
+          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">FAMILY</h4>
+          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">30 <span style="font-size:20px;">Mbps</span></div>
+          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 30 Mbps</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
+            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
+          </ul>
+          <div style="padding-top:30px; border-top:1px solid var(--border);">
+            <p style="font-size:16px; font-weight:700;">Hanya</p>
+            <p style="font-size:42px; font-weight:900; color:var(--primary);">142.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
+            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:1px solid var(--border); text-align:center; transition:0.4s;">
+          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">PREMIUM</h4>
+          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">50 <span style="font-size:20px;">Mbps</span></div>
+          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 50 Mbps</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
+            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
+          </ul>
+          <div style="padding-top:30px; border-top:1px solid var(--border);">
+            <p style="font-size:16px; font-weight:700;">Hanya</p>
+            <p style="font-size:42px; font-weight:900; color:var(--primary);">182.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
+            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
+         <!-- Card 4 -->
+         <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:1px solid var(--border); text-align:center; transition:0.4s;">
+          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">TURBO</h4>
+          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">75 <span style="font-size:20px;">Mbps</span></div>
+          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 75 Mbps</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
+            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
+          </ul>
+          <div style="padding-top:30px; border-top:1px solid var(--border);">
+            <p style="font-size:16px; font-weight:700;">Hanya</p>
+            <p style="font-size:42px; font-weight:900; color:var(--primary);">260.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
+            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="gsap-reveal aam-price-card" style="background:#fff; padding:40px; border-radius:40px; border:1px solid var(--border); text-align:center; transition:0.4s;">
+          <h4 style="font-size:18px; color:var(--text-muted); margin-bottom:10px;">ULTIMATE</h4>
+          <div style="font-size:48px; font-weight:900; color:var(--bg-navy); margin-bottom:20px;">100 <span style="font-size:20px;">Mbps</span></div>
+          <ul style="list-style:none; text-align:left; font-size:16px; color:var(--text-muted); margin-bottom:40px;">
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Upto 100 Mbps</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Download/Upload</li>
+            <li style="margin-bottom:15px; display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> Unlimited</li>
+            <li style="display:flex; align-items:center; gap:12px;"><i data-lucide="check-circle" style="width:20px; color:var(--primary);"></i> DUAL BAND 2,4G & 5G</li>
+          </ul>
+          <div style="padding-top:30px; border-top:1px solid var(--border);">
+            <p style="font-size:16px; font-weight:700;">Hanya</p>
+            <p style="font-size:42px; font-weight:900; color:var(--primary);">330.000<span style="font-size:16px; color:var(--text-muted);">/bln</span></p>
+            <a href="https://gumelar.armedia.id/" class="aam-btn" style="width:100%; justify-content:center; margin-top:20px;">BERLANGGANAN</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="aam-kontak" style="padding:100px 48px; background:var(--bg-navy); color:white;">
+    <div class="aam-inner">
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:60px;">
+        <div style="max-width:400px;">
+          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:60px; margin-bottom:40px; filter: brightness(0) invert(1);">
+          <p style="opacity:0.7; font-size:18px; line-height:1.8;">Menyediakan akses digital seluas mungkin untuk Indonesia yang lebih maju.</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom:30px; color:var(--primary); font-weight:900; letter-spacing:2px; text-transform:uppercase;">Kontak Kami</h4>
+          <p style="font-size:20px; font-weight:700; margin-bottom:10px;">care@aksesartamedia.id</p>
+          <p style="font-size:20px; font-weight:700;">(021) 22472319</p>
+        </div>
+      </div>
+      <div style="margin-top:100px; text-align:center; opacity:0.3; font-size:14px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
+        © 2026 PT AKSES ARTHA MEDIA. Digital Bridge to the Future.
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+lucide.createIcons();
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+// Initial Load Animation
+gsap.to(".gsap-reveal", { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power2.out" });
+
+// Scroll Reveal
+document.querySelectorAll('.gsap-reveal').forEach(el => {
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: "top 90%" },
+    opacity: 1, y: 0, duration: 1, ease: "power2.out"
+  });
+});
+
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('active');
+}
+
+// Magnetic Button Effect
+document.querySelectorAll('.magnetic-btn').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+    gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.4 });
+  });
+  btn.addEventListener('mouseleave', () => {
+    gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
+  });
+});
+</script>
+
+</body>
+</html>
