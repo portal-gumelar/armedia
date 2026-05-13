@@ -4,204 +4,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PT Akses Artha Media | Jembatan Digital Masa Depan</title>
-    <meta name="description" content="PT Akses Artha Media (ARMEDIA) adalah ISP yang berkomitmen menghadirkan konektivitas tanpa batas dan percepatan digitalisasi di Indonesia.">
+    
+    <!-- SEO -->
+    <meta name="description" content="ISP terbaik dengan konektivitas Fiber Optic dan VSAT untuk solusi bisnis dan rumah tangga di Indonesia.">
     <link rel="icon" type="image/png" href="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513">
     
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
       
       :root {
-        --primary: #2A8E9E;
-        --primary-dark: #1e6d7a;
-        --bg-white: #ffffff;
-        --bg-subtle: #E9F3F4;
+        --primary: #F47920;
+        --primary-dark: #d6610f;
         --bg-navy: #180D39;
-        --text-dark: #1D1E20;
+        --bg-subtle: #FDF7F2;
+        --text-dark: #180D39;
         --text-muted: #5a6b72;
-        --border: rgba(0,0,0,0.08);
+        --border: rgba(24, 13, 57, 0.08);
       }
 
-      #aam-root { font-family: 'Outfit', sans-serif; background: var(--bg-white); color: var(--text-dark); min-height: 100vh; overflow-x: hidden; scroll-behavior: smooth; }
+      #aam-root { font-family: 'Outfit', sans-serif; background: #ffffff; color: var(--text-dark); min-height: 100vh; overflow-x: hidden; }
       #aam-root * { box-sizing: border-box; margin: 0; padding: 0; }
       
-      .aam-nav { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: 0.4s; }
-      .aam-nav-inner { max-width: 1400px; margin: 0 auto; height: 90px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; }
+      .aam-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: 0.4s; }
+      .aam-nav-inner { max-width: 1400px; margin: 0 auto; height: 100px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; }
       
-      .aam-navlinks { display: flex; gap: 32px; align-items: center; }
-      .aam-navlink { color: var(--text-dark); font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; transition: 0.3s; border: none; background: none; font-family: inherit; text-transform: uppercase; letter-spacing: 1px; }
-      .aam-navlink:hover { color: var(--primary); }
+      .aam-navlink { color: var(--text-dark); font-size: 14px; font-weight: 800; text-decoration: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; }
+      .aam-navlink:hover { color: var(--primary); opacity: 1; }
       
-      .aam-btn { background: var(--primary); color: #ffffff; border: none; padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit; transition: 0.4s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px; }
-      .aam-btn:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(42,142,158,0.25); }
+      .aam-btn { background: var(--primary); color: white; border: none; padding: 16px 32px; border-radius: 14px; font-weight: 800; cursor: pointer; transition: 0.4s; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+      .aam-btn:hover { background: var(--primary-dark); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(244,121,32,0.3); }
       
-      .aam-section { padding: 120px 48px; position: relative; }
-      .aam-inner { max-width: 1300px; margin: 0 auto; z-index: 2; position: relative; }
-      .aam-h1 { font-size: 64px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; color: var(--text-dark); margin-bottom: 24px; }
-      .aam-h2 { font-size: 48px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.2; }
-      
-      .aam-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 20px; transition: 0.5s; overflow: hidden; height: 100%; }
-      .aam-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
-      
-      .aam-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-      .aam-reveal.active { opacity: 1; transform: translateY(0); }
-      
-      .aam-blob { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(42,142,158,0.08) 0%, transparent 70%); border-radius: 50%; filter: blur(60px); z-index: 1; pointer-events: none; }
+      .aam-section { padding: 120px 48px; }
+      .aam-inner { max-width: 1300px; margin: 0 auto; }
+      .aam-h2 { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 40px; }
 
-      @media (max-width: 992px) {
-        .aam-nav-inner { padding: 0 24px; height: 70px; }
-        .aam-navlinks { display: none; }
-        .aam-navlinks.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: white; padding: 32px; gap: 20px; border-bottom: 2px solid var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .aam-h1 { font-size: 40px; text-align: center; }
-        .aam-section { padding: 80px 24px; }
-        .aam-inner > div { flex-direction: column !important; text-align: center !important; }
+      /* Premium Share Section */
+      .aam-share-box { 
+        background: linear-gradient(135deg, #1e114a 0%, #180D39 100%);
+        border-radius: 40px;
+        padding: 80px 40px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 40px 100px rgba(24, 13, 57, 0.2);
+      }
+      .aam-share-box::before {
+        content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(244,121,32,0.1) 0%, transparent 60%);
+        pointer-events: none;
       }
       
-      .aam-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; }
-      @media (max-width: 992px) { .aam-menu-toggle { display: block; } }
+      .share-grid { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 48px; }
+      .share-item {
+        width: 72px; height: 72px; border-radius: 22px;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: white; text-decoration: none; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+      }
+      .share-item i { width: 32px; height: 32px; }
+      .share-item:hover { transform: translateY(-12px); color: white; border-color: rgba(255,255,255,0.3); }
+      
+      /* Brand Colors on Hover */
+      .share-wa:hover { background: #25D366; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3); }
+      .share-fb:hover { background: #1877F2; box-shadow: 0 15px 30px rgba(24, 119, 242, 0.3); }
+      .share-li:hover { background: #0077B5; box-shadow: 0 15px 30px rgba(0, 119, 181, 0.3); }
+      .share-x:hover { background: #000000; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); }
+      .share-copy:hover { background: var(--primary); box-shadow: 0 15px 30px rgba(244, 121, 32, 0.3); }
+
+      /* Centered Toast Notification */
+      #aam-toast {
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
+        background: rgba(24, 13, 57, 0.95);
+        backdrop-filter: blur(10px);
+        color: white; padding: 20px 40px; border-radius: 20px;
+        z-index: 9999; font-weight: 700; font-size: 18px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        opacity: 0; pointer-events: none; visibility: hidden;
+        display: flex; align-items: center; gap: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100%; background: var(--bg-navy); z-index: 2000; padding: 40px; display: flex; flex-direction: column; gap: 30px; transition: 0.5s; }
+      .mobile-menu.active { right: 0; }
+      .mobile-menu a { color: white; font-size: 32px; font-weight: 800; text-decoration: none; }
+
+      @media (max-width: 1024px) {
+        .aam-nav-inner { height: 80px; padding: 0 24px; }
+        .aam-navlinks { display: none; }
+        .aam-menu-toggle { display: block !important; }
+        .aam-section { padding: 80px 24px; }
+        .aam-h2 { font-size: 38px; text-align: center; }
+        .aam-share-box { padding: 60px 24px; border-radius: 30px; }
+      }
+
+      .gsap-reveal { opacity: 0; transform: translateY(30px); }
     </style>
 </head>
 <body>
 
 <div id="aam-root">
 
+  <!-- TOAST NOTIF -->
+  <div id="aam-toast">
+    <i data-lucide="check-circle" style="color:var(--primary);"></i>
+    <span>Tautan Berhasil Disalin!</span>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button onclick="toggleMenu()" style="align-self:flex-end; background:none; border:none; color:white;"><i data-lucide="x" style="width:48px; height:48px;"></i></button>
+    <a onclick="aamScrollTo('aam-home'); toggleMenu()">HOME</a>
+    <a onclick="aamScrollTo('aam-tentang'); toggleMenu()">TENTANG</a>
+    <a onclick="aamScrollTo('aam-galeri'); toggleMenu()">GALERI</a>
+    <a onclick="aamScrollTo('aam-testimoni'); toggleMenu()">TESTIMONI</a>
+    <a onclick="aamScrollTo('aam-blog'); toggleMenu()">BLOG</a>
+  </div>
+
   <!-- NAV -->
-  <nav class="aam-nav">
+  <nav class="aam-nav" id="mainNav">
     <div class="aam-nav-inner">
-      <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" alt="ARMEDIA" style="height:44px; cursor:pointer;" onclick="aamScrollTo('aam-home')">
-      <button class="aam-menu-toggle" onclick="toggleMenu()">
-        <i data-lucide="menu"></i>
-      </button>
-      <div class="aam-navlinks" id="navLinks">
+      <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:48px; cursor:pointer;" onclick="aamScrollTo('aam-home')">
+      <div class="aam-navlinks">
         <a class="aam-navlink" onclick="aamScrollTo('aam-home')">HOME</a>
-        <a class="aam-navlink" onclick="aamScrollTo('aam-tentang')">TENTANG KAMI</a>
+        <a class="aam-navlink" onclick="aamScrollTo('aam-tentang')">TENTANG</a>
+        <a class="aam-navlink" onclick="aamScrollTo('aam-galeri')">GALERI</a>
         <a class="aam-navlink" onclick="aamScrollTo('aam-testimoni')">TESTIMONY</a>
         <a class="aam-navlink" onclick="aamScrollTo('aam-blog')">BLOG</a>
-        <a class="aam-navlink" onclick="aamScrollTo('aam-kontak')">HUBUNGI KAMI</a>
-        <button class="aam-btn" onclick="aamScrollTo('aam-kontak')">DAFTAR BERLANGGANAN</button>
+        <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn">DAFTAR</a>
       </div>
+      <button class="aam-menu-toggle" onclick="toggleMenu()" style="display:none; border:none; background:none; cursor:pointer;">
+        <i data-lucide="menu" style="width:32px; height:32px; color:var(--bg-navy);"></i>
+      </button>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section id="aam-home" class="aam-section" style="padding-top:140px; overflow:hidden;">
-    <div class="aam-blob" style="top:-100px; right:-100px;"></div>
-    <div class="aam-inner" style="display:flex; align-items:center; gap:80px;">
-      <div style="flex:1;" class="aam-reveal">
-        <div style="color:var(--primary); font-weight:800; font-size:14px; margin-bottom:16px; text-transform:uppercase; letter-spacing:2px;">PT AKSES ARTHA MEDIA (ARMEDIA)</div>
-        <h1 class="aam-h1">"Jembatan Digital Masa Depan"</h1>
-        <p style="font-size:18px; line-height:1.8; color:var(--text-muted); margin-bottom:40px;">Penyedia layanan internet (ISP) yang berkomitmen untuk menghadirkan konektivitas tanpa batas dan percepatan digitalisasi di Indonesia.</p>
-        <button class="aam-btn" style="padding:18px 40px; font-size:16px;">Mulai Terhubung Sekarang</button>
+  <section id="aam-home" class="aam-section" style="padding-top:180px;">
+    <div class="aam-inner" style="display:flex; align-items:center; gap:60px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:320px;">
+        <h1 class="gsap-reveal" style="font-size:64px; font-weight:900; letter-spacing:-2px; line-height:1.1; margin-bottom:30px;">Konektivitas Tanpa Batas Masa Depan</h1>
+        <p class="gsap-reveal" style="font-size:20px; color:var(--text-muted); margin-bottom:40px;">Solusi internet Fiber Optic dan VSAT terbaik untuk mengakselerasi digitalisasi bisnis Anda.</p>
+        <div class="gsap-reveal">
+           <a href="https://gumelar.armedia.id/" class="aam-btn magnetic-btn" style="padding:20px 48px;">HUBUNGKAN SEKARANG</a>
+        </div>
       </div>
-      <div style="flex:1;" class="aam-reveal" style="transition-delay:0.3s">
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" style="width:100%; border-radius:32px; box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
+      <div style="flex:1; min-width:320px;" class="gsap-reveal">
+        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1000" style="width:100%; border-radius:30px; box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
       </div>
     </div>
   </section>
 
-  <!-- ABOUT / TENTANG -->
-  <section id="aam-tentang" class="aam-section" style="background:var(--bg-subtle);">
+  <!-- GALLERY -->
+  <section id="aam-galeri" class="aam-section" style="background:var(--bg-subtle);">
     <div class="aam-inner">
-      <div style="display:flex; gap:60px; align-items:center;">
-        <div style="flex:1;" class="aam-reveal">
-           <div style="color:var(--primary); font-weight:800; font-size:14px; margin-bottom:16px; text-transform:uppercase; letter-spacing:2px;">Kenalan Dulu Yuk</div>
-           <h2 class="aam-h2" style="margin-bottom:32px;">Konektivitas Tanpa Batas dari Sabang sampai Merauke.</h2>
-           <p style="font-size:18px; line-height:1.8; color:var(--text-muted); margin-bottom:24px;">Kami <span style="color:var(--primary); font-weight:700;">PT Akses Artha Media (AAM)</span>, beroperasi sejak 12 Desember 2012 sebagai garda terdepan solusi integrasi data di Indonesia.</p>
-           <p style="font-size:16px; line-height:1.8; color:var(--text-muted);">Tahun 2017 menjadi titik balik kami untuk menghadirkan VSAT, menjangkau area tersulit di Indonesia yang tidak terjangkau kabel fisik.</p>
-        </div>
-        <div style="flex:1.2; display:grid; grid-template-columns:1fr; gap:24px;" class="aam-reveal" style="transition-delay:0.3s">
-          <div class="aam-card" style="padding:40px; border-left:6px solid var(--primary);">
-            <div style="color:var(--primary); margin-bottom:16px;"><i data-lucide="eye" style="width:32px;height:32px;"></i></div>
-            <h4 style="font-size:20px; margin-bottom:12px;">Visi Kami</h4>
-            <p style="color:var(--text-muted); font-size:15px; line-height:1.6;">Menjadi pemimpin terdepan dalam solusi komunikasi bisnis di Indonesia, bertindak sebagai partner strategis yang memahami setiap dinamika bisnis Anda.</p>
-          </div>
-          <div class="aam-card" style="padding:40px; border-left:6px solid var(--primary);">
-            <div style="color:var(--primary); margin-bottom:16px;"><i data-lucide="rocket" style="width:32px;height:32px;"></i></div>
-            <h4 style="font-size:20px; margin-bottom:12px;">Misi Kami</h4>
-            <p style="color:var(--text-muted); font-size:15px; line-height:1.6;">Membangun ekosistem teknologi yang inovatif, handal, dan efisien melalui tim profesional yang berdedikasi tinggi.</p>
+      <h2 class="gsap-reveal aam-h2" style="text-align:center;">Infrastruktur Teknologi</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
+        <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?q=80&w=800" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="gsap-reveal" style="overflow:hidden; border-radius:24px; height:300px;"><img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800" style="width:100%; height:100%; object-fit:cover;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARE SECTION REDESIGNED -->
+  <section id="aam-share" class="aam-section">
+    <div class="aam-inner">
+      <div class="aam-share-box gsap-reveal">
+        <div style="max-width:700px; margin: 0 auto;">
+          <h2 style="font-size:42px; font-weight:900; margin-bottom:20px; line-height:1.2;">Bantu Teman Anda Terhubung!</h2>
+          <p style="font-size:18px; opacity:0.8; line-height:1.6;">Bagikan solusi internet terbaik ini agar rekan dan keluarga Anda juga bisa merasakan konektivitas tanpa batas dari ARMEDIA.</p>
+          
+          <div class="share-grid">
+            <a href="https://api.whatsapp.com/send?text=Ayo%20cek%20layanan%20internet%20terbaik%20dari%20ARMEDIA%20di%20https://armedia.id/" target="_blank" class="share-item share-wa magnetic-btn" title="Kirim via WhatsApp">
+              <i data-lucide="message-circle"></i>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://armedia.id/" target="_blank" class="share-item share-fb magnetic-btn" title="Bagikan ke Facebook">
+              <i data-lucide="facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://armedia.id/" target="_blank" class="share-item share-li magnetic-btn" title="Bagikan ke LinkedIn">
+              <i data-lucide="linkedin"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://armedia.id/" target="_blank" class="share-item share-x magnetic-btn" title="Bagikan ke X">
+              <i data-lucide="twitter"></i>
+            </a>
+            <button onclick="copyToClipboard()" class="share-item share-copy magnetic-btn" title="Salin Tautan">
+              <i data-lucide="link"></i>
+            </button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONI -->
-  <section id="aam-testimoni" class="aam-section">
-    <div class="aam-inner" style="text-align:center;">
-      <div style="color:var(--primary); font-weight:700; margin-bottom:16px;">APA KATA MEREKA?</div>
-      <h2 class="aam-h2" style="margin-bottom:64px;">Testimony Pelanggan</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px;">
-        <div class="aam-card aam-reveal" style="padding:40px;">
-          <i data-lucide="quote" style="color:var(--primary); margin-bottom:24px;"></i>
-          <p style="font-style:italic; margin-bottom:24px; color:var(--text-muted);">"Internet ARMEDIA sangat stabil untuk kantor kami. Respon tim teknisnya sangat cepat."</p>
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div style="width:50px; height:50px; border-radius:50%; background:#ddd;"></div>
-            <div style="text-align:left;"><h5 style="font-weight:800;">Andi Wijaya</h5><p style="font-size:12px; color:var(--text-muted);">CEO Startup Digital</p></div>
-          </div>
-        </div>
-        <div class="aam-card aam-reveal" style="padding:40px; transition-delay:0.2s">
-          <i data-lucide="quote" style="color:var(--primary); margin-bottom:24px;"></i>
-          <p style="font-style:italic; margin-bottom:24px; color:var(--text-muted);">"Layanan WiFi rumahnya sangat kencang, streaming 4K lancar tanpa buffering."</p>
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div style="width:50px; height:50px; border-radius:50%; background:#ddd;"></div>
-            <div style="text-align:left;"><h5 style="font-weight:800;">Siti Aminah</h5><p style="font-size:12px; color:var(--text-muted);">Ibu Rumah Tangga</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOG -->
-  <section id="aam-blog" class="aam-section" style="background:var(--bg-subtle);">
-    <div class="aam-inner" style="text-align:center;">
-      <div style="color:var(--primary); font-weight:700; margin-bottom:16px;">EDUKASI & BERITA</div>
-      <h2 class="aam-h2" style="margin-bottom:64px;">Blog ARMEDIA</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(350px, 1fr)); gap:32px;">
-        <div class="aam-card aam-reveal">
-          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" style="width:100%; height:200px; object-fit:cover;">
-          <div style="padding:32px; text-align:left;">
-            <h4 style="margin-bottom:12px;">Panduan Keamanan Digital UMKM</h4>
-            <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px;">Cara melindungi aset digital bisnis Anda dari serangan siber.</p>
-            <a href="#" style="color:var(--primary); font-weight:700; text-decoration:none;">Baca Selengkapnya <i data-lucide="chevron-right" style="width:16px; vertical-align:middle;"></i></a>
-          </div>
-        </div>
-        <div class="aam-card aam-reveal" style="transition-delay:0.2s">
-          <img src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?auto=format&fit=crop&w=600&q=80" style="width:100%; height:200px; object-fit:cover;">
-          <div style="padding:32px; text-align:left;">
-            <h4 style="margin-bottom:12px;">Masa Depan Fiber Optik di Indonesia</h4>
-            <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px;">Evolusi kecepatan internet kabel dan dampaknya pada ekonomi.</p>
-            <a href="#" style="color:var(--primary); font-weight:700; text-decoration:none;">Baca Selengkapnya <i data-lucide="chevron-right" style="width:16px; vertical-align:middle;"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER / KONTAK -->
+  <!-- FOOTER -->
   <footer id="aam-kontak" style="padding:100px 48px; background:var(--bg-navy); color:white;">
     <div class="aam-inner">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:60px;">
-        <div style="max-width:500px;">
-          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:50px; margin-bottom:32px; filter: brightness(0) invert(1);">
-          <p style="font-size:16px; opacity:0.8; line-height:1.8; margin-bottom:32px;">ARMEDIA memastikan Anda tetap selangkah di depan, menghubungkan setiap potensi menuju masa depan yang lebih cerdas.</p>
-          <div style="display:flex; flex-direction:column; gap:16px; color:white;">
-             <div style="display:flex; align-items:center; gap:12px; opacity:0.7;"><i data-lucide="mail"></i> care@aksesartamedia.id</div>
-             <div style="display:flex; align-items:center; gap:12px; opacity:0.7;"><i data-lucide="phone"></i> (021) 22472319</div>
-          </div>
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:60px;">
+        <div style="max-width:400px;">
+          <img src="https://ik.imagekit.io/Gumelar/LogO/logo%20pt.png?updatedAt=1778213993513" style="height:60px; margin-bottom:40px; filter: brightness(0) invert(1);">
+          <p style="opacity:0.7; font-size:18px; line-height:1.8;">Menyediakan akses digital seluas mungkin untuk Indonesia yang lebih maju.</p>
         </div>
         <div>
-          <h4 style="margin-bottom:32px; text-transform:uppercase; letter-spacing:2px; font-weight:800;">Link Cepat</h4>
-          <div style="display:flex; flex-direction:column; gap:16px; opacity:0.6;">
-            <a onclick="aamScrollTo('aam-home')" style="cursor:pointer; color:white; text-decoration:none;">Home</a>
-            <a onclick="aamScrollTo('aam-tentang')" style="cursor:pointer; color:white; text-decoration:none;">Tentang Kami</a>
-            <a onclick="aamScrollTo('aam-testimoni')" style="cursor:pointer; color:white; text-decoration:none;">Testimony</a>
-            <a onclick="aamScrollTo('aam-blog')" style="cursor:pointer; color:white; text-decoration:none;">Blog</a>
-          </div>
+          <h4 style="margin-bottom:30px; color:var(--primary); font-weight:900; letter-spacing:2px; text-transform:uppercase;">Kontak Kami</h4>
+          <p style="font-size:20px; font-weight:700; margin-bottom:10px;">care@aksesartamedia.id</p>
+          <p style="font-size:20px; font-weight:700;">(021) 22472319</p>
         </div>
       </div>
-      <div style="margin-top:80px; padding-top:40px; border-top:1px solid rgba(255,255,255,0.1); text-align:center; opacity:0.3; font-size:13px;">
-        © 2026 PT AKSES ARTHA MEDIA. Jembatan Digital Masa Depan.
+      <div style="margin-top:100px; text-align:center; opacity:0.3; font-size:14px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
+        © 2026 PT AKSES ARTHA MEDIA. Digital Bridge to the Future.
       </div>
     </div>
   </footer>
@@ -210,32 +229,57 @@
 
 <script>
 lucide.createIcons();
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+// Initial Load Animation
+gsap.to(".gsap-reveal", { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power2.out" });
+
+// Scroll Reveal
+document.querySelectorAll('.gsap-reveal').forEach(el => {
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: "top 90%" },
+    opacity: 1, y: 0, duration: 1, ease: "power2.out"
+  });
+});
 
 function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('active');
+  document.getElementById('mobileMenu').classList.toggle('active');
 }
 
 function aamScrollTo(id) {
   const el = document.getElementById(id);
   if (el) {
-    document.getElementById('navLinks').classList.remove('active');
-    const offset = 90;
-    const bodyRect = document.body.getBoundingClientRect().top;
-    const elementRect = el.getBoundingClientRect().top;
-    const offsetPosition = (elementRect - bodyRect) - offset;
-    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    gsap.to(window, { duration: 1.2, scrollTo: { y: el.offsetTop - 80 }, ease: "power3.inOut" });
   }
 }
 
-const revealCallback = (entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-    }
+// Copy to Clipboard with Toast
+function copyToClipboard() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    const toast = document.getElementById('aam-toast');
+    gsap.to(toast, { visibility: 'visible', opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
+    
+    setTimeout(() => {
+      gsap.to(toast, { opacity: 0, scale: 0.8, duration: 0.5, onComplete: () => {
+        toast.style.visibility = 'hidden';
+      }});
+    }, 3000);
   });
-};
-const observer = new IntersectionObserver(revealCallback, { threshold: 0.1 });
-document.querySelectorAll('.aam-reveal').forEach(el => observer.observe(el));
+}
+
+// Magnetic Button Effect
+document.querySelectorAll('.magnetic-btn').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+    gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.4 });
+  });
+  btn.addEventListener('mouseleave', () => {
+    gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
+  });
+});
 </script>
 
 </body>
